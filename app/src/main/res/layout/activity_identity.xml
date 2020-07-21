@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ProfileActivity.IdentityActivity">
+    <RelativeLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_backwhite"
+            android:backgroundTint="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/timeslot"
+            android:layout_marginStart="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/img_back"
+            android:fontFamily="@font/opensans_regular"
+            android:text="Identity Verification"
+            android:textColor="@color/red_pitch"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+
+ <RelativeLayout
+     android:layout_below="@+id/topbar"
+     android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<ImageView
+    android:layout_centerHorizontal="true"
+    android:id="@+id/img_aadhar"
+    android:src="@drawable/ic_camera_alt_black_24dp"
+    android:layout_width="100dp"
+    android:layout_height="100dp"/>
+
+    <EditText
+        android:id="@+id/edit_aadhar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/img_aadhar"
+        android:background="@drawable/edit_bg"
+        android:textStyle="bold"
+        android:maxLength="12"
+        android:textSize="18sp"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+android:hint="Enter Aadhar No."/>
+
+
+     <Button
+         android:id="@+id/btn_save"
+         android:layout_below="@+id/edit_aadhar"
+         android:layout_width="100dp"
+         android:layout_height="wrap_content"
+         android:text="Save"
+         android:textStyle="bold"
+         android:layout_marginTop="20dp"
+         android:layout_centerHorizontal="true"
+         android:textColor="@color/colorWhite"
+         android:background="@drawable/upload_btn"/>
+     <com.wang.avi.AVLoadingIndicatorView
+         android:id="@+id/bar"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerInParent="true"
+         android:visibility="gone"
+         app:indicatorColor="@color/red_pitch"
+         app:indicatorName="BallClipRotatePulseIndicator" />
+</RelativeLayout>
+<RelativeLayout
+    android:visibility="gone"
+android:layout_centerInParent="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/relihide"
+        android:textColor="@color/nav_black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="Coming Soon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
+
+
+</RelativeLayout>

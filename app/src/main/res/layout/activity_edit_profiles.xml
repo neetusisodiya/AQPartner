@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".Activity.EditProfile">
+
+    <RelativeLayout
+        android:id="@+id/topheader"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/reddd">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_back"
+            android:tint="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/txt_pro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/img_back"
+            android:text="@string/edit_profile"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/font_20" />
+
+        <ImageView
+            android:id="@+id/img_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_edit"
+            android:tint="@color/colorWhite" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topheader">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editfulllname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg"
+                android:enabled="false"
+                android:hint="Full Name"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/font_16" />
+
+            <TextView
+                android:id="@+id/txt_gender"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editfulllname"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Gender"
+                android:textSize="@dimen/font_16" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spinner_gender"
+                android:layout_width="match_parent"
+
+                android:layout_height="45dp"
+                android:layout_below="@+id/editfulllname"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:textSize="@dimen/font_16"
+                android:visibility="gone"
+                app:ms_background_color="@color/leku_soft_grey" />
+
+            <TextView
+                android:id="@+id/txt_dob"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/txt_gender"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg"
+                android:enabled="false"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/dob"
+                android:textSize="@dimen/font_16" />
+
+            <EditText
+                android:id="@+id/editmob"
+                android:layout_width="match_parent"
+
+                android:layout_height="40dp"
+                android:layout_below="@+id/txt_dob"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg"
+                android:enabled="false"
+                android:hint="@string/mobilenumber"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/font_16" />
+
+            <EditText
+                android:id="@+id/editemail"
+                android:layout_width="match_parent"
+
+                android:layout_height="40dp"
+                android:layout_below="@+id/editmob"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg"
+                android:enabled="false"
+                android:hint="@string/email"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/font_16" />
+
+            <TextView
+                android:id="@+id/txt_city"
+
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editemail"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="City"
+                android:textSize="@dimen/font_16" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spinner_city"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_45"
+                android:layout_below="@+id/editemail"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:textSize="@dimen/font_16"
+                android:visibility="gone"
+                app:ms_background_color="@color/leku_soft_grey" />
+
+            <EditText
+                android:id="@+id/editpincontact"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/txt_city"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg"
+                android:enabled="false"
+                android:hint="@string/pincode"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/font_16" />
+
+            <LinearLayout
+                android:id="@+id/linc"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editpincontact"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="2">
+
+                <com.jaredrummler.materialspinner.MaterialSpinner
+                    android:id="@+id/spinner_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_45"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/font_16"
+                    app:ms_background_color="@color/leku_soft_grey" />
+
+                <com.jaredrummler.materialspinner.MaterialSpinner
+                    android:id="@+id/spinner_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/font_16"
+                    app:ms_background_color="@color/leku_soft_grey" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linctext"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editpincontact"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/Text_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_bg"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textSize="@dimen/font_16" />
+
+
+                <TextView
+                    android:id="@+id/text_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_bg"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textSize="@dimen/font_16" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editaddress"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/linctext"
+
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg"
+                android:enabled="false"
+                android:hint="Enter Your Address Here"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/font_16" />
+
+            <TextView
+                android:id="@+id/txt_experttype"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editaddress"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Expert"
+                android:textSize="@dimen/font_16" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spinner_experttype"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_45"
+                android:layout_below="@+id/editaddress"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:textSize="@dimen/font_16"
+                android:visibility="gone"
+                app:ms_background_color="@color/leku_soft_grey" />
+
+            <TextView
+                android:id="@+id/txt_qualification"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/txt_experttype"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Qualification"
+                android:textSize="@dimen/font_16" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spinner_qualification"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_45"
+                android:layout_below="@+id/spinner_experttype"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:textSize="@dimen/font_16"
+                android:visibility="gone"
+                app:ms_background_color="@color/leku_soft_grey" />
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner_qualification"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@color/reddd"
+                android:text="@string/update"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/bar"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorGreen"
+        app:indicatorName="BallClipRotatePulseIndicator" />
+</RelativeLayout>

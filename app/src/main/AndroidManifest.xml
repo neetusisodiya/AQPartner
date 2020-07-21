@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.app.oooelePartner">
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/launcher_"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:icon">
+
+        <activity
+            android:name="com.app.oooelePartner.Activity.WorkingTimeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.DoubleActivity.WorkActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name="com.app.oooelePartner.Activity.PaymentActivity" />
+        <activity
+            android:name="com.app.oooelePartner.WorkingArea.Mapsd"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.WorkingArea.MapActivitty"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.WorkingArea.Maps3sActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.Activity.EditProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.Activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.ProfileActivity.AddBank"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.ProfileActivity.BankDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.ProfileActivity.ServiceLocation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.ProfileActivity.Award"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.ProfileActivity.UploadWork"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.ProfileActivity.Training"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.ProfileActivity.IdentityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.Activity.Static_web"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.Activity.CreditHistory"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.app.oooelePartner.Activity.Splash"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.app.oooelePartner.Activity.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_live_kPCY6fWTyiE5tt" />
+      <!--  <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_3ffwj8JQkENuYH" />-->
+
+        <service android:name="com.app.oooelePartner.Firebase.MyFirebaseMessagingService"
+            android:exported="false">
+
+
+            <intent-filter>
+
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+
+            </intent-filter>
+
+        </service>
+    </application>
+
+</manifest>
+

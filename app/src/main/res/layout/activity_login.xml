@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/bg"
+ >
+
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_mobile_number"
+        android:fontFamily="@font/lato_bold"
+
+        android:textSize="23dp"
+        android:gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/mobile_txt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Mobile Number"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/opensans_regular"
+        android:textSize="18sp"
+        android:maxLength="10"
+
+        android:background="@color/colorWhite"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="20dp"
+        android:gravity="center"/>
+    <EditText
+        android:id="@+id/mobile_otp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Enter Otp Here"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/opensans_regular"
+        android:textSize="18sp"
+
+        android:maxLength="10"
+        android:background="@color/colorWhite"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="20dp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/enter_btn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/redLight"
+        android:text="Enter"
+        android:fontFamily="@font/lato_bold"
+android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorWhite"/>
+    <Button
+        android:id="@+id/enter_otp"
+        android:visibility="gone"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/redLight"
+        android:text="Submit"
+         android:fontFamily="@font/lato_bold"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorWhite"/>
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/bar"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorGreen"
+        app:indicatorName="BallClipRotatePulseIndicator" />
+</LinearLayout>

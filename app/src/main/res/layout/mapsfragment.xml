@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg"
+        android:orientation="horizontal">
+
+        <ImageView
+             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_backwhite"
+            android:tint="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/searchview"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/leku_search_background"
+            android:hint="search_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            tools:ignore="Autofill" />
+
+        <ImageView
+            android:id="@+id/leku_clear_search_image"
+            android:layout_width="24dp"
+            android:visibility="gone"
+
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:contentDescription="search_hint"
+            android:src="@drawable/leku_ic_clean"
+            android:tint="@color/leku_strong_grey"
+            />
+    </LinearLayout>
+    <RelativeLayout
+
+        android:id="@+id/leku_search_touch_zone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_backwhite"
+            android:backgroundTint="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/timeslot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/back"
+            android:fontFamily="@font/opensans_regular"
+            android:text="Working Area"
+            android:textColor="@color/red_pitch"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_km"
+            android:layout_marginRight="10dp"
+            android:text=""
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:textColor="@color/red_pitch"
+
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <SeekBar
+         android:id="@+id/seekBar2"
+        android:layout_below="@+id/leku_search_touch_zone"
+        android:layout_width="match_parent"
+        android:layout_toRightOf="@+id/btn_SetWorkingArea"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:max="8"
+        android:progress="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_SetWorkingArea"
+        android:background="@color/reddd"
+        android:text="Saved Zone"
+        android:layout_marginLeft="10dp"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:layout_below="@+id/leku_search_touch_zone"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"/>
+
+    <ScrollView
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/btn_SetWorkingArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <fragment
+        android:id="@+id/map"
+
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+         />
+
+    <ImageView
+        android:id="@+id/imgCurrentloc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:background="#9FFFFFFF"
+        android:contentDescription="Search Location"
+        android:padding="8dp"
+        app:srcCompat="@drawable/ic_my_location_black_24dp" />
+
+    <!--
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+
+    -->
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/locationlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/map"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/tv_your_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="location"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/tv_set_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_your_location"
+            android:layout_toLeftOf="@+id/tv_set_change"
+            android:drawablePadding="10dip"
+            android:paddingLeft="8dp"
+            android:text="location"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tv_set_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_your_location"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="8dp"
+            android:text="Change"
+            android:textColor="@color/colorBlue" />
+
+        <EditText
+            android:id="@+id/completaddress"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="48dp"
+            android:layout_below="@+id/tv_set_location"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_bg"
+            android:hint="Complet Address"
+            android:padding="2dp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/savelocation"
+        android:layout_width="389dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/locationlayout"
+        android:background="@color/colorBlue"
+        android:text="Submit"
+        android:visibility="gone"
+        android:textColor="@color/colorWhite" />
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/setworkingrecycler"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/bar"
+        android:layout_below="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/red_pitch"
+        app:indicatorName="BallClipRotatePulseIndicator" />
+</RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

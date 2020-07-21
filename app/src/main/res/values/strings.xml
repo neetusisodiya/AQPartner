@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Oooele Service Partner</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ok">ok</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="dob">Select Date of Birth</string>
+    <string name="mobilenumber">Enter Your Mobile Number</string>
+    <string name="email_hint">Enter Email Here</string>
+    <string name="entercity">Enter Your City Name</string>
+    <string name="pincode">Enter Your Pincode</string>
+    <string name="update">Update</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="acccept">Accept</string>
+    <string name="received_message">Received Message</string>
+    <string name="invalid_email">Invalid email</string>
+    <string name="blank_name">Blank name</string>
+    <string name="blank_email">Blank email</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="my_account">My Account</string>
+    <string name="new_leads">New Leads</string>
+    <string name="identity_verification">Identity verification</string>
+    <string name="bank_details">Bank Details</string>
+    <string name="my_menu">My Menu</string>
+    <string name="credit_balance">Credit Balance</string>
+    <string name="contact_user">Contact User</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+</resources>

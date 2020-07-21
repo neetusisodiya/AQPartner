@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E90B38</color>
+    <color name="colorPrimaryDark">#EC0951</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorGreen">#13A606</color>
+    <color name="colorLightBlue">#94C5E4</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlue">#014A81</color>
+    <color name="redLight">#E1756D</color>
+    <color name="leku_search_background">#0000</color>
+    <color name="leku_white_alpha">#F2FFFFFF</color>
+    <color name="leku_soft_grey">#ECEEEF</color>
+    <color name="leku_mid_grey">#9199A1</color>
+    <color name="leku_strong_grey">#50545A</color>
+    <color name="red_pitch">#B81413</color>
+    <color name="navygreen">#0898AA</color>
+    <color name="nav_black">#111930</color>
+    <color name="reddd">#EC1D30</color>
+    <color name="grey">#AAA3A3</color>
+
+</resources>
