@@ -114,7 +114,7 @@ public class CreditHistory extends AppCompatActivity implements View.OnClickList
             Toast.makeText(this, "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
 
         }
-    }String totalCredit="0";
+    }int totalCredit=0;
     private void getAllCreditLead() {
 
         final ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
@@ -133,14 +133,13 @@ public class CreditHistory extends AppCompatActivity implements View.OnClickList
                         if (response.body().getStatus().equals("true")) {
                             String string=response.body().getTotal_amount();
                             if(!string.isEmpty()){
-                                totalCredit=string;
-
+                                totalCredit=Integer.parseInt(string)/10;
+                                txt_cred.setText(String.valueOf(totalCredit)+" Points");
                             }
-                            txt_cred.setText(string+" Points");
 
                         } else {
 
-                            txt_cred.setText("0 Points");
+                            txt_cred.setText(String.valueOf(totalCredit)+"Points");
 
 
                         }

@@ -166,10 +166,7 @@ public class HomeFragment extends Fragment {
 
 
     private void getNewLead() {
-
-
      bar.setVisibility(View.VISIBLE);
-
         ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
         FormBody.Builder builder = ApiClient.createBuilder(new String[]{"expert_id"}, new
                 String[]{userId});
@@ -185,37 +182,6 @@ public class HomeFragment extends Fragment {
 
                         if (response.body().getStatus().equals("true")) {
                             bar.setVisibility(View.GONE);
-
-
-                         /*    banVisits = new ArrayList<>(); for (int i = 0; i < response.body().getData().size(); i++) {
-                                beanNewLeads = new BeanNewLeads();
-
-
-
-
-                                beanNewLeads.setG_lat(response.body().getData().get(i).getG_lat());
-                                beanNewLeads.setG_lng(response.body().getData().get(i).getG_lng());
-                                beanNewLeads.setId(response.body().getData().get(i).getId());
-                                beanNewLeads.setServ(response.body().getData().get(i).getServ());
-                                beanNewLeads.setSubserv(response.body().getData().get(i).getSubserv());
-                                beanNewLeads.setFault(response.body().getData().get(i).getFault());
-                                beanNewLeads.setPrice(response.body().getData().get(i).getPrice());
-                                beanNewLeads.setUnitRate(response.body().getData().get(i).getUnitRate());
-                                beanNewLeads.setDiscount(response.body().getData().get(i).getDiscount());
-                                beanNewLeads.setBooking_date(response.body().getData().get(i).getBooking_date());
-                                beanNewLeads.setCustomer(response.body().getData().get(i).getCustomer());
-                                beanNewLeads.setContact(response.body().getData().get(i).getContact());
-                                beanNewLeads.setG_address(response.body().getData().get(i).getG_address());
-                                beanNewLeads.setEmail(response.body().getData().get(i).getEmail());
-                                beanNewLeads.setAlt_contact_no(response.body().getData().get(i).getAlt_contact_no());
-                                beanNewLeads.setCustomer_id(response.body().getData().get(i).getCustomer_id());
-                                beanNewLeads.setVisit_time(response.body().getData().get(i).getVisit_time());
-                                beanNewLeads.setCreated_at(response.body().getData().get(i).getCreated_at());
-                                beanNewLeads.setExpert_id(response.body().getData().get(i).getExpert_id());
-
-                                banVisits.add(beanNewLeads);
-                            }*/
-
                             adapterNewLeads = new AdapterNewLeads(getActivity(), response.body().getData());
                             newRecycle.setAdapter(adapterNewLeads);
                         } else {
@@ -240,11 +206,6 @@ public class HomeFragment extends Fragment {
                 }
             });
         } else {
-          //  CommonUtils.hideProgressDoalog();
-
-            //progressDialog.dismiss();
-            //  scrolls.setVisibility(View.VISIBLE);
-            // reli.setVisibility(View.VISIBLE);
             Toast.makeText(getContext(), "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
 
         }

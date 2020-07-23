@@ -82,9 +82,7 @@ MainActivity mainActivity;
     @Override
     public void onResume() {
         super.onResume();
-        // getImageBanner();
-       // CommonUtils.tabChange(getActivity(), mainActivity.iv_home, mainActivity.ivsearch, mainActivity.iv_cart, mainActivity.iv_account, mainActivity.txthome, mainActivity.txtsearch, mainActivity.txtcart, mainActivity.txtaccount);
-        CommonUtils.tabChange(getActivity(), mainActivity.ivsearch,  mainActivity.iv_cart,  mainActivity.iv_account,  mainActivity.iv_home,  mainActivity.txtsearch,  mainActivity.txtcart,  mainActivity.txtaccount,  mainActivity.txthome);
+         CommonUtils.tabChange(getActivity(), mainActivity.ivsearch,  mainActivity.iv_cart,  mainActivity.iv_account,  mainActivity.iv_home,  mainActivity.txtsearch,  mainActivity.txtcart,  mainActivity.txtaccount,  mainActivity.txthome);
 
     }
     private void setupViewPager(ViewPager viewPager){

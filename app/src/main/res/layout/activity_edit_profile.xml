@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/topheader"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="@color/reddd">
 
         <ImageView
@@ -18,8 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-             android:layout_marginStart="10dp"
-            android:src="@drawable/ic_back"
+            android:padding="@dimen/margin_10"
+            android:src="@drawable/ic_backwhite"
             android:tint="@color/colorWhite" />
 
         <TextView

@@ -17,10 +17,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ic_backwhite"
-            android:backgroundTint="@color/colorBlack" />
+            android:padding="@dimen/margin_10"
+            android:src="@drawable/ic_backwhite"
+            android:tint="@color/colorBlack" />
 
         <TextView
             android:id="@+id/award"

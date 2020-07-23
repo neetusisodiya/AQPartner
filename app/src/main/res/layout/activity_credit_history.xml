@@ -8,23 +8,23 @@
     tools:context=".Activity.CreditHistory">
 
     <RelativeLayout
+        android:id="@+id/top"
         android:layout_width="match_parent"
-        android:layout_height="48dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/img_back"
+            android:padding="@dimen/font_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:src="@drawable/ic_arrow_back" />
 
         <TextView
+            android:layout_toRightOf="@+id/img_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
             android:text="Credit History"
-
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
@@ -52,6 +52,7 @@
 
 
     <Button
+
         android:id="@+id/btncredits"
         android:layout_width="150dp"
         android:layout_height="30dp"
@@ -131,7 +132,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/credit_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
 </LinearLayout>
