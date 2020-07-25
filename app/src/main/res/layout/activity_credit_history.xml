@@ -74,38 +74,7 @@
         android:numColumns="2"
         android:verticalSpacing="10dp" />
 
-    <!--  <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:text="100 Points - ₹1000"
-          android:textColor="@color/colorBlack"
-          android:textSize="16sp" />
 
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:text="200 Points - ₹2000"
-          android:textColor="@color/colorBlack"
-          android:textSize="16sp" />
-
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-
-          android:text="500 Points - ₹5000"
-          android:textColor="@color/colorBlack"
-          android:textSize="16sp" />
-
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:text="1000 Points - ₹10000"
-          android:textColor="@color/colorBlack"
-          android:textSize="16sp" />-->
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

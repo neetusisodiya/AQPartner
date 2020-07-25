@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,13 +64,13 @@ import static com.app.oooelePartner.Utill.CommonUtils.isMediaDocument;
 
 public class IdentityActivity extends AppCompatActivity implements View.OnClickListener {
     private int GALLERY = 1, CAMERA = 2;
-    File filePath1 ;
+    File filePath1;
     private static final String IMAGE_DIRECTORY = "/Oooele";
     String isImageEdit1 = "0";
     TextView relihide;
     ImageView img_back, img_aadhar;
     Button btn_save;
-    String User_Id;
+    String User_Id, panCardNumber;
     EditText etPanCard;
     AVLoadingIndicatorView bar;
     AppPreferences appPreferences;
@@ -124,7 +123,6 @@ public class IdentityActivity extends AppCompatActivity implements View.OnClickL
 
     private void UploadProductDocumnet() {
         bar.setVisibility(View.VISIBLE);
-        Log.d("LOG_MESSAGE", "UploadProductDocumnet: " +filePath1.getAbsolutePath());
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         if (isImageEdit1.equalsIgnoreCase("1")) {
             RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), filePath1);

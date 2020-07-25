@@ -110,9 +110,7 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
         qualificationBeanArrayList = new ArrayList<>();
         expertBeanArrayList = new ArrayList<>();
         find();
-        // singleMain(Str_Owner_Id);
-        //  getNewLead(  Str_Owner_Id);
-        //GetProfile(Str_Owner_Id);
+
         getCityApi();
         getQualificationApi();
         getExpertTypeApi();
@@ -169,7 +167,12 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
         if (appPreferences.checkForValue(DOB)) {
             txt_dob.setText(appPreferences.getUserData(AppPreferences.DOB));
         }
-
+        if (appPreferences.checkForValue(ADDRESS)) {
+            editaddress.setText(appPreferences.getUserData(AppPreferences.ADDRESS));
+        }
+        if (appPreferences.checkForValue(PINCODE)) {
+            editpincontact.setText(appPreferences.getUserData(AppPreferences.PINCODE));
+        }
         spinnerArrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, Month);
         spinner_month.setAdapter(spinnerArrayAdapter);

@@ -45,7 +45,7 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_new_leads, viewGroup, false);
         return new ViewHolder(view);
     }
-
+    String points;
     @Override
     public void onBindViewHolder(final AdapterNewLeads.ViewHolder holder, final int position) {
         holder.txt_contact.setText(banVisits.get(position).getContact());
@@ -54,10 +54,17 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
         holder.txt_visittime.setText(banVisits.get(position).getVisit_time());
         holder.txt_service2.setText(banVisits.get(position).getFault());
         //todo set charges
-        holder.txtPrice.setText(banVisits.get(position).getPoint());
+        points = banVisits.get(position).getPoint();
+        if (points.equalsIgnoreCase("0 Points")) {
+            holder.txtPrice.setVisibility(View.GONE);
+
+        } else {
+            holder.txtPrice.setText(points);
+
+        }
         holder.txt_service.setText(banVisits.get(position).getServ() + "/" +
                 banVisits.get(position).getSubserv());
-        if (banVisits.get(position).isAccepted()==1) {
+        if (banVisits.get(position).isAccepted() == 1) {
             holder.cardView.setAlpha(0.2f);
             holder.accept.setVisibility(View.GONE);
             holder.txt_contact.setVisibility(View.GONE);
@@ -68,14 +75,18 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                open(banVisits.get(position), position);
 
+                if (!points.equals("0 Points")) {
+                    open(banVisits.get(position), position);
+                } else {
+                    acceptLead(banVisits.get(position), position);
+
+                }
             }
         });
     }
 
     public void open(final BeanNewLeads banVisits, final int position) {
-        str_expert_id = banVisits.getExpert_id();
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setMessage(banVisits.getPoint() + " will be deducted from your wallet as a charge of leads");
         alertDialogBuilder.setPositiveButton("OKay",
@@ -126,6 +137,8 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
 
     private void acceptLead(BeanNewLeads banVisits2, final int position) {
         HomeFragment.bar.setVisibility(View.VISIBLE);
+        str_expert_id = banVisits2.getExpert_id();
+
         final String id = banVisits2.getId();
         final String serviceId = banVisits2.getServ_id();
         final String points = banVisits2.getPoint();
