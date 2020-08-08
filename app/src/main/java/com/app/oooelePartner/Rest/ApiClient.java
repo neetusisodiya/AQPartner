@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
     public static final String CLIENT_BASE_URL = "";
     public static final String TEMPR_BASE_URL = "http://ekaakshgroup.in/api/account/";
-    public static final String TEMP_BASE_URL = "http://oooele.com/";
+    public static final String TEMP_BASE_URL = "https://oooele.com/";
     public static final String Temp_BAse_IMAGE_URL = "https://webtecnoworld.com/zeiq/";
     private static String TEMP_FILE_NAME = "Hajj";
     private static Retrofit retrofit = null;

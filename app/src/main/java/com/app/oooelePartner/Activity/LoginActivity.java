@@ -13,10 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.app.oooelePartner.Bean.LoginBean;
 import com.app.oooelePartner.Brodcast.SmsBroadcastReceiver;
 import com.app.oooelePartner.Prefrence.AppPreferences;
@@ -24,7 +20,6 @@ import com.app.oooelePartner.R;
 import com.app.oooelePartner.Response.ResponseLogin;
 import com.app.oooelePartner.Rest.ApiClient;
 import com.app.oooelePartner.Rest.ApiInterface;
-import com.app.oooelePartner.Rest.RequestHandler;
 import com.app.oooelePartner.Utill.AppBaseActivity;
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
@@ -138,7 +133,7 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
         formatted = String.format("%06d", io);
         String sOTPMessage = "Your OOOELE Service Provider OTP is " +
                 formatted + " Please Enter To Change your Password.";
-        Log.d("LOG_MESSAGE", "getOTP: " +io);
+        Log.d("LOG_MESSAGE", "getOTP: " + formatted);
         fromRetrofit(sOTPMessage);
 
     }
