@@ -97,7 +97,7 @@ public class IdentityActivity extends AppCompatActivity implements View.OnClickL
         btn_save.setOnClickListener(this);
         appPreferences = new AppPreferences(this);
         User_Id = appPreferences.getUserData(AppPreferences.KEY_ID);
-        if(appPreferences.checkForValue(AppPreferences.PAN_CARD)){
+        if (appPreferences.checkForValue(AppPreferences.PAN_CARD)) {
             etPanCard.setText(appPreferences.getUserData(AppPreferences.PAN_CARD));
         }
     }
@@ -108,11 +108,12 @@ public class IdentityActivity extends AppCompatActivity implements View.OnClickL
             onBackPressed();
         }
         if (v == img_aadhar) {
-            //    isImageEdit1 = "1";
             showPictureDialog();
         }
         if (v == btn_save) {
-            if (etPanCard.getText().toString().isEmpty()) {
+            String aadharNumber = etPanCard.getText().toString().trim();
+            if (aadharNumber.length() != 12) {
+                Toast.makeText(IdentityActivity.this, "Invalid aadhar number", Toast.LENGTH_LONG).show();
             } else {
                 UploadProductDocumnet();
             }
@@ -141,7 +142,6 @@ public class IdentityActivity extends AppCompatActivity implements View.OnClickL
             } else {
                 call = apiInterface.UploadIdentDoc1(expert_id, pancard_no);
             }
-
 
 
             call.enqueue(new Callback<ResponseBody>() {
@@ -221,6 +221,7 @@ public class IdentityActivity extends AppCompatActivity implements View.OnClickL
 
         }
     }
+
     public static String getPath(final Context context, final Uri uri) {
 
 // check here to KITKAT or new version
@@ -288,6 +289,7 @@ public class IdentityActivity extends AppCompatActivity implements View.OnClickL
 
         return null;
     }
+
     public File saveImage(Bitmap myBitmap) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes);

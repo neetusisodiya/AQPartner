@@ -9,19 +9,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.app.oooelePartner.Bean.GetVendorProfileBean;
-import com.app.oooelePartner.Bean.LoginBean;
 import com.app.oooelePartner.Prefrence.AppPreferences;
 import com.app.oooelePartner.R;
 import com.app.oooelePartner.Response.ResponseBank;
-import com.app.oooelePartner.Response.ResponseLogin;
-import com.app.oooelePartner.Response.ResponseVendorGetProfile;
 import com.app.oooelePartner.Rest.ApiClient;
 import com.app.oooelePartner.Rest.ApiInterface;
-import com.app.oooelePartner.Utill.CommonUtils;
 import com.wang.avi.AVLoadingIndicatorView;
 
-import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.FormBody;
 import retrofit2.Call;
@@ -29,11 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.app.oooelePartner.Prefrence.AppPreferences.Account_Number;
-import static com.app.oooelePartner.Prefrence.AppPreferences.DOB;
-import static com.app.oooelePartner.Prefrence.AppPreferences.EMAIL;
-import static com.app.oooelePartner.Prefrence.AppPreferences.NAME;
 import static com.app.oooelePartner.Prefrence.AppPreferences.Name_In_Bank;
-import static com.app.oooelePartner.Prefrence.AppPreferences.PAN_CARD;
 import static com.app.oooelePartner.Prefrence.AppPreferences.bankIfscCode;
 
 public class BankDetailsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -86,6 +78,22 @@ public class BankDetailsActivity extends AppCompatActivity implements View.OnCli
 
     String nameInBank, accountNumber, ifscCode;
 
+    public boolean isValidIFSCode(String str) {
+        String regex
+                = "^[A-Z]{4}0[A-Z0-9]{6}$";
+        Pattern p
+                = Pattern.compile(regex);
+        if (str == null) {
+            Toast.makeText(this, "Enter Bank IFSC", Toast.LENGTH_SHORT).show();
+
+            return false;
+        } else {
+            Matcher m = p.matcher(str);
+            return m.matches();
+        }
+
+    }
+
     @Override
     public void onClick(View v) {
         if (v == img_back) {
@@ -100,11 +108,10 @@ public class BankDetailsActivity extends AppCompatActivity implements View.OnCli
             } else if (accountNumber.isEmpty()) {
                 Toast.makeText(this, "Enter Bank Account", Toast.LENGTH_SHORT).show();
 
-            } else if (ifscCode.isEmpty()) {
-                Toast.makeText(this, "Enter Bank IFSC", Toast.LENGTH_SHORT).show();
+            } else if (!isValidIFSCode(ifscCode)) {
+                Toast.makeText(this, "Invalid IFSC Code", Toast.LENGTH_SHORT).show();
 
             } else {
-
                 SaveBankAccont();
             }
         }
