@@ -3,6 +3,8 @@ package com.app.oooelePartner.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -96,6 +98,23 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
         btnenter_otp = findViewById(R.id.enter_otp);
         btnenter_otp.setOnClickListener(this);
         enter_btn.setOnClickListener(this);
+
+        mobile_otp.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+                if (mobile_otp.getText().toString().equals(formatted)) {
+                    bar.setVisibility(View.VISIBLE);
+                    btnenter_otp.setClickable(false);
+                    doLogin();
+                }
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
     }
 
     @Override
