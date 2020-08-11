@@ -32,7 +32,8 @@ public class AppPreferences {
     public static final String EXPERIENCE_YEAR = "EXPERIENCE_YEAR";
     public static final String EXPERT_IN = "EXPERT_IN";
     public static final String Qualifications = "_qualifications";
-
+    public static final String USER_LATITUDE = "LATITUDE";
+    public static final String USER_LONGITUDE = "LONGITUDE";
     private Context context;
     public SharedPreferences mPrefs;
     public static SharedPreferences.Editor editor;

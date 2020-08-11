@@ -2,18 +2,16 @@ package com.app.oooelePartner.Fragment;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.oooelePartner.Adapter.AdapterPast;
 import com.app.oooelePartner.Bean.BeanCompleteLead;
@@ -126,7 +124,6 @@ public class PastFragment extends Fragment {
                                 banVisits.add(beanNewLeads);
                             }
 
-                            Log.e("allBidBeanList", "" + banVisits.size());
                             adapterOpenLead = new AdapterPast(getActivity(), banVisits);
                             recyclePastleads.setAdapter(adapterOpenLead);
                          } else {

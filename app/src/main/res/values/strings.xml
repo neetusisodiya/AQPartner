@@ -25,6 +25,7 @@
     <string name="bank_details">Bank Details</string>
     <string name="my_menu">My Menu</string>
     <string name="credit_balance">Credit Balance</string>
-    <string name="contact_user">Contact User</string>
+    <string name="contact_user">Contact</string>
     <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="directions">Directions</string>
 </resources>

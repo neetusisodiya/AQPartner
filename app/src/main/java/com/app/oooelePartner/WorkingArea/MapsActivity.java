@@ -34,6 +34,17 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.oooelePartner.Adapter.AdapterGetWorkingArea;
+import com.app.oooelePartner.Bean.BeanGetWorkingArea;
+import com.app.oooelePartner.Bean.BeanWorkingRadius;
+import com.app.oooelePartner.GeoFence.GeofenceTrasitionService;
+import com.app.oooelePartner.Prefrence.AppPreferences;
+import com.app.oooelePartner.R;
+import com.app.oooelePartner.Response.ResponseProfileUpload;
+import com.app.oooelePartner.Response.ResponseWorkingRadiusList;
+import com.app.oooelePartner.Rest.ApiClient;
+import com.app.oooelePartner.Rest.ApiInterface;
+import com.app.oooelePartner.Utill.CommonUtils;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.ApiException;
@@ -74,17 +85,6 @@ import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
-import com.app.oooelePartner.Adapter.AdapterGetWorkingArea;
-import com.app.oooelePartner.Bean.BeanGetWorkingArea;
-import com.app.oooelePartner.Bean.BeanWorkingRadius;
-import com.app.oooelePartner.GeoFence.GeofenceTrasitionService;
-import com.app.oooelePartner.Prefrence.AppPreferences;
-import com.app.oooelePartner.R;
-import com.app.oooelePartner.Response.ResponseProfileUpload;
-import com.app.oooelePartner.Response.ResponseWorkingRadiusList;
-import com.app.oooelePartner.Rest.ApiClient;
-import com.app.oooelePartner.Rest.ApiInterface;
-import com.app.oooelePartner.Utill.CommonUtils;
 import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -102,11 +102,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener, View.OnClickListener, SeekBar.OnSeekBarChangeListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener, View.OnClickListener, SeekBar.OnSeekBarChangeListener {
     private static final int REQUEST_CHECK_SETTINGS = 2;
     TextView txt_km;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 2;
-    private final String TAG = Maps3sActivity.class.getSimpleName();
+    private final String TAG = MapsActivity.class.getSimpleName();
     PendingIntent mGeofencePendingIntent;
     String Str_radius = "1";
     String StrGlat = "";
@@ -174,13 +174,12 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
 
                 if (location == null) {
                     LocationServices.FusedLocationApi.
-                            requestLocationUpdates(mGoogleApiClient, mLocationRequest, (LocationListener) Maps3sActivity.this);
+                            requestLocationUpdates(mGoogleApiClient, mLocationRequest, (LocationListener) MapsActivity.this);
 
                 } else {
                     currentLatitude = location.getLatitude();
                     currentLongitude = location.getLongitude();
                     double val = Math.floor(2.11);
-                    Log.i(TAG, currentLatitude + " WORKS " + currentLongitude);
 
                 }
                 try {
@@ -317,7 +316,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
         imgCurrentloc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Maps3sActivity.this.showCurrentLocationOnMap(false);
+                MapsActivity.this.showCurrentLocationOnMap(false);
                 doAfterPermissionProvided = 2;
                 doAfterLocationSwitchedOn = 2;
             }
@@ -326,15 +325,15 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
             @Override
             public void onClick(View view) {
                 if (!Places.isInitialized()) {
-                    Places.initialize(Maps3sActivity.this.getApplicationContext(), MapUtility.apiKey);
+                    Places.initialize(MapsActivity.this.getApplicationContext(), MapUtility.apiKey);
                 }
                 // Set the fields to specify which types of place data to return.
                 List<com.google.android.libraries.places.api.model.Place.Field> fields = Arrays.asList(com.google.android.libraries.places.api.model.Place.Field.ID, com.google.android.libraries.places.api.model.Place.Field.NAME, com.google.android.libraries.places.api.model.Place.Field.ADDRESS, com.google.android.libraries.places.api.model.Place.Field.LAT_LNG);
                 // Start the autocomplete intent.
                 Intent intent = new Autocomplete.IntentBuilder(
                         AutocompleteActivityMode.FULLSCREEN, fields)
-                        .build(Maps3sActivity.this);
-                Maps3sActivity.this.startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+                        .build(MapsActivity.this);
+                MapsActivity.this.startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
             }
         });
 
@@ -345,7 +344,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
                 // Default google map
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(
                         "http://maps.google.com/maps?q=loc:" + mLatitude + ", " + mLongitude + ""));
-                Maps3sActivity.this.startActivity(intent);
+                MapsActivity.this.startActivity(intent);
             }
         });
 */
@@ -407,7 +406,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
             //after location switch on dialog shown
             if (resultCode != RESULT_OK) {
                 //Location not switched ON
-                Toast.makeText(Maps3sActivity.this, "Location Not Available..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MapsActivity.this, "Location Not Available..", Toast.LENGTH_SHORT).show();
             } else {
                 // Start location request listener.
                 //Location will be received onLocationResult()
@@ -458,18 +457,18 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
                             //Go to Map for Directions
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(
                                     "http://maps.google.com/maps?saddr=" + currentLatitude + ", " + currentLongitude + "&daddr=" + mLatitude + ", " + mLongitude + ""));
-                            Maps3sActivity.this.startActivity(intent);
+                            MapsActivity.this.startActivity(intent);
                         } else {
                             //Go to Current Location
                             mLatitude = location.getLatitude();
                             mLongitude = location.getLongitude();
-                            Maps3sActivity.this.getAddressByGeoCodingLatLng();
+                            MapsActivity.this.getAddressByGeoCodingLatLng();
                         }
 
                     } else {
                         //Gps not enabled if loc is null
-                        Maps3sActivity.this.getSettingsLocation();
-                        Toast.makeText(Maps3sActivity.this, "Location not Available", Toast.LENGTH_SHORT).show();
+                        MapsActivity.this.getSettingsLocation();
+                        Toast.makeText(MapsActivity.this, "Location not Available", Toast.LENGTH_SHORT).show();
 
                     }
                 }
@@ -479,7 +478,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
                 public void onFailure(@NonNull Exception e) {
                     //If perm provided then gps not enabled
 //                getSettingsLocation();
-                    Toast.makeText(Maps3sActivity.this, "Location Not Availabe", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MapsActivity.this, "Location Not Availabe", Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -567,12 +566,12 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
                 StrGlng = String.valueOf(mLongitude);
 
                 Log.e("latlng", StrGlng + "");
-                Maps3sActivity.this.addMarker();
-                if (!MapUtility.isNetworkAvailable(Maps3sActivity.this)) {
-                    MapUtility.showToast(Maps3sActivity.this, "Please Connect to Internet");
+                MapsActivity.this.addMarker();
+                if (!MapUtility.isNetworkAvailable(MapsActivity.this)) {
+                    MapUtility.showToast(MapsActivity.this, "Please Connect to Internet");
                 }
 
-                Maps3sActivity.this.getAddressByGeoCodingLatLng();
+                MapsActivity.this.getAddressByGeoCodingLatLng();
 
             }
         });
@@ -603,7 +602,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
                     if (response != null) {
                         LocationSettingsStates locationSettingsStates = response.getLocationSettingsStates();
                         Log.d(TAG, "getSettingsLocation: " + locationSettingsStates);
-                        Maps3sActivity.this.startLocationUpdates();
+                        MapsActivity.this.startLocationUpdates();
 
                     }
                 } catch (ApiException exception) {
@@ -618,7 +617,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
                                 // Show the dialog by calling startResolutionForResult(),
                                 // and check the result in onActivityResult().
                                 resolvable.startResolutionForResult(
-                                        Maps3sActivity.this,
+                                        MapsActivity.this,
                                         REQUEST_CHECK_SETTINGS);
                             } catch (IntentSender.SendIntentException e) {
                                 // Ignore the error.
@@ -761,7 +760,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        //Toast.makeText(Maps3sActivity.this, "Seekbar vale " + progress, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MapsActivity.this, "Seekbar vale " + progress, Toast.LENGTH_SHORT).show();
         Str_radius = String.valueOf(progress);
         txt_km.setText(Str_radius + " KM");
         //   SStr_Raddius=progress
@@ -770,18 +769,18 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        //  Toast.makeText(Maps3sActivity.this, "Seekbar touch started", Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(MapsActivity.this, "Seekbar touch started", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        //  Toast.makeText(Maps3sActivity.this, "Seekbar touch stopped", Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(MapsActivity.this, "Seekbar touch stopped", Toast.LENGTH_SHORT).show();
     }
 
 /*    @Override
     public void onClick(View v) {
         if (v==imgCurrentloc){
-            Maps3sActivity.this.showCurrentLocationOnMap(false);
+            MapsActivity.this.showCurrentLocationOnMap(false);
             doAfterPermissionProvided = 2;
             doAfterLocationSwitchedOn = 2;
         }
@@ -843,7 +842,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
     private void startLocationUpdates() {
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(Maps3sActivity.this, "Location not Available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MapsActivity.this, "Location not Available", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1044,7 +1043,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            MapUtility.showProgress(Maps3sActivity.this);
+            MapUtility.showProgress(MapsActivity.this);
         }
 
         @Override
@@ -1056,7 +1055,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
 
                 Geocoder geocoder;
                 List<Address> addresses;
-                geocoder = new Geocoder(Maps3sActivity.this, Locale.getDefault());
+                geocoder = new Geocoder(MapsActivity.this, Locale.getDefault());
                 StringBuilder sb = new StringBuilder();
 
                 //get location from lat long if address string is null
@@ -1097,7 +1096,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
         @Override
         protected void onPostExecute(String userAddress) {
             super.onPostExecute(userAddress);
-            Maps3sActivity.this.userAddress = userAddress;
+            MapsActivity.this.userAddress = userAddress;
             MapUtility.hideProgress();
             addMarker();
         }
@@ -1108,7 +1107,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            MapUtility.showProgress(Maps3sActivity.this);
+            MapUtility.showProgress(MapsActivity.this);
         }
 
         @Override
@@ -1119,7 +1118,7 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
 
                 Geocoder geocoder;
                 List<Address> addresses;
-                geocoder = new Geocoder(Maps3sActivity.this, Locale.getDefault());
+                geocoder = new Geocoder(MapsActivity.this, Locale.getDefault());
 
                 //get location from lat long if address string is null
                 addresses = geocoder.getFromLocationName(userAddress[0], 1);
@@ -1136,8 +1135,8 @@ public class Maps3sActivity extends AppCompatActivity implements OnMapReadyCallb
         @Override
         protected void onPostExecute(LatLng latLng) {
             super.onPostExecute(latLng);
-            Maps3sActivity.this.mLatitude = latLng.latitude;
-            Maps3sActivity.this.mLongitude = latLng.longitude;
+            MapsActivity.this.mLatitude = latLng.latitude;
+            MapsActivity.this.mLongitude = latLng.longitude;
             MapUtility.hideProgress();
             addMarker();
         }

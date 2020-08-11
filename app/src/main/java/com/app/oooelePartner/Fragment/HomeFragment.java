@@ -1,7 +1,6 @@
 package com.app.oooelePartner.Fragment;
-import android.graphics.Color;
+
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,6 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.util.ArrayList;
 
 import okhttp3.FormBody;
-import pl.droidsonroids.gif.GifImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -83,83 +81,6 @@ public class HomeFragment extends Fragment {
 
     }
 
-/*
-    private void getCurrentLead() {
-        bar.setVisibility(View.VISIBLE);
-
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        FormBody.Builder builder = ApiClient.createBuilder(new String[]{"expert_id"}, new
-                String[]{User_Id});
-        if (CommonUtils.isNetworkAvailable(getActivity())) {
-            Call<ResponseBody> call = apiInterface.ApiWorkingNewLeads(builder.build());
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    bar.setVisibility(View.GONE);
-
-                    if (response.isSuccessful()) {
-                        try {
-                            String resturentMenu = response.body().string();
-                            JSONObject jsonObject = new JSONObject(resturentMenu);
-                            String status = jsonObject.optString("status");
-                            Log.d("status", status);
-                            Log.d("resturentMenu", resturentMenu);
-
-                            if (status.equalsIgnoreCase(String.valueOf(true))) {
-                                banVisits = new ArrayList<>();
-                                recordenotfound.setVisibility(View.GONE);
-
-                                JSONArray jsonArray = jsonObject.getJSONArray("data");
-                                for (int i = 0; i < jsonArray.length(); i++) {
-
-                                    JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                                    BeanNewLeads banVisit = new BeanNewLeads();
-                                    banVisit.setId(Integer.parseInt(jsonObject1.getString("id")));
-                                    banVisit.setServ(jsonObject1.getString("serv"));
-                                    banVisit.setSubserv(jsonObject1.getString("subserv"));
-                                    banVisit.setFault(jsonObject1.getString("fault"));
-                                    banVisit.setQty(Integer.parseInt(jsonObject1.getString("qty")));
-                                    banVisit.setUnitRate(Integer.parseInt(jsonObject1.getString("unitRate")));
-                                    banVisit.setDiscount(Integer.parseInt(jsonObject1.getString("discount")));
-                                    banVisit.setBooking_date(jsonObject1.getString("booking_date"));
-                                    banVisit.setCustomer(jsonObject1.getString("customer"));
-                                    banVisit.setContact(jsonObject1.getString("contact"));
-                                    banVisit.setG_address(jsonObject1.getString("g_address"));
-                                    banVisit.setG_lat(Double.parseDouble(jsonObject1.getString("g_lat")));
-                                    banVisit.setG_lng(Double.parseDouble(jsonObject1.getString("g_lng")));
-                                    banVisit.setEmail(jsonObject1.getString("email"));
-                                    banVisit.setAlt_contact_no(jsonObject1.getString("alt_contact_no"));
-                                    banVisit.setCustomer_id(Integer.parseInt(jsonObject1.getString("customer_id")));
-                                    banVisit.setVisit_time(jsonObject1.getString("visit_time"));
-                                    banVisit.setCreated_at(jsonObject1.getString("created_at"));
-
-
-                                    banVisits.add(banVisit);
-
-                                    //   String STRDATE= jsonObject1.getString("date");
-                                }
-                                adapterNewLeads = new AdapterNewLeads(getActivity(), banVisits);
-                                newRecycle.setAdapter(adapterNewLeads);
-                            } else {
-                                recordenotfound.setVisibility(View.VISIBLE);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    bar.setVisibility(View.GONE);
-                }
-            });
-        } else {
-            bar.setVisibility(View.GONE);
-            Toast.makeText(getActivity(), "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
-        }
-    }
-*/
 
 
 

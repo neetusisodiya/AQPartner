@@ -1,9 +1,7 @@
 package com.app.oooelePartner.Fragment;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,9 +84,7 @@ public class OpenFragment extends Fragment {
     }
 
     private void getOpenLead() {
-        //    CommonUtils.showProDialog1(getApplicationContext());
-///
-        // progressDialog.show();
+
         bar.setVisibility(View.VISIBLE);
 
         ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
@@ -125,7 +121,6 @@ public class OpenFragment extends Fragment {
                                 beanNewLeads.setCreated_at(response.body().getData().get(i).getCreated_at());
                                 banVisits.add(beanNewLeads);
                             }
-                            Log.e("allBidBeanList", "" + banVisits.size());
                             adapterOpenLead = new AdapterOpenLead(getActivity(), banVisits);
                             recycleCurrentleads.setAdapter(adapterOpenLead);
 

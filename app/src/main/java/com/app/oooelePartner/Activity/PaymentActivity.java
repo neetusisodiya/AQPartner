@@ -31,20 +31,16 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
     double total;
     private static final String TAG = PaymentActivity.class.getSimpleName();
     TextView txt_skip;
-    String UserAddress;
-    String StrGLat;
-    String StrGlng;
+
     private String amount;
-    String strnumber;
+
     EditText edit_amount;
     String str_expert_id, str_mob_no, str_email;
-    String razorpayPaymentID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paymnets);
-        // strnumber = String.valueOf(AppPreferences.getSavedUser( PaymentActivity.this).getId());
         str_expert_id = String.valueOf(AppPreferences.getSavedUser(PaymentActivity.this).getId());
         str_mob_no = String.valueOf(AppPreferences.getSavedUser(PaymentActivity.this).getMobno());
         str_email = String.valueOf(AppPreferences.getSavedUser(PaymentActivity.this).getEmail());

@@ -6,10 +6,10 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.oooelePartner.Bean.BeanOpenLeads;
@@ -32,15 +32,16 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
     Context context;
     String User_Id;
     List<BeanOpenLeads> banVisits;
-
+    AppPreferences appPreferences;
     public AdapterOpenLead(Context context, List<BeanOpenLeads> banVisits) {
         this.context = context;
         this.banVisits = banVisits;
 
     }
 
+    @NonNull
     @Override
-    public AdapterOpenLead.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public AdapterOpenLead.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_open_leads, viewGroup, false);
         return new AdapterOpenLead.ViewHolder(view);
     }
@@ -51,7 +52,6 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
         holder.txt_serv.setText(banVisits.get(position).getServ());
         holder.txt_booking_date.setText(banVisits.get(position).getBooking_date());
         holder.txt_address.setText(banVisits.get(position).getG_address());
-        holder.txt_contactnum.setText(banVisits.get(position).getContact());
         holder.txt_visitDate.setText(banVisits.get(position).getVisit_time());
         holder.buttonCallUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +61,22 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
                 context.startActivity(intent);
             }
         });
+ /*   String uri = "http://maps.google.co.in/maps?q="
+                        + banVisits.get(position).getG_lat() + "," + banVisits.get(position).getG_lng();*/
+
+
+        holder.mapsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String lng = banVisits.get(position).getG_lng();
+                String lat = banVisits.get(position).getG_lat();
+                Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lng + "," + lat);
+                Intent intent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                intent.setPackage("com.google.android.apps.maps");
+                context.startActivity(intent);
+            }
+        });
+        //todo replace with start work text
         holder.btn_complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +88,6 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
 
     @Override
     public int getItemCount() {
-        //  Log.e("size", "");
         return banVisits.size();
     }
 
@@ -82,12 +97,9 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
     }
 
     private void getOrderAccept(String id, final int position) {
-        //    CommonUtils.showProDialog1(getApplicationContext());
-///
-        OpenFragment.bar.setVisibility(View.VISIBLE);
-        // progressDialog.show();
 
-        //  bar.setVisibility(View.VISIBLE);
+        OpenFragment.bar.setVisibility(View.VISIBLE);
+
 
         ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
         FormBody.Builder builder = ApiClient.createBuilder(new String[]{"expert_id", "lead_id"}, new
@@ -140,19 +152,18 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txt_serv, txt_booking_date, txt_address, txt_contactnum, txt_qtynum, txt_visitDate;
-        Button btn_complete, buttonCallUser;
+        TextView txt_serv, txt_booking_date, txt_address, txt_qtynum, txt_visitDate;
+        TextView btn_complete, buttonCallUser, mapsButton;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             txt_serv = itemView.findViewById(R.id.txt_serv);
             txt_booking_date = itemView.findViewById(R.id.txt_booking_date);
             txt_address = itemView.findViewById(R.id.txt_address);
-            txt_contactnum = itemView.findViewById(R.id.txt_contactnum);
             txt_qtynum = itemView.findViewById(R.id.txt_qtynum);
             txt_visitDate = itemView.findViewById(R.id.txt_visitDate);
             btn_complete = itemView.findViewById(R.id.btn_complete);
-
+            mapsButton = itemView.findViewById(R.id.user_maps);
             User_Id = String.valueOf(AppPreferences.getSavedUser(context).getId());
             buttonCallUser = itemView.findViewById(R.id.call_user);
             //shortage.setVisibility(View.GONE);

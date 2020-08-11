@@ -8,9 +8,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginEnd="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,14 +23,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_semibold"
-                android:text="Service" />
+                android:text="Service:" />
 
             <TextView
                 android:id="@+id/txt_serv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/txt_ser"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/txt_booking"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="Service" />
 
@@ -38,7 +38,7 @@
                 android:id="@+id/txt_booking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_serv"
+                android:layout_below="@id/txt_serv"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="Booking Date : " />
 
@@ -46,9 +46,9 @@
                 android:id="@+id/txt_booking_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_serv"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/txt_booking"
+                android:layout_below="@id/txt_serv"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/txt_booking"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="Booking Date" />
 
@@ -56,7 +56,7 @@
                 android:id="@+id/txt_gaddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_booking_date"
+                android:layout_below="@id/txt_visit"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="Address : " />
 
@@ -64,35 +64,17 @@
                 android:id="@+id/txt_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_booking_date"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/txt_booking"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Txt_Address" />
+                android:layout_below="@id/txt_visitDate"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/txt_booking"
+                android:fontFamily="@font/montserrat_semibold" />
 
-            <TextView
-                android:id="@+id/txt_contact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_address"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Contact : " />
-
-            <TextView
-                android:id="@+id/txt_contactnum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_address"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/txt_booking"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="8107116566" />
 
             <TextView
                 android:id="@+id/txt_qty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_contactnum"
+                android:layout_below="@id/txt_booking"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="Qty : " />
 
@@ -100,9 +82,9 @@
                 android:id="@+id/txt_qtynum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_contactnum"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/txt_booking"
+                android:layout_below="@id/txt_booking_date"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/txt_booking"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="1" />
 
@@ -110,7 +92,7 @@
                 android:id="@+id/txt_visit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_qtynum"
+                android:layout_below="@id/txt_qtynum"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="Visit Time : " />
 
@@ -118,37 +100,64 @@
                 android:id="@+id/txt_visitDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_qtynum"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/txt_booking"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="25124" />
+                android:layout_below="@id/txt_qtynum"
 
-            <Button
-                android:id="@+id/call_user"
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_visitDate"
-                android:layout_alignParentStart="true"
-                android:layout_margin="10dp"
-                android:background="@drawable/green_bg"
-                android:text="@string/contact_user"
-                android:layout_marginBottom="5dp"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite" />
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/txt_booking"
+                android:fontFamily="@font/montserrat_semibold" />
 
-            <Button
-                android:id="@+id/btn_complete"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_visitDate"
-                android:layout_alignParentRight="true"
-                android:layout_margin="10dp"
-                android:background="@color/reddd"
-                android:text="Complete"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite" />
+                android:layout_below="@id/txt_address"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/call_user"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/green_bg"
+                    android:text="@string/contact_user"
+                    android:textAllCaps="false"
+                    android:drawableStart="@drawable/ic_baseline_call_24"
+                    android:drawablePadding="6dp"
+                    android:padding="10dp"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/user_maps"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rzp_green_button"
+                    android:drawableStart="@drawable/ic_baseline_directions_24"
+                    android:drawablePadding="10dp"
+                    android:padding="10dp"
+                    android:text="@string/directions"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/btn_complete"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1.2"
+                    android:drawableStart="@drawable/ic_baseline_done_24"
+                    android:drawablePadding="5dp"
+                    android:padding="10dp"
+                    android:text="Completed"
+                    android:background="@color/reddd"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
 
         </RelativeLayout>
 

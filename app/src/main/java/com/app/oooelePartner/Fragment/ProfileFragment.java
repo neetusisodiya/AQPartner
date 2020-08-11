@@ -13,10 +13,10 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.app.oooelePartner.Activity.WorkingTimeActivity;
 import com.app.oooelePartner.Activity.EditProfile;
 import com.app.oooelePartner.Activity.LoginActivity;
 import com.app.oooelePartner.Activity.MainActivity;
+import com.app.oooelePartner.Activity.WorkingTimeActivity;
 import com.app.oooelePartner.Bean.GetVendorProfileBean;
 import com.app.oooelePartner.Bean.LoginBean;
 import com.app.oooelePartner.DoubleActivity.WorkActivity;
@@ -32,7 +32,7 @@ import com.app.oooelePartner.Response.ResponseLogin;
 import com.app.oooelePartner.Rest.ApiClient;
 import com.app.oooelePartner.Rest.ApiInterface;
 import com.app.oooelePartner.Utill.CommonUtils;
-import com.app.oooelePartner.WorkingArea.Maps3sActivity;
+import com.app.oooelePartner.WorkingArea.MapsActivity;
 
 import java.util.ArrayList;
 
@@ -139,7 +139,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             customType(getContext(), "left-to-right");
         }
         if (v == lin_workingarea) {
-            startActivity(new Intent(getContext(), Maps3sActivity.class));
+            startActivity(new Intent(getContext(), MapsActivity.class));
         }
         if (v == lin_workingslot) {
             startActivity(new Intent(getContext(), WorkActivity.class));
