@@ -14,12 +14,14 @@ public class BeanOpenLeads {
     private String booking_date;
     private String customer;
     private String contact;
-    private String g_address;
+    private String address;
     private String email;
     private String alt_contact_no;
     private String customer_id;
     private String visit_time;
     private String created_at;
+    private String visit_date;
+    private String point;
 
     public String getG_lat() {
         return g_lat;
@@ -77,6 +79,14 @@ public class BeanOpenLeads {
         this.qty = qty;
     }
 
+    public String getVisit_date() {
+        return visit_date;
+    }
+
+    public void setVisit_date(String visit_date) {
+        this.visit_date = visit_date;
+    }
+
     public String getUnitRate() {
         return unitRate;
     }
@@ -117,12 +127,12 @@ public class BeanOpenLeads {
         this.contact = contact;
     }
 
-    public String getG_address() {
-        return g_address;
+    public String getPoint() {
+        return point;
     }
 
-    public void setG_address(String g_address) {
-        this.g_address = g_address;
+    public void setPoint(String point) {
+        this.point = point;
     }
 
     public String getEmail() {
@@ -159,6 +169,14 @@ public class BeanOpenLeads {
 
     public String getCreated_at() {
         return created_at;
+    }
+
+    public String getG_address() {
+        return address;
+    }
+
+    public void setG_address(String g_address) {
+        this.address = g_address;
     }
 
     public void setCreated_at(String created_at) {

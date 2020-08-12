@@ -68,9 +68,7 @@
         <activity
             android:name="com.app.oooelePartner.Activity.Static_web"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="com.app.oooelePartner.Activity.CreditHistory"
-            android:screenOrientation="portrait" />
+       x
         <activity
             android:name="com.app.oooelePartner.Activity.SplashActivity"
             android:screenOrientation="portrait">

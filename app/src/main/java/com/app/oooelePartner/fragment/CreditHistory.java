@@ -1,24 +1,22 @@
-package com.app.oooelePartner.Activity;
+package com.app.oooelePartner.fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.app.oooelePartner.Adapter.PointsAdapter;
 import com.app.oooelePartner.Adapter.TabAdapter;
 import com.app.oooelePartner.Bean.PointsData;
 import com.app.oooelePartner.Bean.PointsResponse;
-import com.app.oooelePartner.Fragment.AllCreditFragment;
-import com.app.oooelePartner.Fragment.Expenses;
-import com.app.oooelePartner.Fragment.Penalties;
-import com.app.oooelePartner.Fragment.Recharge;
 import com.app.oooelePartner.Prefrence.AppPreferences;
 import com.app.oooelePartner.R;
 import com.app.oooelePartner.Response.ResponseGetWalletData;
@@ -35,32 +33,33 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreditHistory extends AppCompatActivity implements View.OnClickListener {
+public class CreditHistory extends Fragment implements View.OnClickListener {
     List<PointsData> banVisits;
     ImageView img_back;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
     Button btncredits;
     String User_Id;
     TextView txt_cred;
     GridView recyclerView;
     PointsAdapter adapterExpenses;
 
+    int totalCredit = 0;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_credit_history);
-        User_Id = String.valueOf(AppPreferences.getSavedUser(getApplicationContext()).getId());
-        viewPager = (ViewPager) findViewById(R.id.credit_viewpager);
-        tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        img_back = findViewById(R.id.img_back);
-        txt_cred = findViewById(R.id.txt_cred);
-        btncredits = findViewById(R.id.btncredits);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_credit_history, container, false);
+
+        User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.credit_viewpager);
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tablayout);
+        img_back = view.findViewById(R.id.img_back);
+        txt_cred = view.findViewById(R.id.txt_cred);
+        btncredits = view.findViewById(R.id.btncredits);
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
         img_back.setOnClickListener(this);
 
-        recyclerView = findViewById(R.id.rechargeAmount);
+        recyclerView = view.findViewById(R.id.rechargeAmount);
         banVisits = new ArrayList<>();
 
       /*  PointsData pointsData = new PointsData();
@@ -86,21 +85,21 @@ public class CreditHistory extends AppCompatActivity implements View.OnClickList
         banVisits.add(pointsData);
         adapterExpenses.notifyDataSetChanged();
 */
-      getAllCreditLead();
-          getPointsData();
-
+        getAllCreditLead();
+        getPointsData();
+        return view;
     }
 
     private void getPointsData() {
         ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
 
-        if (CommonUtils.isNetworkAvailable(CreditHistory.this)) {
+        if (CommonUtils.isNetworkAvailable(getActivity())) {
             Call<PointsResponse> call = service.getPoints();
 
             call.enqueue(new Callback<PointsResponse>() {
                 @Override
                 public void onResponse(Call<PointsResponse> call, Response<PointsResponse> response) {
-                    adapterExpenses = new PointsAdapter(CreditHistory.this, response.body().getData());
+                    adapterExpenses = new PointsAdapter(getActivity(), response.body().getData());
                     recyclerView.setAdapter(adapterExpenses);
                 }
 
@@ -111,16 +110,17 @@ public class CreditHistory extends AppCompatActivity implements View.OnClickList
             });
         } else {
 
-            Toast.makeText(this, "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
 
         }
-    }int totalCredit=0;
+    }
+
     private void getAllCreditLead() {
 
         final ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
         FormBody.Builder builder = ApiClient.createBuilder(new String[]{"expert_id"}, new
                 String[]{User_Id});
-        if (CommonUtils.isNetworkAvailable(this)) {
+        if (CommonUtils.isNetworkAvailable(getActivity())) {
             Call<ResponseGetWalletData> call = service.ApiGetWalletData(builder.build());
 
 
@@ -131,15 +131,14 @@ public class CreditHistory extends AppCompatActivity implements View.OnClickList
                     try {
 
                         if (response.body().getStatus().equals("true")) {
-                            String string=response.body().getTotal_amount();
-                            if(!string.isEmpty()){
-                                totalCredit=Integer.parseInt(string)/10;
-                                txt_cred.setText(String.valueOf(totalCredit)+" Points");
+                            String string = response.body().getTotal_amount();
+                            if (!string.isEmpty()) {
+                                txt_cred.setText(string + " Points");
                             }
 
                         } else {
 
-                            txt_cred.setText(String.valueOf(totalCredit)+"Points");
+                            txt_cred.setText(totalCredit + "Points");
 
 
                         }
@@ -154,16 +153,17 @@ public class CreditHistory extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onFailure(Call<ResponseGetWalletData> call, Throwable t) {
 
-                       }
+                }
             });
         } else {
 
-            Toast.makeText(this, "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
 
         }
     }
+
     private void setupViewPager(ViewPager viewPager) {
-        TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager());
+        TabAdapter tabAdapter = new TabAdapter(getActivity().getSupportFragmentManager());
         tabAdapter.addFragment(new AllCreditFragment(), "All");
         tabAdapter.addFragment(new Recharge(), "Recharge");
         tabAdapter.addFragment(new Expenses(), "Expenses");
@@ -174,11 +174,11 @@ public class CreditHistory extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v == img_back) {
-            onBackPressed();
+            // getonBackPressed();
         }
         if (v == btncredits) {
             //startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
-          //  finish();
+            //  finish();
         }
     }
 }

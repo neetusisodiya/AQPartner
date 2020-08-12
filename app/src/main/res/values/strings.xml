@@ -28,4 +28,8 @@
     <string name="contact_user">Contact</string>
     <string name="enter_mobile_number">Enter Mobile Number</string>
     <string name="directions">Directions</string>
+    <string name="booking_date">Booking date: </string>
+    <string name="admin_will_decide_convenience_charges">
+        *Convenience charges were managed by admin according to the terms and conditions</string>
+    <string name="wallet">Wallet</string>
 </resources>

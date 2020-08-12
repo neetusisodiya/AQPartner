@@ -1,24 +1,20 @@
-package com.app.oooelePartner.Fragment;
+package com.app.oooelePartner.fragment;
 
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.app.oooelePartner.Activity.CreditHistory;
+import androidx.fragment.app.Fragment;
+
 import com.app.oooelePartner.Activity.MainActivity;
 import com.app.oooelePartner.Activity.Static_web;
 import com.app.oooelePartner.R;
 import com.app.oooelePartner.Utill.CommonUtils;
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class MenuFragment extends Fragment {
 MainActivity mainActivity;
     private String ac_page="http://www.oooele.com/static-pages/creat-ac.php";

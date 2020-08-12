@@ -1,4 +1,4 @@
-package com.app.oooelePartner.Fragment;
+package com.app.oooelePartner.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.oooelePartner.Activity.MainActivity;
 import com.app.oooelePartner.Adapter.AdapterNewLeads;
-import com.app.oooelePartner.Bean.BeanNewLeads;
 import com.app.oooelePartner.Prefrence.AppPreferences;
 import com.app.oooelePartner.R;
 import com.app.oooelePartner.Response.ResponseGetNewLeads;
@@ -23,8 +22,6 @@ import com.app.oooelePartner.Rest.ApiInterface;
 import com.app.oooelePartner.Utill.CommonUtils;
 import com.wang.avi.AVLoadingIndicatorView;
 
-import java.util.ArrayList;
-
 import okhttp3.FormBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,18 +29,18 @@ import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment {
-    TextView img_nodata;
+    TextView img_nodata, aboutTerms;
     View view;
-    ArrayList<BeanNewLeads> banVisits;
-    BeanNewLeads beanNewLeads;
     AdapterNewLeads adapterNewLeads;
     RecyclerView newRecycle;
-   public static AVLoadingIndicatorView bar;
+    public static AVLoadingIndicatorView bar;
     String userId;
     RecyclerView.LayoutManager layoutManager;
     MainActivity mainActivity;
+
     public HomeFragment() {
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,7 +54,7 @@ public class HomeFragment extends Fragment {
     AppPreferences appPreferences;
 
     public void findd() {
-
+        aboutTerms = view.findViewById(R.id.terms);
         bar = view.findViewById(R.id.bar);
         img_nodata = view.findViewById(R.id.img_nodata);
         appPreferences = new AppPreferences(getContext());
@@ -103,12 +100,13 @@ public class HomeFragment extends Fragment {
 
                         if (response.body().getStatus().equals("true")) {
                             bar.setVisibility(View.GONE);
-                            adapterNewLeads = new AdapterNewLeads(getActivity(), response.body().getData());
+                            adapterNewLeads = new AdapterNewLeads(getActivity(), response.body().getData(),
+                                    response.body().getTotal_point(), userId);
                             newRecycle.setAdapter(adapterNewLeads);
                         } else {
                             img_nodata.setVisibility(View.VISIBLE);
-                        bar.setVisibility(View.GONE);
-
+                            bar.setVisibility(View.GONE);
+                            aboutTerms.setVisibility(View.GONE);
                         }
 
 
@@ -120,8 +118,9 @@ public class HomeFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<ResponseGetNewLeads> call, Throwable t) {
-                   // CommonUtils.hideProgressDoalog();
-
+                    // CommonUtils.hideProgressDoalog();
+                    aboutTerms.setVisibility(View.GONE);
+                    img_nodata.setVisibility(View.VISIBLE);
                     bar.setVisibility(View.GONE);
                     // Toast.makeText(getApplicationContext(),"mobile Or Password Wrong..", Toast.LENGTH_SHORT).show();
                 }

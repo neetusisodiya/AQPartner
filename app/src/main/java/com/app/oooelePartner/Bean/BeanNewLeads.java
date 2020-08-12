@@ -3,37 +3,42 @@ package com.app.oooelePartner.Bean;
 public class BeanNewLeads {
 
     private String id;
-    private  int isAccepted;
+    private int isAccepted;
+    private String serv_id;
+    private String fault;
+    private String visit_time;
+    private int point;
+    private String status;
+    private String address;
+    private String expert_id;
+    private String subserv;
+    private String serv;
+    private String qty;
+    private String visit_date;
+    private String unitRate;
+
+    public String getQty() {
+        return qty;
+    }
+
+    public String getVisit_date() {
+        return visit_date;
+    }
+
+    public String getUnitRate() {
+        return unitRate;
+    }
+
 
     public int isAccepted() {
         return isAccepted;
     }
 
-    public void setAccepted(int accepted) {
-        isAccepted = accepted;
-    }
-
-    private String serv_id;
-    private String fault;
-    private String visit_time;
-    private String point;
-    private String status;
-    private String address;
-    private String expert_id;
-    private  String contact;
-    private  String booking_date;
-    private   String customer;
-    private  String subserv;
 
     public String getServ() {
         return serv;
     }
 
-    public void setServ(String serv) {
-        this.serv = serv;
-    }
-
-    private String serv;
 
     public String getId() {
         return id;
@@ -47,9 +52,6 @@ public class BeanNewLeads {
         return serv_id;
     }
 
-    public void setServ_id(String serv_id) {
-        this.serv_id = serv_id;
-    }
 
     public String getFault() {
         return fault;
@@ -63,17 +65,11 @@ public class BeanNewLeads {
         return visit_time;
     }
 
-    public void setVisit_time(String visit_time) {
-        this.visit_time = visit_time;
+
+    public int getPoint() {
+        return point;
     }
 
-    public String getPoint() {
-        return point+" Points";
-    }
-
-    public void setPoint(String point) {
-        this.point = point;
-    }
 
     public String getStatus() {
         return status;
@@ -99,35 +95,9 @@ public class BeanNewLeads {
         this.expert_id = expert_id;
     }
 
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public String getBooking_date() {
-        return booking_date;
-    }
-
-    public void setBooking_date(String booking_date) {
-        this.booking_date = booking_date;
-    }
-
-    public String getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    }
 
     public String getSubserv() {
         return subserv;
     }
 
-    public void setSubserv(String subserv) {
-        this.subserv = subserv;
-    }
 }

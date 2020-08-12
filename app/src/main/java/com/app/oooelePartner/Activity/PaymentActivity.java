@@ -52,7 +52,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
 
      //   Toast.makeText(this, "" + TotalAmountNext, Toast.LENGTH_SHORT).show();
 
-        Checkout.preload(getApplicationContext());
+        Checkout.preload(PaymentActivity.this);
         txt_skip = findViewById(R.id.txt_skip);
         edit_amount = findViewById(R.id.edit_amount);
         txt_skip.setOnClickListener(this);

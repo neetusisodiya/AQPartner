@@ -1,15 +1,11 @@
 package com.app.oooelePartner.Rest;
 
 
-
-
-import com.app.oooelePartner.Bean.PointsData;
 import com.app.oooelePartner.Bean.PointsResponse;
 import com.app.oooelePartner.Response.ResponSelectService;
 import com.app.oooelePartner.Response.ResponseAccept;
 import com.app.oooelePartner.Response.ResponseBank;
 import com.app.oooelePartner.Response.ResponseExpertType;
-import com.app.oooelePartner.Response.ResponseGetCompletedLeads;
 import com.app.oooelePartner.Response.ResponseGetNewLeads;
 import com.app.oooelePartner.Response.ResponseGetOpenLeads;
 import com.app.oooelePartner.Response.ResponseGetWalletData;
@@ -17,7 +13,6 @@ import com.app.oooelePartner.Response.ResponseLogin;
 import com.app.oooelePartner.Response.ResponsePayment;
 import com.app.oooelePartner.Response.ResponseProfileUpload;
 import com.app.oooelePartner.Response.ResponseQualification;
-import com.app.oooelePartner.Response.ResponseVendorGetProfile;
 import com.app.oooelePartner.Response.ResponseWorkingRadiusList;
 import com.app.oooelePartner.Response.ResponsegetCity;
 
@@ -62,7 +57,7 @@ public interface ApiInterface {
 
 
     @POST("api/partner-get-completed-leads")
-    Call<ResponseGetCompletedLeads> ApiGetCompleteLead(@Body RequestBody requestBody);
+    Call<ResponseGetOpenLeads> ApiGetCompleteLead(@Body RequestBody requestBody);
 
 
     @POST("api/partner-get-profile-data?")
@@ -74,13 +69,15 @@ public interface ApiInterface {
     @POST("api/partner-complete-lead")
     Call<ResponseAccept> ApiPartnerCompleteLead(@Body RequestBody requestBody);
 
+    @POST("api/partner-start-lead")
+    Call<ResponseAccept> apiForStartWorkApi(@Body RequestBody requestBody);
 
     @POST("api/partner-accept-lead")
     Call<ResponseAccept> ApiPartnerAccept(@Body RequestBody requestBody);
 
 
     @POST("api/partner-working-services")
-    Call<ResponseBody>ApiWorkingService(@Body RequestBody requestBody);
+    Call<ResponseBody> ApiWorkingService(@Body RequestBody requestBody);
 
 
     @POST("api/partner-set-working-services?")

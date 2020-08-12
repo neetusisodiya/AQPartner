@@ -7,14 +7,13 @@ import java.util.List;
 public class ResponseGetNewLeads {
 
 
-    /**
-     * status : true
-     * data : [{"id":231,"city":"Jaipur","city_id":1,"serv":"AC","serv_id":5,"subserv":"Split","subserv_id":10,"fault":"Repair","qty":1,"unitRate":200,"discount":null,"booking_date":"2020-05-20","created_at":"2020-05-20 16:53:35","updated_at":"2020-05-20 16:53:35","complaint_id":"JAI2005202","firm_id":0,"firm_name":null,"firm_assign_date":"2020-05-20 17:17:17","part_serial_no":null,"part_image":null,"status":2,"counter":1,"customer":null,"contact":"8107116566","address_type":"Home","address":"7, Khirni Phatak Rd, Om Nagar, Khatipura, Jaipur, Rajasthan 302012, India Jaipur Rajasthan India 302012","comp_city":1,"zipcode":null,"email":null,"alt_contact_no":null,"customer_id":8,"complaint_source":"cust","update_call_status":null,"update_call_status_date":null,"visit_date":"2020-05-20","visit_time":"8-9 AM","cmplnt_close_amnt":null,"cnc_up_date":null,"expert_id":1,"expert_name":"surendra kumar","is_feedback":2,"send_estimate_status":2,"send_estimate_date":null,"feedback_star_id":null,"feedback_stars":null,"feedback_desc":null,"source":"app","g_address":"7, Khirni Phatak Rd, Om Nagar, Khatipura, Jaipur, Rajasthan 302012, India Jaipur Rajasthan India 302012","g_lat":26.93289,"g_lng":26.93289,"prebooking_date":"2020-05-20"},{"id":69,"city":"Jaipur","city_id":1,"serv":"Geyser","serv_id":8,"subserv":"Electric Geyser","subserv_id":17,"fault":"Repair","qty":1,"unitRate":200,"discount":10,"booking_date":"2020-02-27","created_at":"2020-03-18 11:00:26","updated_at":"2020-03-18 11:00:26","complaint_id":"JAI2002276","firm_id":0,"firm_name":null,"firm_assign_date":"2020-04-01 15:38:03","part_serial_no":null,"part_image":null,"status":2,"counter":2,"customer":null,"contact":"8949449897","address_type":"Home","address":"B1, shop.4, Kardhani Behind Govidam Tower, Kalwar Rd, Kardhani Govindpura, Govindpura, Jaipur, Rajasthan 302012, India","comp_city":1,"zipcode":null,"email":null,"alt_contact_no":null,"customer_id":10,"complaint_source":"cust","update_call_status":null,"update_call_status_date":null,"visit_date":"2020-02-27","visit_time":"8-9 AM","cmplnt_close_amnt":null,"cnc_up_date":null,"expert_id":1,"expert_name":"surendra kumar","is_feedback":2,"send_estimate_status":2,"send_estimate_date":null,"feedback_star_id":null,"feedback_stars":null,"feedback_desc":null,"source":"app","g_address":"B1, shop.4, Kardhani Behind Govidam Tower, Kalwar Rd, Kardhani Govindpura, Govindpura, Jaipur, Rajasthan 302012, India","g_lat":26.9516834,"g_lng":75.7089167,"prebooking_date":"2020-03-18"}]
-     * message : Records Found(s)
-     */
-
     private String status;
     private String message;
+    private int total_point;
+
+    public int getTotal_point() {
+        return total_point;
+    }
 
     private List<BeanNewLeads> data;
 

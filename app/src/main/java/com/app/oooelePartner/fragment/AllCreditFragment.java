@@ -1,19 +1,15 @@
-package com.app.oooelePartner.Fragment;
-
+package com.app.oooelePartner.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.app.oooelePartner.Adapter.AdapterExpenses;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.app.oooelePartner.Adapter.AdapterGetWalletData;
 import com.app.oooelePartner.Bean.BeanGetWalletData;
 import com.app.oooelePartner.Prefrence.AppPreferences;
@@ -34,31 +30,32 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Penalties extends Fragment {
+
+public class AllCreditFragment extends Fragment {
     View view;
     BeanGetWalletData beanNewLeads;
     ArrayList<BeanGetWalletData> banVisits;
     RecyclerView.LayoutManager layoutManager;
     String User_Id;
-    AdapterGetWalletData adapterExpenses;
+    AdapterGetWalletData adapterGetWalletData;
     RecyclerView recycleAllCredits;
-    public AVLoadingIndicatorView bar;
+    public   AVLoadingIndicatorView bar;
 
-    public Penalties() {
+    public AllCreditFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_penalties, container, false);
+        view = inflater.inflate(R.layout.fragment_all__credit, container, false);
         User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
-
         find();
-        getAllExpensesLead();
+        getAllCreditLead();
+
+       // getOpenLead();
+        //getCurrentLead();
         return view;
+
     }
     public void find() {
         //    rec_not_foundd = view.findViewById(R.id.rec_not_foundd);
@@ -67,12 +64,15 @@ public class Penalties extends Fragment {
         recycleAllCredits.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recycleAllCredits.setLayoutManager(layoutManager);
-        //       recycleAllCredits.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-        // recycleAllCredits.setAdapter(adapterOpenLead);
-
+ //       recycleAllCredits.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+       // recycleAllCredits.setAdapter(adapterOpenLead);
 
     }
-    private void getAllExpensesLead() {
+
+
+
+
+    private void getAllCreditLead() {
         //    CommonUtils.showProDialog1(getApplicationContext());
 ///
         // progressDialog.show();
@@ -102,19 +102,16 @@ public class Penalties extends Fragment {
                             //     banVisits.clear();
                             for (int i = 0; i < response.body().getData().size(); i++) {
                                 beanNewLeads = new BeanGetWalletData();
-                                int intAmount = Integer.parseInt(response.body().getData().get(i).getAmount());
-                                if (intAmount <= 0) {
-                                    beanNewLeads.setId(response.body().getData().get(i).getId());
-                                    beanNewLeads.setAmount(response.body().getData().get(i).getAmount());
-                                    beanNewLeads.setMember_id(response.body().getData().get(i).getMember_id());
-                                    beanNewLeads.setCreated(response.body().getData().get(i).getCreated());
-                                    beanNewLeads.setDetail(response.body().getData().get(i).getDetail());
-                                    banVisits.add(beanNewLeads);
-                                }
+
+                                beanNewLeads.setId(response.body().getData().get(i).getId());
+                                beanNewLeads.setAmount(response.body().getData().get(i).getAmount());
+                                beanNewLeads.setMember_id(response.body().getData().get(i).getMember_id());
+                                beanNewLeads.setCreated(response.body().getData().get(i).getCreated());
+                                beanNewLeads.setDetail(response.body().getData().get(i).getDetail());
+                                banVisits.add(beanNewLeads);
                             }
-                            Log.e("allBidBeanList", "" + banVisits.size());
-                            adapterExpenses = new AdapterGetWalletData(getActivity(), banVisits);
-                            recycleAllCredits.setAdapter(adapterExpenses);
+                            adapterGetWalletData = new AdapterGetWalletData(getActivity(), banVisits);
+                            recycleAllCredits.setAdapter(adapterGetWalletData);
                             //  adapterNewLeads = new AdapterNewLeads(getActivity(), banVisits);
                             //    newRecycle.setAdapter(adapterNewLeads);
                         } else {
@@ -122,8 +119,12 @@ public class Penalties extends Fragment {
                             //     relihidedata.setVisibility(View.VISIBLE);
                             //     btn_placeorder.setVisibility(View.GONE);
                         }
+
+
                     } catch (Exception e) {
+
                     }
+
                 }
 
                 @Override
@@ -141,4 +142,5 @@ public class Penalties extends Fragment {
 
         }
     }
+
 }

@@ -12,13 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.app.oooelePartner.Fragment.HomeFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.app.oooelePartner.Fragment.BookFragment;
-import com.app.oooelePartner.Fragment.MenuFragment;
-import com.app.oooelePartner.Fragment.ProfileFragment;
 import com.app.oooelePartner.R;
 import com.app.oooelePartner.Utill.CommonUtils;
+import com.app.oooelePartner.fragment.BookFragment;
+import com.app.oooelePartner.fragment.CreditHistory;
+import com.app.oooelePartner.fragment.HomeFragment;
+import com.app.oooelePartner.fragment.ProfileFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.menu:
-                    //toolbar.setTitle("Profile");
-                    fragment = new MenuFragment();
+                    fragment = new CreditHistory();
                     loadFragment(fragment);
                     return true;
             }
@@ -113,9 +112,9 @@ public class MainActivity extends AppCompatActivity {
         footeraccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(fragment instanceof MenuFragment ) {
-                }else {
-                    fragment=new MenuFragment();
+                if (fragment instanceof CreditHistory) {
+                } else {
+                    fragment = new CreditHistory();
                     loadFragment(fragment);
                     CommonUtils.tabChange(MainActivity.this, iv_account, iv_home, ivsearch, iv_cart, txtaccount, txthome, txtsearch, txtcart);
                 }

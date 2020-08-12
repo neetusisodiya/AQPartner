@@ -1,22 +1,21 @@
-package com.app.oooelePartner.Fragment;
+package com.app.oooelePartner.fragment;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toolbar;
 
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
 import com.app.oooelePartner.Activity.MainActivity;
 import com.app.oooelePartner.Adapter.TabAdapter;
 import com.app.oooelePartner.R;
-import com.google.android.material.tabs.TabLayout;
 import com.app.oooelePartner.Utill.CommonUtils;
+import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.

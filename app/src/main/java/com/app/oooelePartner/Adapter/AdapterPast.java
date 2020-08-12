@@ -1,3 +1,4 @@
+/*
 package com.app.oooelePartner.Adapter;
 
 import android.content.Context;
@@ -39,7 +40,7 @@ public class AdapterPast extends RecyclerView.Adapter<AdapterPast.ViewHolder> {
         holder.txt_booking_date.setText(banVisits.get(position).getBooking_date());
         holder.txt_address.setText(banVisits.get(position).getG_address());
         holder.txt_visitDate.setText(banVisits.get(position).getVisit_time());
-
+        holder. buttonDir.setVisibility(View.GONE);
         holder.buttonCallUser.setVisibility(View.GONE);
     }
 
@@ -56,7 +57,7 @@ public class AdapterPast extends RecyclerView.Adapter<AdapterPast.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt_serv, txt_booking_date, txt_address, txt_qtynum, txt_visitDate;
-        Button btn_complete, buttonCallUser;
+        TextView btn_complete, buttonCallUser,buttonDir;
 
         public ViewHolder(final View itemView) {
             super(itemView);
@@ -68,8 +69,9 @@ public class AdapterPast extends RecyclerView.Adapter<AdapterPast.ViewHolder> {
             btn_complete = itemView.findViewById(R.id.btn_complete);
             btn_complete.setVisibility(View.GONE);
             buttonCallUser = itemView.findViewById(R.id.call_user);
-
+            buttonDir= itemView.findViewById(R.id.user_maps);
             //shortage.setVisibility(View.GONE);
         }
     }
 }
+*/

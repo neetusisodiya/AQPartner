@@ -1,4 +1,4 @@
-package com.app.oooelePartner.Fragment;
+package com.app.oooelePartner.fragment;
 
 
 import android.content.Intent;

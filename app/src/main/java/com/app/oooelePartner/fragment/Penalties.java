@@ -1,19 +1,17 @@
-package com.app.oooelePartner.Fragment;
+package com.app.oooelePartner.fragment;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.app.oooelePartner.Adapter.AdapterExpenses;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.app.oooelePartner.Adapter.AdapterGetWalletData;
 import com.app.oooelePartner.Bean.BeanGetWalletData;
 import com.app.oooelePartner.Prefrence.AppPreferences;
@@ -34,7 +32,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Expenses extends Fragment {
+public class Penalties extends Fragment {
     View view;
     BeanGetWalletData beanNewLeads;
     ArrayList<BeanGetWalletData> banVisits;
@@ -44,24 +42,22 @@ public class Expenses extends Fragment {
     RecyclerView recycleAllCredits;
     public AVLoadingIndicatorView bar;
 
-
-    public Expenses() {
+    public Penalties() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_all__credit, container, false);
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_penalties, container, false);
         User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
 
         find();
         getAllExpensesLead();
-        // getOpenLead();
-        //getCurrentLead();
         return view;
     }
-
     public void find() {
         //    rec_not_foundd = view.findViewById(R.id.rec_not_foundd);
         bar = view.findViewById(R.id.bar);
@@ -85,7 +81,7 @@ public class Expenses extends Fragment {
         FormBody.Builder builder = ApiClient.createBuilder(new String[]{"expert_id"}, new
                 String[]{User_Id});
         if (CommonUtils.isNetworkAvailable(getContext())) {
-            Call<ResponseGetWalletData> call = service. ApiGetWalletData(builder.build());
+            Call<ResponseGetWalletData> call = service.ApiGetWalletData(builder.build());
 
 
             call.enqueue(new Callback<ResponseGetWalletData>() {
@@ -143,5 +139,4 @@ public class Expenses extends Fragment {
 
         }
     }
-
 }
