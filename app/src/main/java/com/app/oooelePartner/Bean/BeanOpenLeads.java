@@ -22,6 +22,11 @@ public class BeanOpenLeads {
     private String created_at;
     private String visit_date;
     private String point;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
 
     public String getG_lat() {
         return g_lat;

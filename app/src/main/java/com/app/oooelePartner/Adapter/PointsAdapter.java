@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.app.oooelePartner.Activity.PaymentActivity;
 import com.app.oooelePartner.Bean.PointsData;
 import com.app.oooelePartner.R;
@@ -20,13 +18,12 @@ public class PointsAdapter extends BaseAdapter {
     Activity context;
     List<PointsData> banVisits;
     LayoutInflater inflter;
+
     public PointsAdapter(Activity context, List<PointsData> banVisits) {
         this.context = context;
         this.banVisits = banVisits;
         inflter = (LayoutInflater.from(context));
     }
-
-
 
     @Override
     public int getCount() {
@@ -50,7 +47,7 @@ public class PointsAdapter extends BaseAdapter {
         TextView text_amount,textPoints;
         text_amount = itemView.findViewById(R.id.rupee_txt);
         textPoints = itemView.findViewById(R.id.points_txt);
-        points = banVisits.get(position).getPoint()+" Points";
+        points = banVisits.get(position).getPoint() + " Oooele Points";
         final String rupee = banVisits.get(position).getRupee();
         text_amount.setText("₹"+rupee);
         textPoints.setText(points);

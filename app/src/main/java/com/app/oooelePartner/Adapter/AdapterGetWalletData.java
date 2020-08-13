@@ -1,20 +1,17 @@
 package com.app.oooelePartner.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.oooelePartner.Bean.BeanGetWalletData;
- import com.app.oooelePartner.Prefrence.AppPreferences;
+import com.app.oooelePartner.Prefrence.AppPreferences;
 import com.app.oooelePartner.R;
-
 
 import java.util.List;
 
@@ -38,8 +35,8 @@ public class AdapterGetWalletData extends RecyclerView.Adapter<AdapterGetWalletD
     @Override
     public void onBindViewHolder(final AdapterGetWalletData.ViewHolder holder, final int position) {
 
-        holder.text_amount.setText("Amount: "+banVisits.get(position).getAmount());
-        holder.text_detail.setText("Details: "+banVisits.get(position).getDetail());
+        holder.text_amount.setText("Credits: " + banVisits.get(position).getAmount() + " Oooele Points ");
+        holder.text_detail.setText("Details: " + banVisits.get(position).getDetail());
         holder.date.setText("Date: "+banVisits.get(position).getCreated());
 
      }

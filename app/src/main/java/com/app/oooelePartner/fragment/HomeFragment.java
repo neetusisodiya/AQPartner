@@ -85,6 +85,7 @@ public class HomeFragment extends Fragment {
 
     private void getNewLead() {
      bar.setVisibility(View.VISIBLE);
+        aboutTerms.setVisibility(View.GONE);
         ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
         FormBody.Builder builder = ApiClient.createBuilder(new String[]{"expert_id"}, new
                 String[]{userId});
@@ -100,13 +101,14 @@ public class HomeFragment extends Fragment {
 
                         if (response.body().getStatus().equals("true")) {
                             bar.setVisibility(View.GONE);
+                            aboutTerms.setVisibility(View.VISIBLE);
+
                             adapterNewLeads = new AdapterNewLeads(getActivity(), response.body().getData(),
                                     response.body().getTotal_point(), userId);
                             newRecycle.setAdapter(adapterNewLeads);
                         } else {
                             img_nodata.setVisibility(View.VISIBLE);
                             bar.setVisibility(View.GONE);
-                            aboutTerms.setVisibility(View.GONE);
                         }
 
 
@@ -119,7 +121,6 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onFailure(Call<ResponseGetNewLeads> call, Throwable t) {
                     // CommonUtils.hideProgressDoalog();
-                    aboutTerms.setVisibility(View.GONE);
                     img_nodata.setVisibility(View.VISIBLE);
                     bar.setVisibility(View.GONE);
                     // Toast.makeText(getApplicationContext(),"mobile Or Password Wrong..", Toast.LENGTH_SHORT).show();

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -88,7 +89,7 @@ public class AllCreditFragment extends Fragment {
 
             call.enqueue(new Callback<ResponseGetWalletData>() {
                 @Override
-                public void onResponse(Call<ResponseGetWalletData> call, Response<ResponseGetWalletData> response) {
+                public void onResponse(Call<ResponseGetWalletData> call, @NonNull Response<ResponseGetWalletData> response) {
 
                     try {
 

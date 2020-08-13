@@ -78,6 +78,11 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
             holder.txtPoints.setText(points + " Points");
 
         }
+        if (banVisits.get(position).getStatus().equalsIgnoreCase("2")) {
+            holder.btn_complete.setText("Completed");
+
+
+        }
         holder.buttonCallUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,13 +92,13 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
             }
         });
 
-
         holder.mapsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String lng = banVisits.get(position).getG_lng();
                 String lat = banVisits.get(position).getG_lat();
-                Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lng + "," + lat);
+                Uri gmmIntentUri = Uri.parse("google.navigation:q=" + lat.substring(0, 5)
+                        + "," + lng.substring(0, 5));
                 Intent intent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 intent.setPackage("com.google.android.apps.maps");
                 context.startActivity(intent);

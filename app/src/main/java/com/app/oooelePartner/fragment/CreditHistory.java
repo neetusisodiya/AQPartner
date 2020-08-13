@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,9 +32,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreditHistory extends Fragment implements View.OnClickListener {
+public class CreditHistory extends Fragment {
     List<PointsData> banVisits;
-    ImageView img_back;
     Button btncredits;
     String User_Id;
     TextView txt_cred;
@@ -52,12 +50,10 @@ public class CreditHistory extends Fragment implements View.OnClickListener {
         User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.credit_viewpager);
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tablayout);
-        img_back = view.findViewById(R.id.img_back);
         txt_cred = view.findViewById(R.id.txt_cred);
         btncredits = view.findViewById(R.id.btncredits);
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
-        img_back.setOnClickListener(this);
 
         recyclerView = view.findViewById(R.id.rechargeAmount);
         banVisits = new ArrayList<>();
@@ -133,12 +129,12 @@ public class CreditHistory extends Fragment implements View.OnClickListener {
                         if (response.body().getStatus().equals("true")) {
                             String string = response.body().getTotal_amount();
                             if (!string.isEmpty()) {
-                                txt_cred.setText(string + " Points");
+                                txt_cred.setText(string + " Oooele Points");
                             }
 
                         } else {
 
-                            txt_cred.setText(totalCredit + "Points");
+                            txt_cred.setText(totalCredit + " Oooele Points");
 
 
                         }
@@ -171,14 +167,5 @@ public class CreditHistory extends Fragment implements View.OnClickListener {
         viewPager.setAdapter(tabAdapter);
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v == img_back) {
-            // getonBackPressed();
-        }
-        if (v == btncredits) {
-            //startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
-            //  finish();
-        }
-    }
+
 }
