@@ -42,6 +42,12 @@ public class Penalties extends Fragment {
     RecyclerView recycleAllCredits;
     public AVLoadingIndicatorView bar;
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getAllExpensesLead();
+    }
+
     public Penalties() {
         // Required empty public constructor
     }
@@ -55,7 +61,7 @@ public class Penalties extends Fragment {
         User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
 
         find();
-        getAllExpensesLead();
+        //getAllExpensesLead();
         return view;
     }
     public void find() {

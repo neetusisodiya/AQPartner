@@ -48,15 +48,19 @@ public class Recharge extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        getAllCreditLead();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_all__credit, container, false);
         User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
 
         find();
-        getAllCreditLead();
-        // getOpenLead();
-        //getCurrentLead();
+
         return view;
     }
     public void find() {

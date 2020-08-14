@@ -32,7 +32,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
     private static final String TAG = PaymentActivity.class.getSimpleName();
     TextView txt_skip;
 
-    private String amount;
+    private String amount, points;
 
     EditText edit_amount;
     String str_expert_id, str_mob_no, str_email;
@@ -47,16 +47,13 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
 
         Intent intent = getIntent();
         amount = intent.getStringExtra("TotalAmount");
+        points = intent.getStringExtra("points");
         startPayment();
-        //UserAddress = intent.getStringExtra("userAddress");
-
-     //   Toast.makeText(this, "" + TotalAmountNext, Toast.LENGTH_SHORT).show();
-
         Checkout.preload(PaymentActivity.this);
         txt_skip = findViewById(R.id.txt_skip);
         edit_amount = findViewById(R.id.edit_amount);
         txt_skip.setOnClickListener(this);
-        Button button = (Button) findViewById(R.id.btn_pay);
+        Button button = findViewById(R.id.btn_pay);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,10 +144,11 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
 
     public void AddWallet(String razorpayPaymentID) {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
         FormBody.Builder builder = ApiClient.createBuilder(new String[]
                         {"transaction_id", "amount", "member_id"}
                 ,
-                new String[]{razorpayPaymentID, String.valueOf(total), str_expert_id});
+                new String[]{razorpayPaymentID, points, str_expert_id});
         Call<ResponsePayment> call = apiInterface.ApiAddWallet(builder.build());
         call.enqueue(new Callback<ResponsePayment>() {
             @Override

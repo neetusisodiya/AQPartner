@@ -28,9 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 
 public class AllCreditFragment extends Fragment {
     View view;
@@ -51,32 +49,30 @@ public class AllCreditFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_all__credit, container, false);
         User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
         find();
-        getAllCreditLead();
 
-       // getOpenLead();
-        //getCurrentLead();
+
         return view;
 
     }
+
     public void find() {
-        //    rec_not_foundd = view.findViewById(R.id.rec_not_foundd);
         bar = view.findViewById(R.id.bar);
         recycleAllCredits = view.findViewById(R.id.recycleAllCredits);
         recycleAllCredits.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recycleAllCredits.setLayoutManager(layoutManager);
- //       recycleAllCredits.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-       // recycleAllCredits.setAdapter(adapterOpenLead);
+
 
     }
 
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        getAllCreditLead();
+    }
 
     private void getAllCreditLead() {
-        //    CommonUtils.showProDialog1(getApplicationContext());
-///
-        // progressDialog.show();
+
 
         bar.setVisibility(View.VISIBLE);
 
@@ -95,12 +91,8 @@ public class AllCreditFragment extends Fragment {
 
                         if (response.body().getStatus().equals("true")) {
                             bar.setVisibility(View.GONE);
-                            // relihidedata.setVisibility(View.GONE);
 
-                            //   String Path = response.body().getPath();
-                            //   Path2 = response.body().getPath2();
                             banVisits = new ArrayList<>();
-                            //     banVisits.clear();
                             for (int i = 0; i < response.body().getData().size(); i++) {
                                 beanNewLeads = new BeanGetWalletData();
 
@@ -113,12 +105,7 @@ public class AllCreditFragment extends Fragment {
                             }
                             adapterGetWalletData = new AdapterGetWalletData(getActivity(), banVisits);
                             recycleAllCredits.setAdapter(adapterGetWalletData);
-                            //  adapterNewLeads = new AdapterNewLeads(getActivity(), banVisits);
-                            //    newRecycle.setAdapter(adapterNewLeads);
-                        } else {
-                            //      bar.setVisibility(View.GONE);
-                            //     relihidedata.setVisibility(View.VISIBLE);
-                            //     btn_placeorder.setVisibility(View.GONE);
+
                         }
 
 
@@ -131,14 +118,10 @@ public class AllCreditFragment extends Fragment {
                 @Override
                 public void onFailure(Call<ResponseGetWalletData> call, Throwable t) {
 
-                    // bar.setVisibility(View.GONE);
-                    // Toast.makeText(getApplicationContext(),"mobile Or Password Wrong..", Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            //progressDialog.dismiss();
-            //  scrolls.setVisibility(View.VISIBLE);
-            // reli.setVisibility(View.VISIBLE);
+
             Toast.makeText(getContext(), "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
 
         }

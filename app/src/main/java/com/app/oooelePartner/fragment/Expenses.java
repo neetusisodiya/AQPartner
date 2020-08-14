@@ -42,6 +42,11 @@ public class Expenses extends Fragment {
     RecyclerView recycleAllCredits;
     public AVLoadingIndicatorView bar;
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getAllExpensesLead();
+    }
 
     public Expenses() {
         // Required empty public constructor
@@ -54,7 +59,7 @@ public class Expenses extends Fragment {
         User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
 
         find();
-        getAllExpensesLead();
+
         // getOpenLead();
         //getCurrentLead();
         return view;
@@ -102,7 +107,8 @@ public class Expenses extends Fragment {
                             //     banVisits.clear();
                             for (int i = 0; i < response.body().getData().size(); i++) {
                                 beanNewLeads = new BeanGetWalletData();
-                                int intAmount = Integer.parseInt(response.body().getData().get(i).getAmount());
+                                int intAmount = Integer.parseInt(
+                                        response.body().getData().get(i).getAmount());
                                 if (intAmount <= 0) {
                                     beanNewLeads.setId(response.body().getData().get(i).getId());
                                     beanNewLeads.setAmount(response.body().getData().get(i).getAmount());
