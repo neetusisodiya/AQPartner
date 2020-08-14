@@ -33,6 +33,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class Expenses extends Fragment {
+    public AVLoadingIndicatorView bar;
     View view;
     BeanGetWalletData beanNewLeads;
     ArrayList<BeanGetWalletData> banVisits;
@@ -40,16 +41,15 @@ public class Expenses extends Fragment {
     String User_Id;
     AdapterGetWalletData adapterExpenses;
     RecyclerView recycleAllCredits;
-    public AVLoadingIndicatorView bar;
+
+    public Expenses() {
+        // Required empty public constructor
+    }
 
     @Override
     public void onResume() {
         super.onResume();
         getAllExpensesLead();
-    }
-
-    public Expenses() {
-        // Required empty public constructor
     }
 
     @Override
@@ -77,6 +77,7 @@ public class Expenses extends Fragment {
 
 
     }
+
     private void getAllExpensesLead() {
         //    CommonUtils.showProDialog1(getApplicationContext());
 ///
@@ -88,7 +89,7 @@ public class Expenses extends Fragment {
         FormBody.Builder builder = ApiClient.createBuilder(new String[]{"expert_id"}, new
                 String[]{User_Id});
         if (CommonUtils.isNetworkAvailable(getContext())) {
-            Call<ResponseGetWalletData> call = service. ApiGetWalletData(builder.build());
+            Call<ResponseGetWalletData> call = service.ApiGetWalletData(builder.build());
 
 
             call.enqueue(new Callback<ResponseGetWalletData>() {
@@ -96,7 +97,9 @@ public class Expenses extends Fragment {
                 public void onResponse(Call<ResponseGetWalletData> call, Response<ResponseGetWalletData> response) {
 
                     try {
-
+                        if (response.body().getData().size() == 0) {
+                            Toast.makeText(getContext(), "No record found", Toast.LENGTH_SHORT).show();
+                        }
                         if (response.body().getStatus().equals("true")) {
                             bar.setVisibility(View.GONE);
                             // relihidedata.setVisibility(View.GONE);

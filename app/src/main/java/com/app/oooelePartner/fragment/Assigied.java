@@ -21,7 +21,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class Assigied extends Fragment {
-     private RecyclerView recyclerAss;
+    private RecyclerView recyclerAss;
 
     public Assigied() {
         // Required empty public constructor
@@ -32,15 +32,15 @@ public class Assigied extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_assigied, container, false);
+        View view = inflater.inflate(R.layout.fragment_assigied, container, false);
 
         List<assmodel> list = new ArrayList<>();
         list = getData();
 
 
-        recyclerAss=view.findViewById(R.id.assirecycle);
+        recyclerAss = view.findViewById(R.id.assirecycle);
 
-        Assigied_Adapter adapter = new Assigied_Adapter(getContext(),list);
+        Assigied_Adapter adapter = new Assigied_Adapter(getContext(), list);
         recyclerAss.setHasFixedSize(true);
         recyclerAss.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerAss.setAdapter(adapter);
@@ -50,28 +50,27 @@ public class Assigied extends Fragment {
     }
 
 
-    private List<assmodel> getData()
-    {
+    private List<assmodel> getData() {
         List<assmodel> list = new ArrayList<>();
         list.add(new assmodel("Neelam Sharma",
                 "15 Dec|10:00 am",
-                "Khatipura","100s","Partner"));
+                "Khatipura", "100s", "Partner"));
 
         list.add(new assmodel("Neelam Sharma",
                 "15 Dec|10:00 am",
-                "Khatipura","100s","Partner"));
+                "Khatipura", "100s", "Partner"));
 
         list.add(new assmodel("Neelam Sharma",
                 "15 Dec|10:00 am",
-                "Khatipura","100s","Partner"));
+                "Khatipura", "100s", "Partner"));
 
         list.add(new assmodel("Neelam Sharma",
                 "15 Dec|10:00 am",
-                "Khatipura","100s","Partner"));
+                "Khatipura", "100s", "Partner"));
 
         list.add(new assmodel("Neelam Sharma",
                 "15 Dec|10:00 am",
-                "Khatipura","100","Partner"));
+                "Khatipura", "100", "Partner"));
 
 
         return list;

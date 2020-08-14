@@ -32,7 +32,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
     private static final String TAG = PaymentActivity.class.getSimpleName();
     TextView txt_skip;
 
-    private String amount, points;
+    private String amount, points, amountForApi;
 
     EditText edit_amount;
     String str_expert_id, str_mob_no, str_email;
@@ -47,6 +47,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
 
         Intent intent = getIntent();
         amount = intent.getStringExtra("TotalAmount");
+        amountForApi = intent.getStringExtra("TotalAmount");
         points = intent.getStringExtra("points");
         startPayment();
         Checkout.preload(PaymentActivity.this);
@@ -146,9 +147,9 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         FormBody.Builder builder = ApiClient.createBuilder(new String[]
-                        {"transaction_id", "amount", "member_id"}
+                        {"transaction_id", "amount", "points", "member_id"}
                 ,
-                new String[]{razorpayPaymentID, points, str_expert_id});
+                new String[]{razorpayPaymentID, amountForApi, points, str_expert_id});
         Call<ResponsePayment> call = apiInterface.ApiAddWallet(builder.build());
         call.enqueue(new Callback<ResponsePayment>() {
             @Override

@@ -78,7 +78,7 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
             holder.txtPoints.setText(points + " Points");
 
         }
-        if (banVisits.get(position).getStatus().equalsIgnoreCase("2")) {
+        if (banVisits.get(position).getStatus().equalsIgnoreCase("3")) {
             holder.btn_complete.setText("Completed");
 
 

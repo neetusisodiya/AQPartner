@@ -21,12 +21,13 @@ import com.google.android.material.tabs.TabLayout;
  * A simple {@link Fragment} subclass.
  */
 public class BookFragment extends Fragment implements View.OnClickListener {
-Button btnopen,btnasssignn,btnpast;
-MainActivity mainActivity;
+    Button btnopen, btnasssignn, btnpast;
+    MainActivity mainActivity;
+    View view;
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    View view;
+
     public BookFragment() {
         // Required empty public constructor
     }
@@ -59,53 +60,55 @@ MainActivity mainActivity;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_book, container, false);
-        mainActivity= (MainActivity) getActivity();
+        mainActivity = (MainActivity) getActivity();
         //    User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
-   find();
-     //   getCurrentLead();
+        find();
+        //   getCurrentLead();
         return view;
     }
 
 
-
-    public void find(){
-        btnopen=view.findViewById(R.id.btnopen);
-        btnasssignn=view.findViewById(R.id.btnasssignn);
-        btnpast=view.findViewById(R.id.btnpast);
+    public void find() {
+        btnopen = view.findViewById(R.id.btnopen);
+        btnasssignn = view.findViewById(R.id.btnasssignn);
+        btnpast = view.findViewById(R.id.btnpast);
         btnopen.setOnClickListener(this);
         btnasssignn.setOnClickListener(this);
         btnpast.setOnClickListener(this);
         CommonUtils.goToFragment(getActivity(), new OpenFragment(), R.id.fragmentContainer, false);
-    //    setupViewPager(viewPager);
+        //    setupViewPager(viewPager);
     }
+
     @Override
     public void onResume() {
         super.onResume();
-         CommonUtils.tabChange(getActivity(), mainActivity.ivsearch,  mainActivity.iv_cart,  mainActivity.iv_account,  mainActivity.iv_home,  mainActivity.txtsearch,  mainActivity.txtcart,  mainActivity.txtaccount,  mainActivity.txthome);
+        CommonUtils.tabChange(getActivity(), mainActivity.ivsearch, mainActivity.iv_cart, mainActivity.iv_account, mainActivity.iv_home, mainActivity.txtsearch, mainActivity.txtcart, mainActivity.txtaccount, mainActivity.txthome);
 
     }
-    private void setupViewPager(ViewPager viewPager){
-        TabAdapter tabAdapter=new TabAdapter(getActivity().getSupportFragmentManager());
-        tabAdapter.addFragment(new OpenFragment(),"OPEN");
-        tabAdapter.addFragment(new Assigied(),"ASSIGIED");
-        tabAdapter.addFragment(new PastFragment(),"PAST");
+
+    private void setupViewPager(ViewPager viewPager) {
+        TabAdapter tabAdapter = new TabAdapter(getActivity().getSupportFragmentManager());
+        tabAdapter.addFragment(new OpenFragment(), "OPEN");
+        tabAdapter.addFragment(new Assigied(), "ASSIGIED");
+        tabAdapter.addFragment(new PastFragment(), "PAST");
         viewPager.setAdapter(tabAdapter);
     }
 
     @Override
     public void onClick(View v) {
-        if (v==btnopen){
-          //  Log.e("tripissssss",StrTripID);
+        if (v == btnopen) {
+            //  Log.e("tripissssss",StrTripID);
             btnopen.setBackgroundColor(btnopen.getContext().getResources().getColor(R.color.reddd));
             btnopen.setTextColor(btnopen.getContext().getResources().getColor(R.color.colorWhite));
             btnopen.setClickable(false);
             btnpast.setBackgroundColor(btnpast.getContext().getResources().getColor(R.color.colorWhite));
             btnpast.setTextColor(btnpast.getContext().getResources().getColor(R.color.reddd));
             btnpast.setClickable(true);
-        //    Bundle bundle = new Bundle();
-        //    bundle.putString("Trip_id", Trip_id);
+            //    Bundle bundle = new Bundle();
+            //    bundle.putString("Trip_id", Trip_id);
             CommonUtils.goToFragment(getActivity(), new OpenFragment(), R.id.fragmentContainer, false);
-        }  if (v==btnpast){
+        }
+        if (v == btnpast) {
             //  Log.e("tripissssss",StrTripID);
           /*  btnopen.setBackgroundColor(btnopen.getContext().getResources().getColor(R.color.colorWhite));
             btnopen.setTextColor(btnopen.getContext().getResources().getColor(R.color.nav_black));

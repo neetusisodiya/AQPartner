@@ -45,6 +45,7 @@ public class PastFragment extends Fragment {
     RecyclerView recyclePastleads;
     AVLoadingIndicatorView bar;
     TextView text_rel;
+
     public PastFragment() {
         // Required empty public constructor
     }
@@ -54,7 +55,7 @@ public class PastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-          view= inflater.inflate(R.layout.fragment_past, container, false);
+        view = inflater.inflate(R.layout.fragment_past, container, false);
         User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
 
         find();
@@ -63,7 +64,7 @@ public class PastFragment extends Fragment {
     }
 
     public void find() {
-       // rec_not_foundd = view.findViewById(R.id.rec_not_foundd);
+        // rec_not_foundd = view.findViewById(R.id.rec_not_foundd);
         bar = view.findViewById(R.id.bar);
         text_rel = view.findViewById(R.id.text_rel);
         recyclePastleads = view.findViewById(R.id.recyclePastleads);
@@ -77,13 +78,13 @@ public class PastFragment extends Fragment {
     }
 
 
-
     @Override
     public void onResume() {
         super.onResume();
         getOpenLead();
         // getCurrentLead();
     }
+
     private void getOpenLead() {
 
         bar.setVisibility(View.VISIBLE);

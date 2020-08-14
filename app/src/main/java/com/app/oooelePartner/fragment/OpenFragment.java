@@ -31,7 +31,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-
 public class OpenFragment extends Fragment {
     public static AVLoadingIndicatorView bar;
     AdapterOpenLead adapterOpenLead;

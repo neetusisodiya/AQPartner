@@ -2,7 +2,6 @@ package com.app.oooelePartner.fragment;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +32,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class Recharge extends Fragment {
+    public AVLoadingIndicatorView bar;
     View view;
     BeanGetWalletData beanNewLeads;
     ArrayList<BeanGetWalletData> banVisits;
@@ -40,7 +40,6 @@ public class Recharge extends Fragment {
     String User_Id;
     AdapterGetWalletData adapterWalletReacharge;
     RecyclerView recycleAllCredits;
-    public AVLoadingIndicatorView bar;
 
 
     public Recharge() {
@@ -63,6 +62,7 @@ public class Recharge extends Fragment {
 
         return view;
     }
+
     public void find() {
         //    rec_not_foundd = view.findViewById(R.id.rec_not_foundd);
         bar = view.findViewById(R.id.bar);
@@ -96,15 +96,13 @@ public class Recharge extends Fragment {
                 public void onResponse(Call<ResponseGetWalletData> call, Response<ResponseGetWalletData> response) {
 
                     try {
-
+                        if (response.body().getData().size() == 0) {
+                            Toast.makeText(getContext(), "No record found", Toast.LENGTH_SHORT).show();
+                        }
                         if (response.body().getStatus().equals("true")) {
                             bar.setVisibility(View.GONE);
-                            // relihidedata.setVisibility(View.GONE);
 
-                            //   String Path = response.body().getPath();
-                            //   Path2 = response.body().getPath2();
                             banVisits = new ArrayList<>();
-                            //     banVisits.clear();
                             for (int i = 0; i < response.body().getData().size(); i++) {
 
                                 beanNewLeads = new BeanGetWalletData();
@@ -119,16 +117,10 @@ public class Recharge extends Fragment {
                                     banVisits.add(beanNewLeads);
                                 }
                             }
-                            Log.e("allBidBeanList", "" + banVisits.size());
 
                             adapterWalletReacharge = new AdapterGetWalletData(getActivity(), banVisits);
                             recycleAllCredits.setAdapter(adapterWalletReacharge);
-                            //  adapterNewLeads = new AdapterNewLeads(getActivity(), banVisits);
-                            //    newRecycle.setAdapter(adapterNewLeads);
-                        } else {
-                            //      bar.setVisibility(View.GONE);
-                            //     relihidedata.setVisibility(View.VISIBLE);
-                            //     btn_placeorder.setVisibility(View.GONE);
+
                         }
 
 

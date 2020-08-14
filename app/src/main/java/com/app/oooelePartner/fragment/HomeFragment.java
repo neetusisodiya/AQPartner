@@ -29,14 +29,15 @@ import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment {
+    public static AVLoadingIndicatorView bar;
     TextView img_nodata, aboutTerms;
     View view;
     AdapterNewLeads adapterNewLeads;
     RecyclerView newRecycle;
-    public static AVLoadingIndicatorView bar;
     String userId;
     RecyclerView.LayoutManager layoutManager;
     MainActivity mainActivity;
+    AppPreferences appPreferences;
 
     public HomeFragment() {
     }
@@ -45,13 +46,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_new, container, false);
-        mainActivity= (MainActivity) getActivity();
+        mainActivity = (MainActivity) getActivity();
         findd();
         getNewLead();
         return view;
     }
-
-    AppPreferences appPreferences;
 
     public void findd() {
         aboutTerms = view.findViewById(R.id.terms);
@@ -59,7 +58,7 @@ public class HomeFragment extends Fragment {
         img_nodata = view.findViewById(R.id.img_nodata);
         appPreferences = new AppPreferences(getContext());
         userId = appPreferences.getUserData(AppPreferences.KEY_ID);
-     //   recordenotfound = view.findViewById(R.id.recordenotfound);
+        //   recordenotfound = view.findViewById(R.id.recordenotfound);
         newRecycle = view.findViewById(R.id.newRecycle);
         newRecycle.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -75,16 +74,12 @@ public class HomeFragment extends Fragment {
         CommonUtils.tabChange(getActivity(), mainActivity.iv_home, mainActivity.ivsearch, mainActivity.iv_cart, mainActivity.iv_account, mainActivity.txthome, mainActivity.txtsearch, mainActivity.txtcart, mainActivity.txtaccount);
 
         userId = appPreferences.getUserData(AppPreferences.KEY_ID);
-
+        getNewLead();
     }
 
 
-
-
-
-
     private void getNewLead() {
-     bar.setVisibility(View.VISIBLE);
+        bar.setVisibility(View.VISIBLE);
         aboutTerms.setVisibility(View.GONE);
         ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
         FormBody.Builder builder = ApiClient.createBuilder(new String[]{"expert_id"}, new

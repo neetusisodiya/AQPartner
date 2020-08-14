@@ -29,8 +29,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-
 public class AllCreditFragment extends Fragment {
+    public AVLoadingIndicatorView bar;
     View view;
     BeanGetWalletData beanNewLeads;
     ArrayList<BeanGetWalletData> banVisits;
@@ -38,11 +38,11 @@ public class AllCreditFragment extends Fragment {
     String User_Id;
     AdapterGetWalletData adapterGetWalletData;
     RecyclerView recycleAllCredits;
-    public   AVLoadingIndicatorView bar;
 
     public AllCreditFragment() {
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -91,7 +91,9 @@ public class AllCreditFragment extends Fragment {
 
                         if (response.body().getStatus().equals("true")) {
                             bar.setVisibility(View.GONE);
-
+                            if (response.body().getData().size() == 0) {
+                                Toast.makeText(getContext(), "No record found", Toast.LENGTH_SHORT).show();
+                            }
                             banVisits = new ArrayList<>();
                             for (int i = 0; i < response.body().getData().size(); i++) {
                                 beanNewLeads = new BeanGetWalletData();

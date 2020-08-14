@@ -2,7 +2,6 @@ package com.app.oooelePartner.fragment;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +32,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class Penalties extends Fragment {
+    public AVLoadingIndicatorView bar;
     View view;
     BeanGetWalletData beanNewLeads;
     ArrayList<BeanGetWalletData> banVisits;
@@ -40,18 +40,16 @@ public class Penalties extends Fragment {
     String User_Id;
     AdapterGetWalletData adapterExpenses;
     RecyclerView recycleAllCredits;
-    public AVLoadingIndicatorView bar;
+
+    public Penalties() {
+        // Required empty public constructor
+    }
 
     @Override
     public void onResume() {
         super.onResume();
         getAllExpensesLead();
     }
-
-    public Penalties() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +62,7 @@ public class Penalties extends Fragment {
         //getAllExpensesLead();
         return view;
     }
+
     public void find() {
         //    rec_not_foundd = view.findViewById(R.id.rec_not_foundd);
         bar = view.findViewById(R.id.bar);
@@ -76,6 +75,7 @@ public class Penalties extends Fragment {
 
 
     }
+
     private void getAllExpensesLead() {
         //    CommonUtils.showProDialog1(getApplicationContext());
 ///
@@ -99,7 +99,9 @@ public class Penalties extends Fragment {
                         if (response.body().getStatus().equals("true")) {
                             bar.setVisibility(View.GONE);
                             // relihidedata.setVisibility(View.GONE);
-
+                            if (response.body().getData().size() == 0) {
+                                Toast.makeText(getContext(), "No record found", Toast.LENGTH_SHORT).show();
+                            }
                             //   String Path = response.body().getPath();
                             //   Path2 = response.body().getPath2();
                             banVisits = new ArrayList<>();
@@ -116,7 +118,6 @@ public class Penalties extends Fragment {
                                     banVisits.add(beanNewLeads);
                                 }
                             }
-                            Log.e("allBidBeanList", "" + banVisits.size());
                             adapterExpenses = new AdapterGetWalletData(getActivity(), banVisits);
                             recycleAllCredits.setAdapter(adapterExpenses);
                             //  adapterNewLeads = new AdapterNewLeads(getActivity(), banVisits);

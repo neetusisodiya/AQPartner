@@ -73,13 +73,12 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
     private boolean mobileVerified = false;
     private int revealX;
     private int revealY;
-
+    TextView tvWait;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAppPreferences = new AppPreferences(this);
-
         if (mAppPreferences.getAccessToken() == null) {
             str_Token = FirebaseInstanceId.getInstance().getToken();
         } else {
@@ -96,6 +95,8 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
         enter_btn = findViewById(R.id.enter_btn);
         mobile_otp = findViewById(R.id.mobile_otp);
         btnenter_otp = findViewById(R.id.enter_otp);
+        tvWait = findViewById(R.id.wait_txt);
+        tvWait.setVisibility(View.GONE);
         btnenter_otp.setOnClickListener(this);
         enter_btn.setOnClickListener(this);
 
@@ -147,6 +148,8 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
 
     public void getOTP(String mobile) {
         bar.setVisibility(View.VISIBLE);
+        tvWait.setVisibility(View.VISIBLE);
+
         Random otp = new Random();
         int io = otp.nextInt(9999);
         formatted = String.format("%06d", io);
@@ -164,7 +167,6 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
         Call<ResponseBody> call = apiInterface.getOtp("34c58efe22cfc72e40df3c6a195ce9fa",
                 sOTPMessage, "DEMOOS", "8", mobile, "english");
         bar.setVisibility(View.GONE);
-
         call.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, retrofit2.Response response) {

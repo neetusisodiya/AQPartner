@@ -41,15 +41,15 @@ public class CreditHistory extends Fragment {
     PointsAdapter adapterExpenses;
 
     int totalCredit = 0;
-
+    ViewPager viewPager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_credit_history, container, false);
 
         User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.credit_viewpager);
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tablayout);
+        viewPager = view.findViewById(R.id.credit_viewpager);
+        TabLayout tabLayout = view.findViewById(R.id.tablayout);
         txt_cred = view.findViewById(R.id.txt_cred);
         btncredits = view.findViewById(R.id.btncredits);
         setupViewPager(viewPager);
@@ -84,6 +84,12 @@ public class CreditHistory extends Fragment {
         getAllCreditLead();
         getPointsData();
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setupViewPager(viewPager);
     }
 
     private void getPointsData() {
