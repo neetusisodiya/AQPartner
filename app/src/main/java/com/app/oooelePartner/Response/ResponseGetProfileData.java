@@ -31,4 +31,4 @@ public class ResponseGetProfileData {
         this.data = data;
     }
 
- }
+}

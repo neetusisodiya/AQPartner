@@ -39,4 +39,4 @@ public class ResponseTime {
         this.day = day;
     }
 
- }
+}

@@ -2,75 +2,72 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
-
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="10dp"
-        android:layout_margin="10dp">
-
+        app:cardElevation="10dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="8dp">
 
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/assImg"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/ic_launcher_background"/>
+                android:src="@drawable/ic_launcher_background" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/assiname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="Neelam Sharma"/>
-
-
-            <TextView
-                android:id="@+id/assTime"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="15 Dec|10:00 am"/>
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/assiname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Neelam Sharma"
+                    android:textColor="#000" />
 
 
-            <TextView
-                android:id="@+id/assPlace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Khatipura"
-                android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:id="@+id/assTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="15 Dec|10:00 am" />
 
-        </LinearLayout>
+
+                <TextView
+                    android:id="@+id/assPlace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Khatipura" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginTop="10dp"
-                android:gravity="right">
-
+                android:gravity="right"
+                android:orientation="vertical">
 
 
                 <TextView
@@ -78,19 +75,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textColor="#000"
-                    android:text="0/5 Quotes"/>
+                    android:text="0/5 Quotes"
+                    android:textColor="#000" />
 
 
                 <TextView
                     android:id="@+id/assPartner"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:text="Partner"
-                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
                     android:background="#F82B43"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="10dp"/>
+                    android:gravity="center"
+                    android:text="Partner"
+                    android:textColor="#fff" />
 
 
             </LinearLayout>

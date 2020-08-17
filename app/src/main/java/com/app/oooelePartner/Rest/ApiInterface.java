@@ -30,14 +30,13 @@ import retrofit2.http.Query;
 public interface ApiInterface {
 
 
-
-            @GET("sendGroupSms?")
-            Call<ResponseBody> getOtp(@Query("AUTH_KEY") String AUTH_KEY,
-                                      @Query("message") String message,
-                                      @Query("senderId") String senderId,
-                                      @Query("routeId") String routeId,
-                                      @Query("mobileNos") String mobileNos,
-                                      @Query("smsContentType") String smsContentType);
+    @GET("sendGroupSms?")
+    Call<ResponseBody> getOtp(@Query("AUTH_KEY") String AUTH_KEY,
+                              @Query("message") String message,
+                              @Query("senderId") String senderId,
+                              @Query("routeId") String routeId,
+                              @Query("mobileNos") String mobileNos,
+                              @Query("smsContentType") String smsContentType);
 
     @POST("api/partner-login")
     Call<ResponseLogin> ApiLogin(@Body RequestBody requestBody);
@@ -50,10 +49,9 @@ public interface ApiInterface {
 
     @POST("api-get-expert-type")
     Call<ResponseExpertType> ApiGetExpertType(@Body RequestBody requestBody);
+
     @POST("api/partner-set-profile-data?")
     Call<ResponseProfileUpload> ApiProfileUpload(@Body RequestBody requestBody);
-
-
 
 
     @POST("api/partner-get-completed-leads")
@@ -81,58 +79,56 @@ public interface ApiInterface {
 
 
     @POST("api/partner-set-working-services?")
-    Call<ResponSelectService>ApiUpdateWorkingService(@Body RequestBody requestBody);
+    Call<ResponSelectService> ApiUpdateWorkingService(@Body RequestBody requestBody);
 
 
     @POST("api/partner-remove-working-services?")
-    Call<ResponSelectService>ApiRemoveWorkingService(@Body RequestBody requestBody);
-
+    Call<ResponSelectService> ApiRemoveWorkingService(@Body RequestBody requestBody);
 
 
     @POST("api/partner-working-time-slot")
-    Call<ResponseBody>ApiWorkingTimeSlot(@Body RequestBody requestBody);
+    Call<ResponseBody> ApiWorkingTimeSlot(@Body RequestBody requestBody);
 
     @POST("api/partner-update-bank-details")
-    Call<ResponseBank>ApiBankDetails(@Body RequestBody requestBody);
+    Call<ResponseBank> ApiBankDetails(@Body RequestBody requestBody);
 
     @POST("api/partner-add-wallet-data")
-    Call<ResponsePayment>ApiAddWallet(@Body RequestBody requestBody);
-
+    Call<ResponsePayment> ApiAddWallet(@Body RequestBody requestBody);
 
 
     @POST("api/partner-get-new-leads?")
-    Call<ResponseGetNewLeads>ApiWorkingNewLeads(@Body RequestBody requestBody);
+    Call<ResponseGetNewLeads> ApiWorkingNewLeads(@Body RequestBody requestBody);
 
 
     @POST("api/partner-get-open-leads")
-    Call<ResponseGetOpenLeads>ApiGetOpenLeads(@Body RequestBody requestBody);
+    Call<ResponseGetOpenLeads> ApiGetOpenLeads(@Body RequestBody requestBody);
 
     @POST("api/partner-get-wallet-data")
-    Call<ResponseGetWalletData>ApiGetWalletData(@Body RequestBody requestBody);
+    Call<ResponseGetWalletData> ApiGetWalletData(@Body RequestBody requestBody);
+
     @GET("api-convertedpoints")
-    Call<PointsResponse>getPoints();
+    Call<PointsResponse> getPoints();
 
     @POST("api/partner-set-working-area?")
-    Call<ResponseProfileUpload>ApiPartnerSetWorkignArea(@Body RequestBody requestBody);
+    Call<ResponseProfileUpload> ApiPartnerSetWorkignArea(@Body RequestBody requestBody);
 
 
     @POST("api/partner-remove-working-area?")
-    Call<ResponseProfileUpload>ApiPartnerRemoveWorkignArea(@Body RequestBody requestBody);
-
+    Call<ResponseProfileUpload> ApiPartnerRemoveWorkignArea(@Body RequestBody requestBody);
 
 
     @POST("api/partner-get-working-area?")
-    Call<ResponseBody>ApiGetAllWorkingLeads(@Body RequestBody requestBody);
+    Call<ResponseBody> ApiGetAllWorkingLeads(@Body RequestBody requestBody);
+
     @POST("api/partner-get-working-area?")
-    Call<ResponseWorkingRadiusList>ApiGetdAllWorkingLeads(@Body RequestBody requestBody);
+    Call<ResponseWorkingRadiusList> ApiGetdAllWorkingLeads(@Body RequestBody requestBody);
 
     @POST("api/partner-set-working-time?")
-    Call<ResponseProfileUpload>ApiSetWorkingTime(@Body RequestBody requestBody);
-
+    Call<ResponseProfileUpload> ApiSetWorkingTime(@Body RequestBody requestBody);
 
 
     @POST("api/partner-remove-working-time?")
-    Call<ResponseProfileUpload>ApiRemoveWorkingTime(@Body RequestBody requestBody);
+    Call<ResponseProfileUpload> ApiRemoveWorkingTime(@Body RequestBody requestBody);
 
     /*
       http://webtecnoworld.com/zeiq/api/fleet_addtripadvance.php
@@ -195,12 +191,11 @@ public interface ApiInterface {
 
     @Multipart
     @POST("api/partner-update-kyc-details")
-    Call<ResponseBody> UploadIdentDoc(@Part("expert_id") RequestBody expert_id,@Part("pancard_no") RequestBody pancard_no, @Part MultipartBody.Part file1);
+    Call<ResponseBody> UploadIdentDoc(@Part("expert_id") RequestBody expert_id, @Part("pancard_no") RequestBody pancard_no, @Part MultipartBody.Part file1);
 
     @Multipart
     @POST("api/partner-update-kyc-details")
-    Call<ResponseBody> UploadIdentDoc1(@Part("expert_id") RequestBody expert_id,@Part("pancard_no") RequestBody pancard_no);
-
+    Call<ResponseBody> UploadIdentDoc1(@Part("expert_id") RequestBody expert_id, @Part("pancard_no") RequestBody pancard_no);
 
 
     @Multipart
@@ -213,8 +208,6 @@ public interface ApiInterface {
                                            @Part("next_km") RequestBody next_km,
                                            @Part("next_date") RequestBody next_date,
                                            @Part MultipartBody.Part file, @Part MultipartBody.Part file1);
-
-
 
 
     ////Driver Reposness////////////////////

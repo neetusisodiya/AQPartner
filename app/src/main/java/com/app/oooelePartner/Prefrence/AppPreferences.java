@@ -18,7 +18,7 @@ public class AppPreferences {
     public static final String PHONE_NUMBER = "PHONE_NUMBER";
     public static final String EMAIL = "EMAIL";
     public static final String NAME = "name";
-    public static final String GENDER="GENDER";
+    public static final String GENDER = "GENDER";
     public static final String Name_In_Bank = "nameInBank";
     public static final String bankIfscCode = "bankIfscCode";
     public static final String Account_Number = "Account_Number";
@@ -34,9 +34,9 @@ public class AppPreferences {
     public static final String Qualifications = "_qualifications";
     public static final String USER_LATITUDE = "LATITUDE";
     public static final String USER_LONGITUDE = "LONGITUDE";
-    private Context context;
-    public SharedPreferences mPrefs;
     public static SharedPreferences.Editor editor;
+    public SharedPreferences mPrefs;
+    private Context context;
 
     public AppPreferences(Context context) {
         this.context = context;
@@ -52,29 +52,6 @@ public class AppPreferences {
         editor.putString(USER_DATA, json);
         editor.apply();
     }
-
-    public boolean checkForValue(String value) {
-        SharedPreferences prefs = context.getSharedPreferences(USER_DETAILS,
-                Context.MODE_PRIVATE);
-        return prefs.contains(value);
-    }
-
-
-    public void setUserData(String key, String value) {
-        SharedPreferences prefs = context.getSharedPreferences(USER_DETAILS,
-                Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(key, value);
-        editor.apply();
-    }
-
-    public String getUserData(String key) {
-        SharedPreferences prefs = context.getSharedPreferences(USER_DETAILS,
-                Context.MODE_PRIVATE);
-        return prefs.getString(key, "");
-
-    }
-
 
     public static LoginBean getSavedUser(Context ctx) {
         SharedPreferences prefs = ctx.getSharedPreferences(USER_DETAILS,
@@ -95,6 +72,35 @@ public class AppPreferences {
 
     }
 
+    public static void clearPrefsdata(Context ctx) {
+        SharedPreferences prefs = ctx.getSharedPreferences(USER_DETAILS,
+                Context.MODE_PRIVATE);
+        editor = prefs.edit();
+        editor.clear().apply();
+
+    }
+
+    public boolean checkForValue(String value) {
+        SharedPreferences prefs = context.getSharedPreferences(USER_DETAILS,
+                Context.MODE_PRIVATE);
+        return prefs.contains(value);
+    }
+
+    public void setUserData(String key, String value) {
+        SharedPreferences prefs = context.getSharedPreferences(USER_DETAILS,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
+
+    public String getUserData(String key) {
+        SharedPreferences prefs = context.getSharedPreferences(USER_DETAILS,
+                Context.MODE_PRIVATE);
+        return prefs.getString(key, "");
+
+    }
+
     public String getAccessToken() {
         return mPrefs.getString(AppPreferences.ACCESS_TOKEN, "");
     }
@@ -103,15 +109,6 @@ public class AppPreferences {
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString(ACCESS_TOKEN, accessToken);
         editor.apply();
-
-    }
-
-
-    public static void clearPrefsdata(Context ctx) {
-        SharedPreferences prefs = ctx.getSharedPreferences(USER_DETAILS,
-                Context.MODE_PRIVATE);
-        editor = prefs.edit();
-        editor.clear().apply();
 
     }
     /*public static void saveUserDetail(Context ctx, LoginBean login_model) {

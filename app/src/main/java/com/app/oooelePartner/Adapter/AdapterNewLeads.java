@@ -3,6 +3,7 @@ package com.app.oooelePartner.Adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,14 +81,23 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
         holder.txt_service.setText(services);
         String subServices = "Sub service: " + banVisits.get(position).getSubserv();
         holder.textSubServices.setText(subServices);
-        if (banVisits.get(position).isAccepted() == 1) {
-            holder.cardView.setAlpha(0.2f);
-            holder.accept.setVisibility(View.GONE);
+        if (banVisits.get(position).isAccepted().equals("1")) {
+
+            if (!banVisits.get(position).getAccept_id().equals(str_expert_id)) {
+                holder.cardView.setAlpha(0.2f);
+                holder.accept.setVisibility(View.GONE);
+            } else {
+                holder.cardView.setVisibility(View.GONE);
+            }
+
         }
+        Log.d("LOG_MESSAGE", "banVisits.size: " + banVisits.size());
+        Log.d("LOG_MESSAGE", "onBindViewHolder: " + position);
 
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 if (!pointsValue.equalsIgnoreCase("0")) {
                     if (totalPoints < points) {
@@ -97,25 +107,25 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
                         } else
                             lowBalance("Your wallet balance is low. Please recharge first");
                     } else {
-                        open(banVisits.get(position), position);
+                        open(banVisits.get(position), position, holder);
 
                     }
                 } else {
-                    acceptLead(banVisits.get(position), position);
+                    acceptLead(banVisits.get(position), position, holder);
 
                 }
             }
         });
     }
 
-    public void open(final BeanNewLeads banVisits, final int position) {
+    public void open(final BeanNewLeads banVisits, final int position, final ViewHolder holder) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setMessage(banVisits.getPoint() + " will be deducted from your wallet as a charge of leads");
         alertDialogBuilder.setPositiveButton("Okay",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        acceptLead(banVisits, position);
+                        acceptLead(banVisits, position, holder);
                     }
                 });
         AlertDialog alertDialog = alertDialogBuilder.create();
@@ -148,7 +158,7 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
         return 0;
     }
 
-    private void acceptLead(BeanNewLeads banVisits2, final int position) {
+    private void acceptLead(BeanNewLeads banVisits2, final int position, final ViewHolder viewHolder) {
         HomeFragment.bar.setVisibility(View.VISIBLE);
 
         final String id = banVisits2.getId();
@@ -170,7 +180,8 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
 
                         if (response.body().getMessage().equals("Order Successfully Accepted")) {
                             HomeFragment.bar.setVisibility(View.GONE);
-                            banVisits.remove(position);
+                            viewHolder.cardView.setVisibility(View.GONE);
+                            viewHolder.itemView.setVisibility(View.GONE);
                             Toast.makeText(context, "Lead Booked!!", Toast.LENGTH_LONG).show();
                         } else {
                             //      bar.setVisibility(View.GONE);

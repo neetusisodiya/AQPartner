@@ -60,9 +60,9 @@ import static com.app.oooelePartner.Prefrence.AppPreferences.PINCODE;
 import static com.app.oooelePartner.Prefrence.AppPreferences.Qualifications;
 
 public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnItemSelectedListener, View.OnClickListener {
+    final Calendar newCalendar = Calendar.getInstance();
     ArrayAdapter Arrayspinner_state, Arrayspinner_qualificatin, Arrayspinner_experttype;
     ArrayList<GetVendorProfileBean> getVendorProfileBeans;
-    final Calendar newCalendar = Calendar.getInstance();
     ArrayList<CityBean> cityBeanArrayList;
     ArrayList<ExpertBean> expertBeanArrayList;
     ArrayList<QualificationBean> qualificationBeanArrayList;
@@ -101,6 +101,7 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
     ImageView img_edit;
     LinearLayout linctext, linc;
     TextView txt_gender, txt_city, Text_year, text_month, txt_experttype, txt_qualification;
+    AppPreferences appPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,9 +116,6 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
         getQualificationApi();
         getExpertTypeApi();
     }
-
-    AppPreferences appPreferences;
-
 
     public void find() {
         txt_gender = findViewById(R.id.txt_gender);
@@ -391,10 +389,10 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
 
                         }
                         if (!StrYearexperance.equals("")) {
-                            appPreferences.setUserData(EXPERIENCE_YEAR, String.valueOf(Integer.parseInt(StrYearexperance)-1));
+                            appPreferences.setUserData(EXPERIENCE_YEAR, String.valueOf(Integer.parseInt(StrYearexperance) - 1));
                         }
                         if (!StrMonth.equals("")) {
-                            appPreferences.setUserData(EXPERIENCE_MONTH, String.valueOf(Integer.parseInt(StrMonth)-1));
+                            appPreferences.setUserData(EXPERIENCE_MONTH, String.valueOf(Integer.parseInt(StrMonth) - 1));
                         }
                         appPreferences.setUserData(EMAIL, Streditemail);
                         appPreferences.setUserData(DOB, txt_dob.getText().toString());
@@ -438,10 +436,10 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
                     try {
 
                         if (response.body() != null) {
-                            ResponseLogin resObj = (ResponseLogin) response.body();
+                            ResponseLogin resObj = response.body();
                             if (resObj.isStatus()) {
                                 getVendorProfileBeans = new ArrayList<>();
-                                LoginBean loginBean = ((ResponseLogin) response.body()).getData();
+                                LoginBean loginBean = response.body().getData();
                                 AppPreferences.saveInPref(EditProfile.this, loginBean);
                                 AppPreferences appPreferences = new AppPreferences(EditProfile.this);
 

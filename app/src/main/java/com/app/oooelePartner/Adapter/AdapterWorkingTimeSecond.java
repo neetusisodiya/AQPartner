@@ -1,8 +1,6 @@
 package com.app.oooelePartner.Adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,10 +48,12 @@ public class AdapterWorkingTimeSecond extends RecyclerView.Adapter<AdapterWorkin
         this.beanTimeSlots = (ArrayList<BeanTimeSlot>) beanTimeSlots;
 
     }
+
     @Override
     public int getItemCount() {
         return beanTimeSlots.size();
     }
+
     public Object getItem(int position) {
         return context;
     }
@@ -69,14 +69,13 @@ public class AdapterWorkingTimeSecond extends RecyclerView.Adapter<AdapterWorkin
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_working_time_second, viewGroup, false);
         return new AdapterWorkingTimeSecond.ViewHolder(view);
     }
+
     @Override
     public void onBindViewHolder(final AdapterWorkingTimeSecond.ViewHolder holder, final int position) {
         holder.txttime.setText(beanTimeSlots.get(position).getTimes());
         if (beanTimeSlots.get(position).getStatus().equals("yes")) {
             holder.txttime.setTextColor(ContextCompat.getColor(context, R.color.colorGreen));
-        }
-        else
-        {
+        } else {
             holder.txttime.setTextColor(ContextCompat.getColor(context, R.color.colorBlack));
 
         }
@@ -99,6 +98,7 @@ public class AdapterWorkingTimeSecond extends RecyclerView.Adapter<AdapterWorkin
             }
         });
     }
+
     private void ApiSetWorkignArea(final int position, final TextView txttime, String day) {
         // avi.setVisibility(View.VISIBLE);
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -116,7 +116,7 @@ public class AdapterWorkingTimeSecond extends RecyclerView.Adapter<AdapterWorkin
                         // txttime.setTextColor(ContextCompat.getColor(context, R.color.colorBlack));
 
 
-                     //   notifyDataSetChanged();
+                        //   notifyDataSetChanged();
                         DynamicToast.makeSuccess(context, "Successfully Saved Working Time Slot").show();
                     } else {
                         //    avi.setVisibility(View.GONE);
@@ -154,7 +154,7 @@ public class AdapterWorkingTimeSecond extends RecyclerView.Adapter<AdapterWorkin
                     if (resObj.getMessage().equals("Successfully Removed Working Time Slot")) {
 
                         // txttime.setTextColor(Color.RED);
-                       // txttime.setTextColor(Color.BLACK);
+                        // txttime.setTextColor(Color.BLACK);
                         notifyDataSetChanged();
                         DynamicToast.makeSuccess(context, "Successfully Removed Working Time Slot").show();
                     } else {

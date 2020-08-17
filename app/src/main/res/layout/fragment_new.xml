@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragment.HomeFragment">
 
@@ -14,20 +14,19 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="@string/new_leads"
             style="@style/titleBar"
-         />
+            android:text="@string/new_leads" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:visibility="gone"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginEnd="20dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:text="Credit" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="20dp"
+            android:text="Credit"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
 
 
     </LinearLayout>
@@ -37,18 +36,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/link"
-        android:visibility="gone"
         android:layout_margin="5dp"
         android:text="@string/admin_will_decide_convenience_charges"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/newRecycle"
 
-        android:layout_margin="5dp"
-        android:layout_below="@+id/terms"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/terms"
+        android:layout_margin="5dp" />
 
     <!--
         <pl.droidsonroids.gif.GifImageView
@@ -74,11 +73,11 @@
 
     <TextView
         android:id="@+id/img_nodata"
-        android:visibility="gone"
-        android:layout_centerInParent="true"
-        android:textSize="18sp"
-        android:text="Data Not Available"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Data Not Available"
+        android:textSize="18sp"
+        android:visibility="gone" />
 
 </RelativeLayout>

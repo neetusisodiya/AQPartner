@@ -7,7 +7,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
- import com.app.oooelePartner.Bean.LoginBean;
+import com.app.oooelePartner.Bean.LoginBean;
 
 
 public class AppBaseActivity extends AppCompatActivity {
@@ -19,7 +19,7 @@ public class AppBaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         mContext = AppBaseActivity.this;
-         db = new ZeiqDb(this);
+        db = new ZeiqDb(this);
         userPOJO = Constants.getUser(mContext);
 
         super.onCreate(savedInstanceState);

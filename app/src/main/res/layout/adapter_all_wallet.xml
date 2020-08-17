@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         app:cardCornerRadius="10dp"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="10dp">
-    <RelativeLayout
-        android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/text_detail"
-            android:text="Details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/text_amount"
-            android:text="Amount"
-            android:layout_below="@+id/text_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/text_date"
-            android:text="date"
-            android:layout_below="@+id/text_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/text_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details" />
+
+            <TextView
+                android:id="@+id/text_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_detail"
+                android:text="Amount" />
+
+            <TextView
+                android:id="@+id/text_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_amount"
+                android:text="date" />
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

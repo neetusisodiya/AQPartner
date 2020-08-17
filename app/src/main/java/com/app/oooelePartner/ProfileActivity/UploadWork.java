@@ -1,10 +1,5 @@
 package com.app.oooelePartner.ProfileActivity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,6 +13,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -40,16 +40,15 @@ public class UploadWork extends AppCompatActivity implements View.OnClickListene
 
     public static final String UPLOAD_URL = "";
     public static final String UPLOAD_KEY = "image";
-ImageView img_back;
+    ImageView img_back;
+    String encodeImage = "";
+    String uploadeUrl = "";
     private int PICK_IMAGE_REQUEST = 999;
     private TextView buttonChoose;
     private Button buttonUpload;
     private ImageView imageView;
     private Bitmap bitmap;
     private Uri filePath;
-    String encodeImage="";
-
-    String uploadeUrl="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ ImageView img_back;
             @Override
             public void onClick(View v) {
 
-                ActivityCompat.requestPermissions(UploadWork.this,new String[]
+                ActivityCompat.requestPermissions(UploadWork.this, new String[]
                                 {Manifest.permission.READ_EXTERNAL_STORAGE},
                         PICK_IMAGE_REQUEST
                 );
@@ -73,7 +72,7 @@ ImageView img_back;
             public void onClick(View v) {
 
 
-                StringRequest stringRequest=new StringRequest(Request.Method.POST, uploadeUrl, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, uploadeUrl, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
@@ -86,23 +85,23 @@ ImageView img_back;
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast.makeText(UploadWork.this, "Error" +error, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UploadWork.this, "Error" + error, Toast.LENGTH_SHORT).show();
 
                     }
-                }){
+                }) {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
 
-                        Map<String,String> map=new HashMap<>();
+                        Map<String, String> map = new HashMap<>();
 
-                        String imagData=imageToString(bitmap);
+                        String imagData = imageToString(bitmap);
 
-                        map.put("image",imagData);
+                        map.put("image", imagData);
 
                         return map;
                     }
                 };
-                RequestQueue requestQueue= Volley.newRequestQueue(UploadWork.this);
+                RequestQueue requestQueue = Volley.newRequestQueue(UploadWork.this);
                 requestQueue.add(stringRequest);
 
             }
@@ -122,7 +121,7 @@ ImageView img_back;
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-        if(requestCode==PICK_IMAGE_REQUEST) {
+        if (requestCode == PICK_IMAGE_REQUEST) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
@@ -138,30 +137,31 @@ ImageView img_back;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        if(requestCode==PICK_IMAGE_REQUEST && resultCode==RESULT_OK && data !=null){
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
 
-            Uri filepath=data.getData();
-            try{
-                InputStream inputStream=getContentResolver().openInputStream(filepath);
-                bitmap= BitmapFactory.decodeStream(inputStream);
+            Uri filepath = data.getData();
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(filepath);
+                bitmap = BitmapFactory.decodeStream(inputStream);
                 imageView.setImageBitmap(bitmap);
-            }catch (FileNotFoundException e){
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-    private String imageToString(Bitmap bitmap){
+
+    private String imageToString(Bitmap bitmap) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream);
-        byte[] ImageByte=outputStream.toByteArray();
-        encodeImage = Base64.encodeToString(ImageByte,Base64.DEFAULT);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+        byte[] ImageByte = outputStream.toByteArray();
+        encodeImage = Base64.encodeToString(ImageByte, Base64.DEFAULT);
         return encodeImage;
     }
 
     @Override
     public void onClick(View v) {
-        if (v==img_back){
+        if (v == img_back) {
             onBackPressed();
         }
     }

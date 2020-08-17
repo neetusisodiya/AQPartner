@@ -31,15 +31,16 @@
             android:text="@string/edit_profile"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/font_20" />
+
         <ImageView
             android:id="@+id/img_edit"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_back"
-            android:tint="@color/colorWhite" />
+            android:tint="@color/colorWhite"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
@@ -119,8 +120,8 @@
                 android:background="@drawable/edit_bg"
                 android:hint="@string/mobilenumber"
                 android:inputType="number"
-                android:paddingLeft="10dp"
                 android:maxLength="10"
+                android:paddingLeft="10dp"
                 android:textSize="@dimen/font_16" />
 
             <EditText
@@ -129,11 +130,11 @@
                 android:layout_height="40dp"
                 android:layout_below="@+id/editmob"
                 android:layout_marginLeft="20dp"
-                android:inputType="textEmailAddress"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/edit_bg"
                 android:hint="@string/email"
+                android:inputType="textEmailAddress"
                 android:paddingLeft="10dp"
                 android:textSize="@dimen/font_16" />
 
@@ -157,12 +158,13 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:maxLength="6"
-                android:inputType="number"
                 android:background="@drawable/edit_bg"
                 android:hint="@string/pincode"
+                android:inputType="number"
+                android:maxLength="6"
                 android:paddingLeft="10dp"
                 android:textSize="@dimen/font_16" />
+
             <LinearLayout
                 android:id="@+id/linctext"
                 android:layout_width="match_parent"
@@ -174,32 +176,33 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-               <TextView
-                   android:id="@+id/txt_year"
-                   android:layout_width="0dp"
-                   android:layout_weight="1"
-                   android:layout_height="wrap_content"
-                   android:layout_below="@+id/spinner_gender"
+                <TextView
+                    android:id="@+id/txt_year"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/spinner_gender"
                     android:layout_marginTop="10dp"
-                   android:layout_marginRight="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
-                   android:paddingLeft="10dp"
-                   android:textColor="@color/nav_black"
-                   android:text="Experaince"
-                   android:textSize="@dimen/font_16"/>
+                    android:paddingLeft="10dp"
+                    android:text="Experaince"
+                    android:textColor="@color/nav_black"
+                    android:textSize="@dimen/font_16" />
+
                 <TextView
                     android:id="@+id/txt_month"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:textColor="@color/nav_black"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/spinner_gender"
-                     android:layout_marginTop="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                     android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:paddingLeft="10dp"
                     android:text="Select Month"
-                    android:textSize="@dimen/font_16"/>
+                    android:textColor="@color/nav_black"
+                    android:textSize="@dimen/font_16" />
 
             </LinearLayout>
 
@@ -209,7 +212,7 @@
                 android:layout_height="40dp"
                 android:layout_below="@+id/linctext"
                 android:layout_marginLeft="20dp"
-                 android:layout_marginRight="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
 

@@ -12,12 +12,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
- import com.app.oooelePartner.R;
+import com.app.oooelePartner.R;
 
 
 public class MapUtility {
     public static final String MAP_URL = "https://maps.googleapis.com";
-   // https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Food%20Sh&sensor=false&radius=500&location=0,0&key=YOUR_KEY_HERE
+    // https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Food%20Sh&sensor=false&radius=500&location=0,0&key=YOUR_KEY_HERE
 
     public static String apiKey = "AIzaSyCm5yyFY__Jc0pyHIh_qCNLjMHsBUN_tsY";
     public static Location currentLocation = null;
@@ -63,9 +63,7 @@ public class MapUtility {
                 }
             }
 
-        } catch (Exception e)
-
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

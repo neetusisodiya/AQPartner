@@ -98,6 +98,7 @@ public class HomeFragment extends Fragment {
                             bar.setVisibility(View.GONE);
                             aboutTerms.setVisibility(View.VISIBLE);
 
+
                             adapterNewLeads = new AdapterNewLeads(getActivity(), response.body().getData(),
                                     response.body().getTotal_point(), userId);
                             newRecycle.setAdapter(adapterNewLeads);

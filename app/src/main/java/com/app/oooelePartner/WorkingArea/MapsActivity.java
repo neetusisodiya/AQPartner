@@ -104,9 +104,9 @@ import retrofit2.Response;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener, View.OnClickListener, SeekBar.OnSeekBarChangeListener {
     private static final int REQUEST_CHECK_SETTINGS = 2;
-    TextView txt_km;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 2;
     private final String TAG = MapsActivity.class.getSimpleName();
+    TextView txt_km;
     PendingIntent mGeofencePendingIntent;
     String Str_radius = "1";
     String StrGlat = "";
@@ -140,6 +140,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     RecyclerView recyclersetworking;
     RecyclerView.LayoutManager layoutManager;
     String User_Id;
+    String[] permissions = new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION};
     private GoogleApiClient mGoogleApiClient;
     private String userAddress = "";
     private String usercity = "";
@@ -161,58 +163,55 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     //To store longitude and latitude from map
     private double longitude;
     private double latitude;
-
-    String[] permissions = new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION,
-            android.Manifest.permission.ACCESS_COARSE_LOCATION};
     private GoogleApiClient.ConnectionCallbacks connectionAddListener =
             new GoogleApiClient.ConnectionCallbacks() {
-        @Override
-        public void onConnected(Bundle bundle) {
+                @Override
+                public void onConnected(Bundle bundle) {
 
-            if (checkAndRequestPermissions()) {
-                Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+                    if (checkAndRequestPermissions()) {
+                        Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
 
-                if (location == null) {
-                    LocationServices.FusedLocationApi.
-                            requestLocationUpdates(mGoogleApiClient, mLocationRequest, (LocationListener) MapsActivity.this);
+                        if (location == null) {
+                            LocationServices.FusedLocationApi.
+                                    requestLocationUpdates(mGoogleApiClient, mLocationRequest, MapsActivity.this);
 
-                } else {
-                    currentLatitude = location.getLatitude();
-                    currentLongitude = location.getLongitude();
-                    double val = Math.floor(2.11);
+                        } else {
+                            currentLatitude = location.getLatitude();
+                            currentLongitude = location.getLongitude();
+                            double val = Math.floor(2.11);
 
-                }
-                try {
-                    LocationServices.GeofencingApi.addGeofences(
-                            mGoogleApiClient,
-                            getGeofencingRequest(),
-                            getGeofencePendingIntent()
-                    ).setResultCallback(new ResultCallback<Status>() {
-
-                        @Override
-                        public void onResult(Status status) {
-                            if (status.isSuccess()) {
-                                Log.i(TAG, "Saving Geofence");
-
-                            } else {
-                                Log.e(TAG, "Registering geofence failed: " + status.getStatusMessage() +
-                                        " : " + status.getStatusCode());
-                            }
                         }
-                    });
-                } catch (SecurityException securityException) {
-                    // Catch exception generated if the app does not use ACCESS_FINE_LOCATION permission.
-                    Log.e(TAG, "Error");
+                        try {
+                            LocationServices.GeofencingApi.addGeofences(
+                                    mGoogleApiClient,
+                                    getGeofencingRequest(),
+                                    getGeofencePendingIntent()
+                            ).setResultCallback(new ResultCallback<Status>() {
+
+                                @Override
+                                public void onResult(Status status) {
+                                    if (status.isSuccess()) {
+                                        Log.i(TAG, "Saving Geofence");
+
+                                    } else {
+                                        Log.e(TAG, "Registering geofence failed: " + status.getStatusMessage() +
+                                                " : " + status.getStatusCode());
+                                    }
+                                }
+                            });
+                        } catch (SecurityException securityException) {
+                            // Catch exception generated if the app does not use ACCESS_FINE_LOCATION permission.
+                            Log.e(TAG, "Error");
+                        }
+                    }
+
                 }
-            }
 
-        }
-
-        @Override
-        public void onConnectionSuspended(int i) {
-            Log.e(TAG, "onConnectionSuspended");
-        }
-    };
+                @Override
+                public void onConnectionSuspended(int i) {
+                    Log.e(TAG, "onConnectionSuspended");
+                }
+            };
     private GoogleApiClient.OnConnectionFailedListener connectionFailedListener
             = new GoogleApiClient.OnConnectionFailedListener() {
         @Override
@@ -396,9 +395,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 place_url = String.valueOf(place.getWebsiteUri());
                 addMarker();
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
-                // TODO: Handle the error.
                 Status status = Autocomplete.getStatusFromIntent(data);
-                Log.i(TAG, status.getStatusMessage());
             } else if (resultCode == RESULT_CANCELED) {
                 // The user canceled the operation.
             }

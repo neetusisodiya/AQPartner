@@ -46,7 +46,6 @@ public class AdapterExpenses extends RecyclerView.Adapter<AdapterExpenses.ViewHo
     }
 
 
-
     @Override
     public int getItemCount() {
         //  Log.e("size", "");

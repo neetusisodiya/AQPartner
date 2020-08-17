@@ -191,11 +191,8 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
                             OpenFragment.bar.setVisibility(View.GONE);
                             banVisits.remove(position);
                             notifyDataSetChanged();
+                            banVisits.notify();
                             Toast.makeText(context, "Congratulations on completing this lead", Toast.LENGTH_LONG).show();
-                        } else {
-                            //      bar.setVisibility(View.GONE);
-                            //     relihidedata.setVisibility(View.VISIBLE);
-                            //     btn_placeorder.setVisibility(View.GONE);
                         }
 
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ProfileActivity.Training">
+
     <RelativeLayout
         android:id="@+id/topbar"
         android:layout_width="match_parent"
@@ -33,151 +33,150 @@
 
     </RelativeLayout>
 
- <LinearLayout
-     android:visibility="gone"
-     android:orientation="vertical"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1.   Known About Oooele"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:textSize="20dp"/>
-
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:text="Start Traing"
-        android:textSize="12dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:textColor="@color/colorWhite"
-        android:background="@drawable/upload_btn"/>
-
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorBlack"/>
-
-
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2.   Learn How To Deliver"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="14dp"
-        android:textSize="18dp"/>
+        android:orientation="vertical"
+        android:visibility="gone">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorBlack"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="1.   Known About Oooele"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/upload_btn"
+            android:text="Start Traing"
+            android:textColor="@color/colorWhite"
+            android:textSize="12dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3.   Become Expert"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="14dp"
-        android:textSize="18dp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorBlack"/>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4.   Earn And Payment"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="14dp"
-        android:textSize="18dp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorBlack"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorBlack" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5.   Oooele Safety Traing"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="14dp"
-        android:textSize="18dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="14dp"
+            android:text="2.   Learn How To Deliver"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorBlack"/>
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="6.  Learn AC Gas Charging SOP "
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="14dp"
-        android:textSize="18dp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorBlack"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorBlack" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="7.   Learn AC Servicing SOP"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="14dp"
-        android:textSize="18dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="14dp"
+            android:text="3.   Become Expert"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorBlack"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorBlack" />
 
- </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="14dp"
+            android:text="4.   Earn And Payment"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorBlack" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="14dp"
+            android:text="5.   Oooele Safety Traing"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorBlack" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="14dp"
+            android:text="6.  Learn AC Gas Charging SOP "
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorBlack" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="14dp"
+            android:text="7.   Learn AC Servicing SOP"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorBlack" />
+
+    </LinearLayout>
+
     <RelativeLayout
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
 
         <TextView
             android:id="@+id/relihide"
-            android:textColor="@color/nav_black"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:text="Coming Soon"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Coming Soon"
+            android:textColor="@color/nav_black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
-
 
 
 </RelativeLayout>

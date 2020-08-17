@@ -22,10 +22,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    public ImageView iv_home, ivsearch, iv_cart, iv_account;
+    public TextView txthome, txtsearch, txtcart, txtaccount;
     Fragment fragment;
-    RelativeLayout footerHome,footersearch,footerCart,footeraccount;
-    public ImageView iv_home,ivsearch,iv_cart,iv_account;
-    public TextView txthome,txtsearch,txtcart,txtaccount;
+    RelativeLayout footerHome, footersearch, footerCart, footeraccount;
     MorphBottomNavigationView bottomNavigationView;
     private BottomNavigationView.OnNavigationItemSelectedListener
             mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         find();
         loadFragmentmain(new HomeFragment());
     }
+
     public void find() {
         iv_home = findViewById(R.id.iv_home);
         ivsearch = findViewById(R.id.ivsearch);
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (fragment instanceof HomeFragment) {
-                }else {
+                } else {
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                     CommonUtils.tabChange(MainActivity.this, iv_home, ivsearch, iv_cart, iv_account, txthome, txtsearch, txtcart, txtaccount);
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (fragment instanceof BookFragment) {
-                }else {
+                } else {
                     fragment = new BookFragment();
                     loadFragment(fragment);
                     CommonUtils.tabChange(MainActivity.this, ivsearch, iv_cart, iv_account, iv_home, txtsearch, txtcart, txtaccount, txthome);
@@ -102,8 +104,9 @@ public class MainActivity extends AppCompatActivity {
         footerCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(fragment instanceof ProfileFragment ) {}else {
-                    fragment=new ProfileFragment();
+                if (fragment instanceof ProfileFragment) {
+                } else {
+                    fragment = new ProfileFragment();
                     loadFragment(fragment);
                     CommonUtils.tabChange(MainActivity.this, iv_cart, iv_account, iv_home, ivsearch, txtcart, txtaccount, txthome, txtsearch);
                 }
@@ -132,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         //transaction.addToBackStack(String.valueOf(MainActivity.class));
         transaction.commit();
     }
+
     private void loadFragment(Fragment fragment) {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

@@ -31,4 +31,4 @@ public class ResponsegetCity {
         this.data = data;
     }
 
- }
+}

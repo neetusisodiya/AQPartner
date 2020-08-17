@@ -37,24 +37,24 @@
 
 
     <androidx.cardview.widget.CardView
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:padding="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/colorBlack"
-            android:text="Bank Account Details"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Bank Account Details"
+                android:textColor="@color/colorBlack" />
 
             <TextView
                 android:id="@+id/add_bank"
@@ -62,175 +62,174 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:textStyle="bold"
+                android:text="+ Add Detail"
                 android:textColor="@color/colorBlue"
-                android:text="+ Add Detail"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-<RelativeLayout
-    android:background="@drawable/bg"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bank Detail"
-        android:textSize="26dp"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:textColor="@color/colorBlack"/>
 
-    <TextView
-        android:id="@+id/txt_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorBlack"
-        android:text="Name(as registered in Bank)"/>
-
-
-    <TextView
-        android:id="@+id/txt_two"
-        android:layout_below="@+id/txt_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:textSize="12dp"
-        android:text="Please update your Account Name"/>
-
-
-    <EditText
-        android:id="@+id/edit_bank"
-        android:layout_below="@+id/txt_two"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"/>
+        android:background="@drawable/bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Bank Detail"
+            android:textColor="@color/colorBlack"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="32dp"
+            android:text="Name(as registered in Bank)"
+            android:textColor="@color/colorBlack"
+            android:textSize="18dp" />
 
 
-    <TextView
-        android:id="@+id/txt_three"
-        android:layout_below="@+id/edit_bank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorBlack"
-        android:text="Bank Account Number"/>
+        <TextView
+            android:id="@+id/txt_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_one"
+            android:layout_marginLeft="20dp"
+            android:text="Please update your Account Name"
+            android:textSize="12dp" />
 
 
-    <TextView
-        android:id="@+id/txt_four"
-        android:layout_below="@+id/txt_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:textSize="12dp"
-        android:text="Please update your Bank Account Number"/>
+        <EditText
+            android:id="@+id/edit_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_two"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp" />
 
 
-    <EditText
-        android:layout_below="@+id/txt_four"
-        android:id="@+id/edit_ac_num"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:maxLength="18"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"/>
+        <TextView
+            android:id="@+id/txt_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_bank"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Bank Account Number"
+            android:textColor="@color/colorBlack"
+            android:textSize="18dp" />
 
 
-    <TextView
-        android:id="@+id/txt_five"
-        android:visibility="gone"
-        android:layout_below="@+id/edit_ac_num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorBlack"
-        android:text="Confirm Bank Account Number"/>
+        <TextView
+            android:id="@+id/txt_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_three"
+            android:layout_marginLeft="20dp"
+            android:text="Please update your Bank Account Number"
+            android:textSize="12dp" />
 
 
-    <EditText
-        android:id="@+id/edit_confirm"
-        android:visibility="gone"
-        android:layout_below="@+id/txt_five"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"/>
+        <EditText
+            android:id="@+id/edit_ac_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_four"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:inputType="number"
+            android:maxLength="18" />
 
 
-
-    <TextView
-        android:id="@+id/txt_six"
-        android:layout_below="@+id/edit_confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="18dp"
-        android:textColor="@color/colorBlack"
-        android:text="IFSC Code"/>
-
-
-    <TextView
-        android:id="@+id/txt_seven"
-        android:layout_below="@+id/txt_six"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:textSize="12dp"
-        android:text="Please update IFSC code"/>
+        <TextView
+            android:id="@+id/txt_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_ac_num"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Confirm Bank Account Number"
+            android:textColor="@color/colorBlack"
+            android:textSize="18dp"
+            android:visibility="gone" />
 
 
-    <EditText
-        android:id="@+id/edt_ifsc"
-        android:layout_below="@+id/txt_seven"
-        android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:maxLength="11"
-        android:inputType="textCapCharacters"
-         android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"/>
-
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_below="@+id/edt_ifsc"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-android:layout_centerHorizontal="true"
-        android:textColor="@color/colorWhite"
-        android:background="@drawable/upload_btn"/>
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/bar"
-         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        app:indicatorColor="@color/red_pitch"
-        app:indicatorName="BallClipRotatePulseIndicator" />
-</RelativeLayout>
+        <EditText
+            android:id="@+id/edit_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_five"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:visibility="gone" />
 
 
+        <TextView
+            android:id="@+id/txt_six"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_confirm"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="IFSC Code"
+            android:textColor="@color/colorBlack"
+            android:textSize="18dp" />
 
+
+        <TextView
+            android:id="@+id/txt_seven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_six"
+            android:layout_marginLeft="20dp"
+            android:text="Please update IFSC code"
+            android:textSize="12dp" />
+
+
+        <EditText
+            android:id="@+id/edt_ifsc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_seven"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:inputType="textCapCharacters"
+            android:maxLength="11" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_ifsc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/upload_btn"
+            android:text="Save"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:indicatorColor="@color/red_pitch"
+            app:indicatorName="BallClipRotatePulseIndicator" />
+    </RelativeLayout>
 
 
 </LinearLayout>

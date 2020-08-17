@@ -1,15 +1,16 @@
 package com.app.oooelePartner.ProfileActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.app.oooelePartner.R;
 
 public class ServiceLocation extends AppCompatActivity implements View.OnClickListener {
-ImageView img_back;
+    ImageView img_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,14 +18,14 @@ ImageView img_back;
         find();
     }
 
-    public void find(){
-        img_back=findViewById(R.id.img_back);
+    public void find() {
+        img_back = findViewById(R.id.img_back);
         img_back.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v==img_back){
+        if (v == img_back) {
             onBackPressed();
         }
     }

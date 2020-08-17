@@ -21,38 +21,32 @@ public class Assigied_Adapter extends RecyclerView.Adapter<Assigied_Adapter.View
 
     private OnItemClickListener mlistener;
 
-    public interface OnItemClickListener{
-        void onItemClick(int position);
-    }
+    public Assigied_Adapter(Context context, List<assmodel> Data) {
+        this.context = context;
+        this.Data = Data;
 
-    public void setOnItemClickListener(OnItemClickListener listener){
-        mlistener=listener;
-    }
-
-    public Assigied_Adapter(Context context, List<assmodel> Data)
-    {
-    this.context=context;
-    this.Data=Data;
-
-    //options = new RequestOptions().centerCrop().placeholder(R.drawable.loading).error(R.drawable.loading);
+        //options = new RequestOptions().centerCrop().placeholder(R.drawable.loading).error(R.drawable.loading);
 
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mlistener = listener;
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        LayoutInflater inflater=LayoutInflater.from(parent.getContext());
-        View view=inflater.inflate(R.layout.assimodel,parent,false);
-        ViewHolder viewHolder=new ViewHolder(view);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.assimodel, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
 
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-       /* final item list=caty_item[position];*/
+        /* final item list=caty_item[position];*/
         holder.assname.setText(Data.get(position).getAssname());
         holder.assTime.setText(Data.get(position).getAssTime());
         holder.assPlace.setText(Data.get(position).getAssPlace());
@@ -68,27 +62,32 @@ public class Assigied_Adapter extends RecyclerView.Adapter<Assigied_Adapter.View
         return Data.size();
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        public TextView assname,assTime,assPlace,assPrice,assPartner;
+        public TextView assname, assTime, assPlace, assPrice, assPartner;
+
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
 
-            assname=(TextView)itemView.findViewById(R.id.assiname);
-            assTime=(TextView)itemView.findViewById(R.id.assTime);
-            assPlace=(TextView)itemView.findViewById(R.id.assPlace);
-            assPrice=itemView.findViewById(R.id.assPrice);
-            assPartner=itemView.findViewById(R.id.assPartner);
+            assname = itemView.findViewById(R.id.assiname);
+            assTime = itemView.findViewById(R.id.assTime);
+            assPlace = itemView.findViewById(R.id.assPlace);
+            assPrice = itemView.findViewById(R.id.assPrice);
+            assPartner = itemView.findViewById(R.id.assPartner);
 
             assname.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    if(mlistener!=null){
+                    if (mlistener != null) {
                         int position = getAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION){
+                        if (position != RecyclerView.NO_POSITION) {
                             mlistener.onItemClick(position);
                         }
                     }

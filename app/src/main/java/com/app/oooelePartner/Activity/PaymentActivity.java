@@ -28,14 +28,12 @@ import retrofit2.Response;
 
 
 public class PaymentActivity extends Activity implements PaymentResultListener, View.OnClickListener {
-    double total;
     private static final String TAG = PaymentActivity.class.getSimpleName();
+    double total;
     TextView txt_skip;
-
-    private String amount, points, amountForApi;
-
     EditText edit_amount;
     String str_expert_id, str_mob_no, str_email;
+    private String amount, points, amountForApi;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,7 +102,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
             total = total * 100;
             options.put("amount", total);
             JSONObject preFill = new JSONObject();
-        //    preFill.put("email", str_email);
+            //    preFill.put("email", str_email);
             preFill.put("contact", str_mob_no);
             options.put("prefill", preFill);
             co.open(activity, options);

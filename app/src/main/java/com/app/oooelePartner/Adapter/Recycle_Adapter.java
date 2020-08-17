@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.app.oooelePartner.R;
 import com.app.oooelePartner.model.newmodel;
 
@@ -22,38 +21,32 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
 
     private OnItemClickListener mlistener;
 
-    public interface OnItemClickListener{
-        void onItemClick(int position);
-    }
+    public Recycle_Adapter(Context context, List<newmodel> mData) {
+        this.context = context;
+        this.mData = mData;
 
-    public void setOnItemClickListener(OnItemClickListener listener){
-        mlistener=listener;
-    }
-
-    public Recycle_Adapter(Context context, List<newmodel> mData)
-    {
-    this.context=context;
-    this.mData=mData;
-
-    //options = new RequestOptions().centerCrop().placeholder(R.drawable.loading).error(R.drawable.loading);
+        //options = new RequestOptions().centerCrop().placeholder(R.drawable.loading).error(R.drawable.loading);
 
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mlistener = listener;
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        LayoutInflater inflater=LayoutInflater.from(parent.getContext());
-        View view=inflater.inflate(R.layout.newmodel,parent,false);
-        ViewHolder viewHolder=new ViewHolder(view);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.newmodel, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
 
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-       /* final item list=caty_item[position];*/
+        /* final item list=caty_item[position];*/
         holder.name.setText(mData.get(position).getName());
         holder.skill.setText(mData.get(position).getSkill());
         holder.day.setText(mData.get(position).getDay());
@@ -70,27 +63,32 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
         return mData.size();
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        public TextView name,skill,day,quotes,credit;
+        public TextView name, skill, day, quotes, credit;
+
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
 
-            name=(TextView)itemView.findViewById(R.id.name);
-            skill=(TextView)itemView.findViewById(R.id.skill);
-            day=(TextView)itemView.findViewById(R.id.day);
-            quotes=itemView.findViewById(R.id.quotes);
-            credit=itemView.findViewById(R.id.credit);
+            name = itemView.findViewById(R.id.name);
+            skill = itemView.findViewById(R.id.skill);
+            day = itemView.findViewById(R.id.day);
+            quotes = itemView.findViewById(R.id.quotes);
+            credit = itemView.findViewById(R.id.credit);
 
             name.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    if(mlistener!=null){
+                    if (mlistener != null) {
                         int position = getAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION){
+                        if (position != RecyclerView.NO_POSITION) {
                             mlistener.onItemClick(position);
                         }
                     }

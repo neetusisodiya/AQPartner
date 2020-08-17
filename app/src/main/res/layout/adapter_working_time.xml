@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".Adapter.AdapterWorkingTime">
 
-        <TextView
-            android:id="@+id/txt_day"
-            android:gravity="center"
-            android:layout_width="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@drawable/txtbgd"
-            android:fontFamily="@font/robot_black"
-            android:text="Monday"
-            android:textSize="14dp" />
+    <TextView
+        android:id="@+id/txt_day"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/txtbgd"
+        android:fontFamily="@font/robot_black"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Monday"
+        android:textSize="14dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleTime"
         android:layout_width="match_parent"
@@ -24,4 +24,4 @@
         android:layout_below="@+id/txt_day"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp" />
- </RelativeLayout>
+</RelativeLayout>

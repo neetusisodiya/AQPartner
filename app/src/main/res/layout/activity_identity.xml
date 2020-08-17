@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ProfileActivity.IdentityActivity">
+
     <RelativeLayout
         android:id="@+id/topbar"
         android:layout_width="match_parent"
@@ -34,72 +35,74 @@
     </RelativeLayout>
 
 
- <RelativeLayout
-     android:layout_below="@+id/topbar"
-     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-<ImageView
-    android:layout_centerHorizontal="true"
-    android:id="@+id/img_aadhar"
-    android:src="@drawable/ic_camera_alt_black_24dp"
-    android:layout_width="100dp"
-    android:layout_height="100dp"/>
-
-    <EditText
-        android:id="@+id/edit_aadhar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_below="@+id/img_aadhar"
-        android:background="@drawable/edit_bg"
-        android:textStyle="bold"
-        android:maxLength="12"
-        android:textSize="18sp"
-        android:layout_marginTop="32dp"
-        android:inputType="number"
-        android:layout_marginLeft="10dp"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlack"
-android:hint="Enter Aadhar No."/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topbar"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_aadhar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_camera_alt_black_24dp" />
+
+        <EditText
+            android:id="@+id/edit_aadhar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/img_aadhar"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/edit_bg"
+            android:hint="Enter Aadhar No."
+            android:inputType="number"
+            android:maxLength="12"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
 
-     <Button
-         android:id="@+id/btn_save"
-         android:layout_below="@+id/edit_aadhar"
-         android:layout_width="100dp"
-         android:layout_height="wrap_content"
-         android:text="Save"
-         android:textStyle="bold"
-         android:layout_marginTop="20dp"
-         android:layout_centerHorizontal="true"
-         android:textColor="@color/colorWhite"
-         android:background="@drawable/upload_btn"/>
-     <com.wang.avi.AVLoadingIndicatorView
-         android:id="@+id/bar"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_centerInParent="true"
-         android:visibility="gone"
-         app:indicatorColor="@color/red_pitch"
-         app:indicatorName="BallClipRotatePulseIndicator" />
-</RelativeLayout>
-<RelativeLayout
-    android:visibility="gone"
-android:layout_centerInParent="true"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_aadhar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/upload_btn"
+            android:text="Save"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/relihide"
-        android:textColor="@color/nav_black"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:text="Coming Soon"
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:indicatorColor="@color/red_pitch"
+            app:indicatorName="BallClipRotatePulseIndicator" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/relihide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coming Soon"
+            android:textColor="@color/nav_black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

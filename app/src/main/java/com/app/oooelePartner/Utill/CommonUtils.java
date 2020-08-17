@@ -75,14 +75,6 @@ import java.util.regex.Pattern;
 
 
 public class CommonUtils {
-    static Dialog progressdialog;;
-    public static boolean isNetworkAvailable(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        return networkInfo != null && networkInfo.isConnected();
-    }
-
-
     public static final int REQUEST_CAMERA_ACCESS_PERMISSION = 5674;
     public static final int TAKE_PICTURE = 6352;
     public static final int PICK_Gallery_IMAGE = 12345;
@@ -93,6 +85,13 @@ public class CommonUtils {
             Manifest.permission.CAMERA,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    static Dialog progressdialog;
+
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
+    }
 
     public static boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
@@ -538,11 +537,7 @@ public class CommonUtils {
             currentTime = c.getTime();
             Date startCompare = sdf.parse(starttime);
             Date endCompare = sdf.parse(endtime);
-            if (startCompare.compareTo(currentTime) <= 0 && endCompare.compareTo(currentTime) >= 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return startCompare.compareTo(currentTime) <= 0 && endCompare.compareTo(currentTime) >= 0;
         } catch (Exception e) {
             // TODO Auto-generated catch block
             Log.e("exp", "in catch");
@@ -988,7 +983,6 @@ public class CommonUtils {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
-        ;
     }
 
     public static void intentTo(Context mContext, Class toActivity) {
@@ -1055,7 +1049,8 @@ public class CommonUtils {
         }
         return time;
     }
-    public static void progressDialogShow(Context context){
+
+    public static void progressDialogShow(Context context) {
 
         progressdialog = new Dialog(context);
         progressdialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -1072,7 +1067,8 @@ public class CommonUtils {
         progressdialog.show();
 
     }
-    public static void hideProgressDoalog(){
+
+    public static void hideProgressDoalog() {
         if (progressdialog.isShowing()) {
             try {
                 progressdialog.dismiss();
@@ -1082,11 +1078,10 @@ public class CommonUtils {
         }
     }
 
-    public static void tabChange(Context context, ImageView home, ImageView search, ImageView cart, ImageView account, TextView txthome, TextView txtsearch , TextView txtcart, TextView txtaccount)
-    {
-        home.setColorFilter(context.getResources().getColor( R.color.red_pitch));
-        search.setColorFilter(context.getResources().getColor( R.color.nav_black));
-        cart.setColorFilter(context.getResources().getColor( R.color.nav_black));
+    public static void tabChange(Context context, ImageView home, ImageView search, ImageView cart, ImageView account, TextView txthome, TextView txtsearch, TextView txtcart, TextView txtaccount) {
+        home.setColorFilter(context.getResources().getColor(R.color.red_pitch));
+        search.setColorFilter(context.getResources().getColor(R.color.nav_black));
+        cart.setColorFilter(context.getResources().getColor(R.color.nav_black));
         account.setColorFilter(context.getResources().getColor(R.color.nav_black));
         // account.
 

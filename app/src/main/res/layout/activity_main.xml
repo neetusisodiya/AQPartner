@@ -13,22 +13,22 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/bottombar"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
     <include
         android:id="@+id/bottombar"
         layout="@layout/bottom_bar" />
 
     <com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView
         android:id="@+id/navigationView"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        app:backgroundTint="#CACAD6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/nevigation"
-        android:layout_alignParentBottom="true"
-        app:backgroundTint="#CACAD6"
         app:morphCornerRadius="128dp"
         app:morphItemRadius="64dp"
-        app:morphVerticalOffset="8dp"
-        />
+        app:morphVerticalOffset="8dp" />
 
 </RelativeLayout>

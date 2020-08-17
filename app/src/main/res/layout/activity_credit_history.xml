@@ -14,10 +14,10 @@
 
 
         <TextView
-            android:padding="@dimen/font_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:padding="@dimen/font_10"
             android:text="Credit History"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
@@ -60,13 +60,12 @@
         android:id="@+id/rechargeAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/adapter_points"
-        android:horizontalSpacing="10dp"
         android:layout_gravity="center"
         android:layout_margin="10dp"
+        android:horizontalSpacing="10dp"
         android:numColumns="2"
-        android:verticalSpacing="10dp" />
-
+        android:verticalSpacing="10dp"
+        tools:listitem="@layout/adapter_points" />
 
 
     <com.google.android.material.appbar.AppBarLayout

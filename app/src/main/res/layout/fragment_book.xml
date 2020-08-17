@@ -18,7 +18,6 @@
         android:textStyle="bold" />
 
 
-
     <LinearLayout
         android:id="@+id/lin"
         android:layout_width="match_parent"
@@ -27,13 +26,13 @@
         android:weightSum="3">
 
         <Button
-            android:background="@color/reddd"
-            android:textColor="@color/colorWhite"
             android:id="@+id/btnopen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:text="Open" />
+            android:background="@color/reddd"
+            android:text="Open"
+            android:textColor="@color/colorWhite" />
 
         <Button
             android:id="@+id/btnasssignn"
@@ -45,12 +44,12 @@
 
         <Button
             android:id="@+id/btnpast"
-            android:background="@color/colorWhite"
-            android:textColor="@color/reddd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:text="Past" />
+            android:background="@color/colorWhite"
+            android:text="Past"
+            android:textColor="@color/reddd" />
     </LinearLayout>
 
     <FrameLayout

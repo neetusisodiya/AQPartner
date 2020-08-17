@@ -14,8 +14,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import static maes.tech.intentanim.CustomIntent.customType;
 
 public class SplashActivity extends AppBaseActivity {
-    String id;
     private static final int splash = 2000;
+    String id;
     AppPreferences mAppPreferences;
 
     @Override

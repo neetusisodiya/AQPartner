@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class TabAdapter extends FragmentPagerAdapter {
 
 
-    private final ArrayList<Fragment> fragmentArrayList=new ArrayList<>();
-    private final ArrayList<String> fragmentTitle=new ArrayList<>();
+    private final ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
+    private final ArrayList<String> fragmentTitle = new ArrayList<>();
 
 
     public TabAdapter(@NonNull FragmentManager fm, int behavior) {
@@ -34,7 +34,7 @@ public class TabAdapter extends FragmentPagerAdapter {
         return fragmentArrayList.size();
     }
 
-    public void addFragment(Fragment fragment, String title){
+    public void addFragment(Fragment fragment, String title) {
         fragmentArrayList.add(fragment);
         fragmentTitle.add(title);
 

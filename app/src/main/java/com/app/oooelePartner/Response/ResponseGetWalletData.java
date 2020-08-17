@@ -13,10 +13,8 @@ public class ResponseGetWalletData {
      */
 
     private String status;
-    private String total_amount
-
-
-;
+    private String total_amount;
+    private List<BeanGetWalletData> data;
 
     public String getTotal_amount() {
         return total_amount;
@@ -25,8 +23,6 @@ public class ResponseGetWalletData {
     public void setTotal_amount(String total_amount) {
         this.total_amount = total_amount;
     }
-
-    private List<BeanGetWalletData> data;
 
     public String getStatus() {
         return status;
@@ -44,4 +40,4 @@ public class ResponseGetWalletData {
         this.data = data;
     }
 
- }
+}

@@ -1,55 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_selected"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:layout_centerVertical="true"
     android:layout_alignParentBottom="true"
+    android:layout_centerVertical="true"
     android:layout_gravity="center"
-    android:gravity="center"
-    android:paddingTop="5dp"
     android:background="@color/colorWhite"
+    android:gravity="center"
     android:orientation="horizontal"
+    android:paddingTop="5dp"
     android:weightSum="4">
 
     <RelativeLayout
         android:id="@+id/footerHome"
         android:layout_width="0dp"
-        android:orientation="vertical"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_new"
-            />
+            android:src="@drawable/ic_new" />
 
         <TextView
-            android:layout_below="@+id/iv_home"
             android:id="@+id/txthome"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_home"
             android:gravity="center_horizontal"
             android:text="Home"
-            android:textStyle="bold"
             android:textSize="10dp"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/footersearch"
         android:layout_width="0dp"
-        android:orientation="vertical"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/ivsearch"
@@ -60,15 +58,15 @@
             android:src="@drawable/ic_book" />
 
         <TextView
-            android:layout_below="@+id/ivsearch"
             android:id="@+id/txtsearch"
             android:layout_width="wrap_content"
-            android:text="Booking"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivsearch"
             android:layout_centerHorizontal="true"
 
-            android:textStyle="bold"
+            android:text="Booking"
             android:textSize="10dp"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -76,11 +74,10 @@
         android:id="@+id/footerCart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
-        >
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_cart"
@@ -105,10 +102,10 @@
         android:id="@+id/footeraccount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_weight="1"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_account"
@@ -117,14 +114,14 @@
             android:src="@drawable/ic_baseline_account_balance_wallet_24" />
 
         <TextView
-            android:layout_below="@+id/iv_account"
             android:id="@+id/txtaccount"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_account"
             android:gravity="center_horizontal"
             android:text="@string/wallet"
-            android:textStyle="bold"
             android:textSize="10sp"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold" />
 
     </RelativeLayout>
 

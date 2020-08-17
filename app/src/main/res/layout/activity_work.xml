@@ -7,7 +7,8 @@
     android:background="@drawable/bg"
 
     tools:context=".DoubleActivity.WorkActivity">
-     <RelativeLayout
+
+    <RelativeLayout
 
         android:id="@+id/topbar"
         android:layout_width="match_parent"
@@ -37,9 +38,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleItem"
-        android:layout_below="@+id/topbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/topbar"
         android:layout_marginTop="5dp" />
 
     <com.wang.avi.AVLoadingIndicatorView

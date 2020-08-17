@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
->
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -23,21 +21,21 @@
             android:padding="42dp">
 
             <TextView
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
                 android:fontFamily="@font/opensans_regular"
-                android:text="Please Select The Payment option"/>
+                android:gravity="center"
+                android:text="Please Select The Payment option"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
 
             <RadioGroup
-                 android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginLeft="20dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="32dp">
 
                 <RadioButton
                     android:id="@+id/cashond"
@@ -45,29 +43,30 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:fontFamily="@font/opensans_regular"
-                    android:text="Add Money"/>
+                    android:text="Add Money" />
 
-            <!--    <RadioButton
-                    android:id="@+id/payupi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/opensans_regular"
-                    android:text="Payment with Upi"/>-->
+                <!--    <RadioButton
+                        android:id="@+id/payupi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="Payment with Upi"/>-->
 
 
             </RadioGroup>
-            <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/lindriverins"
-                android:layout_marginTop="32dp"
 
+            <LinearLayout
+                android:id="@+id/lindriverins"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+
                 android:layout_below="@+id/tv_2"
                 android:layout_marginLeft="20dp"
-                 android:layout_marginRight="20dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/edit_bg"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
 
                 <Spinner
@@ -79,17 +78,18 @@
                     android:layout_marginRight="20dp" />
 
             </LinearLayout>
+
             <Button
                 android:id="@+id/payment"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
-                android:background="@color/colorGreen"
-                android:textColor="@color/colorWhite"
                 android:layout_gravity="center"
-                android:fontFamily="@font/opensans_regular"
-                android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:text="Continue"/>
+                android:background="@color/colorGreen"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Continue"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

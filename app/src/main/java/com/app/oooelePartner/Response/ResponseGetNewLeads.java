@@ -10,12 +10,11 @@ public class ResponseGetNewLeads {
     private String status;
     private String message;
     private int total_point;
+    private List<BeanNewLeads> data;
 
     public int getTotal_point() {
         return total_point;
     }
-
-    private List<BeanNewLeads> data;
 
     public String getStatus() {
         return status;

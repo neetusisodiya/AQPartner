@@ -30,4 +30,4 @@ public class ResponseSuperService {
         this.faults = faults;
     }
 
- }
+}

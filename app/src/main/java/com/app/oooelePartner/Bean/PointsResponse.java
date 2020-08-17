@@ -1,8 +1,9 @@
 package com.app.oooelePartner.Bean;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class PointsResponse {
 
@@ -27,4 +28,5 @@ public class PointsResponse {
 
     public void setData(List<PointsData> data) {
         this.data = data;
-    }}
+    }
+}

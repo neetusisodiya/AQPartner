@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/launcher_"
@@ -84,17 +85,18 @@
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_live_kPCY6fWTyiE5tt" />
-      <!--  <meta-data
-            android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_3ffwj8JQkENuYH" />-->
+        <!--  <meta-data
+              android:name="com.razorpay.ApiKey"
+              android:value="rzp_test_3ffwj8JQkENuYH" />-->
 
-        <service android:name="com.app.oooelePartner.Firebase.MyFirebaseMessagingService"
+        <service
+            android:name="com.app.oooelePartner.Firebase.MyFirebaseMessagingService"
             android:exported="false">
 
 
             <intent-filter>
 
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
 
             </intent-filter>
 

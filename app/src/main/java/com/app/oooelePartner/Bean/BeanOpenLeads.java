@@ -176,15 +176,15 @@ public class BeanOpenLeads {
         return created_at;
     }
 
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+
     public String getG_address() {
         return address;
     }
 
     public void setG_address(String g_address) {
         this.address = g_address;
-    }
-
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
     }
 }

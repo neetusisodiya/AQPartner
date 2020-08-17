@@ -37,9 +37,9 @@ public class AdapterGetWalletData extends RecyclerView.Adapter<AdapterGetWalletD
 
         holder.text_amount.setText("Credits: " + banVisits.get(position).getAmount() + " Oooele Points ");
         holder.text_detail.setText("Details: " + banVisits.get(position).getDetail());
-        holder.date.setText("Date: "+banVisits.get(position).getCreated());
+        holder.date.setText("Date: " + banVisits.get(position).getCreated());
 
-     }
+    }
 
 
     @Override
@@ -54,17 +54,15 @@ public class AdapterGetWalletData extends RecyclerView.Adapter<AdapterGetWalletD
     }
 
 
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView text_detail, text_amount,date;
+        TextView text_detail, text_amount, date;
         Button btn_complete;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             text_amount = itemView.findViewById(R.id.text_amount);
             text_detail = itemView.findViewById(R.id.text_detail);
-date=itemView.findViewById(R.id.text_date);
+            date = itemView.findViewById(R.id.text_date);
 
             User_Id = String.valueOf(AppPreferences.getSavedUser(context).getId());
 

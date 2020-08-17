@@ -32,4 +32,5 @@
     <string name="admin_will_decide_convenience_charges">
         *Convenience charges were managed by admin according to the terms and conditions</string>
     <string name="wallet">Wallet</string>
+    <string name="route">Route</string>
 </resources>

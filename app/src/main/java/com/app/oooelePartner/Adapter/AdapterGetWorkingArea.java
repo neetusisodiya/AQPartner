@@ -52,11 +52,11 @@ public class AdapterGetWorkingArea extends RecyclerView.Adapter<AdapterGetWorkin
         String StrRadius= String.valueOf(banVisits.get(position).getWorking_radius());*/
         //  holder.txt_id.setText(StrId);
         holder.txt_address.setText("Address  : " + banVisits.get(position).getAddress());
-        holder.txt_lat.setText    ("Latitude : " + banVisits.get(position).getLat());
+        holder.txt_lat.setText("Latitude : " + banVisits.get(position).getLat());
         Log.d("iodios", "" + StrLng);
 
         holder.txt_lng.setText("Logitude : " + banVisits.get(position).getLng());
-        holder.txt_radius.setText ("Radius   : " + banVisits.get(position).getWorking_radius()+"KM");
+        holder.txt_radius.setText("Radius   : " + banVisits.get(position).getWorking_radius() + "KM");
 
         holder.img_delte.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +119,7 @@ public class AdapterGetWorkingArea extends RecyclerView.Adapter<AdapterGetWorkin
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt_id, txt_lat, txt_lng, txt_radius, txt_address;
         ImageView img_delte;
+
         public ViewHolder(final View itemView) {
             super(itemView);
             txt_id = itemView.findViewById(R.id.txt_id);

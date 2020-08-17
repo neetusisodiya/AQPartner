@@ -4,7 +4,7 @@ public class BeanTimeSlot {
     /**
      * time1 : 8-9 PM
      */
-private String times;
+    private String times;
 
     private String status;
     private int id;

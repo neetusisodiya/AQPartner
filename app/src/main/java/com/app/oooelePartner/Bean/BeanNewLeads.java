@@ -3,7 +3,7 @@ package com.app.oooelePartner.Bean;
 public class BeanNewLeads {
 
     private String id;
-    private int isAccepted;
+    private String isAccepted;
     private String serv_id;
     private String fault;
     private String visit_time;
@@ -15,7 +15,12 @@ public class BeanNewLeads {
     private String serv;
     private String qty;
     private String visit_date;
+    private String accept_id;
     private String unitRate;
+
+    public String getAccept_id() {
+        return accept_id;
+    }
 
     public String getQty() {
         return qty;
@@ -30,7 +35,7 @@ public class BeanNewLeads {
     }
 
 
-    public int isAccepted() {
+    public String isAccepted() {
         return isAccepted;
     }
 

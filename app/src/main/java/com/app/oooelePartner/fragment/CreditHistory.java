@@ -42,6 +42,7 @@ public class CreditHistory extends Fragment {
 
     int totalCredit = 0;
     ViewPager viewPager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

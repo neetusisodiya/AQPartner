@@ -41,4 +41,4 @@ public class ResponseGetOpenLeads {
         this.data = data;
     }
 
- }
+}

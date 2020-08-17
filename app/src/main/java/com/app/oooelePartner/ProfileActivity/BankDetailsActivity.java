@@ -34,6 +34,8 @@ public class BankDetailsActivity extends AppCompatActivity implements View.OnCli
     Button btn_save;
     String userId;
     AVLoadingIndicatorView bar;
+    String nameInBank, accountNumber, ifscCode;
+    AppPreferences appPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +78,6 @@ public class BankDetailsActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    String nameInBank, accountNumber, ifscCode;
-
     public boolean isValidIFSCode(String str) {
         String regex
                 = "^[A-Z]{4}0[A-Z0-9]{6}$";
@@ -117,8 +117,6 @@ public class BankDetailsActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    AppPreferences appPreferences;
-
     public void SaveBankAccont() {
         bar.setVisibility(View.VISIBLE);
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -138,9 +136,9 @@ public class BankDetailsActivity extends AppCompatActivity implements View.OnCli
                 try {
                     if (response.body().getMessage().
                             equalsIgnoreCase("Bank Detail Successfully Updated")) {
-                       appPreferences.setUserData(bankIfscCode,ifscCode);
-                        appPreferences.setUserData(Account_Number,accountNumber);
-                        appPreferences.setUserData(Name_In_Bank,nameInBank);
+                        appPreferences.setUserData(bankIfscCode, ifscCode);
+                        appPreferences.setUserData(Account_Number, accountNumber);
+                        appPreferences.setUserData(Name_In_Bank, nameInBank);
 
                         Toast.makeText(getApplicationContext(), "Bank Detail Successfully Updated", Toast.LENGTH_SHORT).show();
                         onBackPressed();

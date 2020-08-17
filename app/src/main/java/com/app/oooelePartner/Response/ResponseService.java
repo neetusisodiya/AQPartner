@@ -39,4 +39,4 @@ public class ResponseService {
         this.data = data;
     }
 
- }
+}

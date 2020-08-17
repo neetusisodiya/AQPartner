@@ -3,7 +3,7 @@ package com.app.oooelePartner.model;
 public class newmodel {
 
 
-    String name,skill,day,quotes,credit;
+    String name, skill, day, quotes, credit;
 
     public newmodel() {
     }

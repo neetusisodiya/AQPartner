@@ -1,7 +1,6 @@
 package com.app.oooelePartner.Activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -53,7 +52,7 @@ public class WorkingTimeActivity extends AppBaseActivity implements View.OnClick
 
     public void find() {
         recycleTime = findViewById(R.id.recycleTime);
-        back_item=findViewById(R.id.back_item);
+        back_item = findViewById(R.id.back_item);
         bar = findViewById(R.id.bar);
         recycleTime.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
@@ -63,11 +62,12 @@ public class WorkingTimeActivity extends AppBaseActivity implements View.OnClick
         back_item.setOnClickListener(this);
 
     }
+
     @Override
     public void onClick(View v) {
-if (v==back_item){
-onBackPressed();
-}
+        if (v == back_item) {
+            onBackPressed();
+        }
     }
 
     public void AllMainData() {
@@ -80,7 +80,7 @@ onBackPressed();
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                 bar.setVisibility(View.GONE);
+                bar.setVisibility(View.GONE);
 
                 if (response.isSuccessful()) {
                     try {
@@ -116,7 +116,7 @@ onBackPressed();
                             if (responseSuperServices.size() > 0) {
                                 adapterWorkingTime = new AdapterWorkingTime(getApplication(), responseSuperServices);
                                 recycleTime.setAdapter(adapterWorkingTime);
-                              //  adapterWorkingTime.notifyDataSetChanged();
+                                //  adapterWorkingTime.notifyDataSetChanged();
 
                             }
                         }

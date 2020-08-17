@@ -2,16 +2,16 @@ package com.app.oooelePartner.GeoFence;
 
 import android.app.IntentService;
 import android.content.Intent;
-
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.app.oooelePartner.Utill.Constants;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
-import com.app.oooelePartner.Utill.Constants;
 
 import java.util.List;
+
 public class GeofenceTrasitionService extends IntentService {
     private static final String TAG = "GeoIntentService";
 

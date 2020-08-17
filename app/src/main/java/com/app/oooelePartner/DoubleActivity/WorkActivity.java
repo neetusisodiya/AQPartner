@@ -1,14 +1,14 @@
 package com.app.oooelePartner.DoubleActivity;
 
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.oooelePartner.Adapter.WorkignServiceAdapter;
 import com.app.oooelePartner.Bean.SuperServiceBean;
@@ -32,14 +32,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class WorkActivity extends AppBaseActivity implements View.OnClickListener {
-RecyclerView recycleItem;
-String User_Id;
-AVLoadingIndicatorView bar;
-WorkignServiceAdapter workignServiceAdapter;
-     ArrayList<ResponseSuperService>  responseSuperServices;
+    RecyclerView recycleItem;
+    String User_Id;
+    AVLoadingIndicatorView bar;
+    WorkignServiceAdapter workignServiceAdapter;
+    ArrayList<ResponseSuperService> responseSuperServices;
     RecyclerView.LayoutManager layoutManager;
     ImageView back_item;
     private int scrollPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,15 +48,15 @@ WorkignServiceAdapter workignServiceAdapter;
         User_Id = String.valueOf(AppPreferences.getSavedUser(mContext).getId());
 
         find();
-         AllMainData();
-     }
+        AllMainData();
+    }
 
-    public void find(){
-        recycleItem=findViewById(R.id.recycleItem);
-        bar=findViewById(R.id.bar);
-        back_item=findViewById(R.id.back_item);
+    public void find() {
+        recycleItem = findViewById(R.id.recycleItem);
+        bar = findViewById(R.id.bar);
+        back_item = findViewById(R.id.back_item);
         recycleItem.setHasFixedSize(true);
-         layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recycleItem.setLayoutManager(layoutManager);
         recycleItem.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
         recycleItem.setAdapter(workignServiceAdapter);
@@ -64,16 +65,16 @@ WorkignServiceAdapter workignServiceAdapter;
 
     @Override
     public void onClick(View v) {
-if (v==back_item){
-    onBackPressed();
+        if (v == back_item) {
+            onBackPressed();
 
-}
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-    //    recycleItem.setScrollY(scrollPosition);
+        //    recycleItem.setScrollY(scrollPosition);
     }
 
     public void AllMainData() {
@@ -94,7 +95,7 @@ if (v==back_item){
                         String resturentMenu = response.body().string();
                         JSONObject jsonObject = new JSONObject(resturentMenu);
                         String status = jsonObject.optString("status");
-                         //  String catpath = jsonObject.optString("catpath");
+                        //  String catpath = jsonObject.optString("catpath");
                         //   String SubcatPath = jsonObject.optString("subcatPath");
 
                         if (status.equalsIgnoreCase(String.valueOf(true))) {
@@ -123,7 +124,7 @@ if (v==back_item){
                                     for (int j = 0; j < jsonArray1.length(); j++) {
                                         JSONObject jsonObject2 = jsonArray1.getJSONObject(j);
                                         SuperServiceBean mRestaurent_subCatBean = new SuperServiceBean();
-                                      mRestaurent_subCatBean.setId(Integer.parseInt(jsonObject2.getString("id")));
+                                        mRestaurent_subCatBean.setId(Integer.parseInt(jsonObject2.getString("id")));
                                         mRestaurent_subCatBean.setFault(jsonObject2.getString("fault"));
                                         mRestaurent_subCatBean.setStatus(jsonObject2.getString("status"));
 

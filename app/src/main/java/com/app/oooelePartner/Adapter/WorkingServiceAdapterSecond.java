@@ -1,7 +1,6 @@
 package com.app.oooelePartner.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +26,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 public class WorkingServiceAdapterSecond extends RecyclerView.Adapter<WorkingServiceAdapterSecond.ViewHolder> {
-    Boolean checkBoxState;
     public Context context;
+    Boolean checkBoxState;
     String Cat_ID;
     String User_Id;
     String StrDiscount;

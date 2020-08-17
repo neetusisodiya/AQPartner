@@ -3,7 +3,7 @@ package com.app.oooelePartner.model;
 public class assmodel {
 
 
-    String assname,assTime,assPlace,assPrice,assPartner;
+    String assname, assTime, assPlace, assPrice, assPartner;
 
     public assmodel() {
     }

@@ -41,4 +41,4 @@ public class ResponseWorkingRadiusList {
         this.data = data;
     }
 
- }
+}

@@ -34,14 +34,15 @@
             android:textSize="16dp" />
 
     </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleTime"
-        android:layout_below="@+id/topbar"
         android:layout_width="match_parent"
-        android:layoutAnimation="@anim/layout_animation_down_to_up"
-
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp" />
+        android:layout_below="@+id/topbar"
+
+        android:layout_marginTop="5dp"
+        android:layoutAnimation="@anim/layout_animation_down_to_up" />
 
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/bar"

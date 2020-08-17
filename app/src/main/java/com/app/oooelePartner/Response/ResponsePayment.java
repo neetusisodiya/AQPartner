@@ -2,7 +2,7 @@ package com.app.oooelePartner.Response;
 
 public class ResponsePayment {
 
-      /**
+    /**
      * status : true
      * message : Successfully Added to User Wallet
      */

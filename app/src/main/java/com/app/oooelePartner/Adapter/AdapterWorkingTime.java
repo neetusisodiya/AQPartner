@@ -1,7 +1,6 @@
 package com.app.oooelePartner.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,14 +47,14 @@ public class AdapterWorkingTime extends RecyclerView.Adapter<AdapterWorkingTime.
         holder.txt_day.setText(str_dishname);
         if (modal.getTime().size() > 0) {
             AdapterWorkingTimeSecond adapterSingle = new
-                    AdapterWorkingTimeSecond(context, modal.getTime(),modal.getDay());
+                    AdapterWorkingTimeSecond(context, modal.getTime(), modal.getDay());
 
-       holder.recycleTime.setLayoutManager(new
-               StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
+            holder.recycleTime.setLayoutManager(new
+                    StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
 
-      // holder.recycleTime.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+            // holder.recycleTime.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
             holder.recycleTime.setAdapter(adapterSingle);
-       //     adapterSingle.notifyDataSetChanged();
+            //     adapterSingle.notifyDataSetChanged();
         }
 
     }

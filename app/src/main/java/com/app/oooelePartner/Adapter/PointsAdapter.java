@@ -18,6 +18,7 @@ public class PointsAdapter extends BaseAdapter {
     Activity context;
     List<PointsData> banVisits;
     LayoutInflater inflter;
+    String points, pointsForSend;
 
     public PointsAdapter(Activity context, List<PointsData> banVisits) {
         this.context = context;
@@ -40,8 +41,6 @@ public class PointsAdapter extends BaseAdapter {
         return 0;
     }
 
-    String points, pointsForSend;
-
     @Override
     public View getView(int position, View itemView, ViewGroup parent) {
         itemView = inflter.inflate(R.layout.adapter_points, null);
@@ -63,9 +62,8 @@ public class PointsAdapter extends BaseAdapter {
 
             }
         });
-        return  itemView;
+        return itemView;
     }
-
 
 
 }

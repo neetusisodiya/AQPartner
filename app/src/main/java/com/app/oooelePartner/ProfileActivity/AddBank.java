@@ -1,8 +1,8 @@
 package com.app.oooelePartner.ProfileActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.oooelePartner.R;
 

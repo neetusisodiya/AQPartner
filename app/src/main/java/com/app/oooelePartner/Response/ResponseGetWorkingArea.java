@@ -41,4 +41,4 @@ public class ResponseGetWorkingArea {
         this.data = data;
     }
 
- }
+}

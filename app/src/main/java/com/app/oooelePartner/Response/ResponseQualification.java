@@ -31,4 +31,4 @@ public class ResponseQualification {
         this.data = data;
     }
 
- }
+}

@@ -69,11 +69,12 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
     SmsBroadcastReceiver smsBroadcastReceiver;
     String str_Token;
     AppPreferences mAppPreferences;
+    TextView tvWait;
     private String formatted = "";
     private boolean mobileVerified = false;
     private int revealX;
     private int revealY;
-    TextView tvWait;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -189,8 +190,6 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
     }
 
 
-
-
     private void doLogin() {
         bar.setVisibility(View.VISIBLE);
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -220,14 +219,14 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
                         appPreferences.setUserData(AppPreferences.secure_token, loginBean.getSecure_token());
                         appPreferences.setUserData(ADDRESS, loginBean.getAddress());
                         appPreferences.setUserData(PINCODE, loginBean.getPincode());
-                        if(loginBean.getExp_year()!=null)
-                        appPreferences.setUserData(EXPERIENCE_YEAR, loginBean.getExp_year());
-                        if(loginBean.getExp_month()!=null)
-                        appPreferences.setUserData(EXPERIENCE_MONTH, loginBean.getExp_month());
-                        if(loginBean.getQualification_id()!=null)
+                        if (loginBean.getExp_year() != null)
+                            appPreferences.setUserData(EXPERIENCE_YEAR, loginBean.getExp_year());
+                        if (loginBean.getExp_month() != null)
+                            appPreferences.setUserData(EXPERIENCE_MONTH, loginBean.getExp_month());
+                        if (loginBean.getQualification_id() != null)
                             appPreferences.setUserData(Qualifications,
                                     String.valueOf(loginBean.getQualification_id()));
-                        if(loginBean.getExpert_type_id()!=null)
+                        if (loginBean.getExpert_type_id() != null)
 
                             appPreferences.setUserData(EXPERT_IN, String.valueOf(loginBean.getExpert_type_id()));
                         startActivity(new Intent(mContext, MainActivity.class));
