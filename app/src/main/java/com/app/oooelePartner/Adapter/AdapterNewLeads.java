@@ -3,7 +3,6 @@ package com.app.oooelePartner.Adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,16 +53,22 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(final AdapterNewLeads.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final AdapterNewLeads.ViewHolder holder, final int position) {
         points = banVisits.get(position).getPoint();
+        /*if(banVisits.get(position).getCharges().equals("")){
+            holder.tvCharges.setVisibility(View.GONE);
+        }else {
+            String charges = banVisits.get(position).getCharges();
+            holder.tvCharges.setText(charges);
+        }*/
 
-        String bookingDate = "Visiting Date: " + banVisits.get(position).getVisit_date();
+
+        String bookingDate = "Visiting Date:\n " + banVisits.get(position).getVisit_date();
         holder.txt_bookingddate.setText(bookingDate);
         String visitTime;
         visitTime = "Visit time: " + banVisits.get(position).getVisit_time();
         holder.txt_visittime.setText(visitTime);
         String faults = "Faults: " + banVisits.get(position).getFault();
-
         holder.txt_service2.setText(faults);
         String price = "Price: " + banVisits.get(position).getUnitRate();
         String quantity = banVisits.get(position).getQty();
@@ -91,8 +96,7 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
             }
 
         }
-        Log.d("LOG_MESSAGE", "banVisits.size: " + banVisits.size());
-        Log.d("LOG_MESSAGE", "onBindViewHolder: " + position);
+
 
         holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,17 +181,11 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
                 public void onResponse(Call<ResponseAccept> call, Response<ResponseAccept> response) {
 
                     try {
+                        Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_LONG).show();
 
-                        if (response.body().getMessage().equals("Order Successfully Accepted")) {
-                            HomeFragment.bar.setVisibility(View.GONE);
-                            viewHolder.cardView.setVisibility(View.GONE);
-                            viewHolder.itemView.setVisibility(View.GONE);
-                            Toast.makeText(context, "Lead Booked!!", Toast.LENGTH_LONG).show();
-                        } else {
-                            //      bar.setVisibility(View.GONE);
-                            //     relihidedata.setVisibility(View.VISIBLE);
-                            //     btn_placeorder.setVisibility(View.GONE);
-                        }
+                        HomeFragment.bar.setVisibility(View.GONE);
+                        viewHolder.cardView.setVisibility(View.GONE);
+                        viewHolder.itemView.setVisibility(View.GONE);
 
 
                     } catch (Exception e) {
@@ -216,7 +214,7 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt_bookingddate,
-                quantity, txt_visittime, txt_service, txt_service2, textSubServices, txtPrice, txtPoints;
+                quantity, txt_visittime, tvCharges, txt_service, txt_service2, textSubServices, txtPrice, txtPoints;
         ImageView img_location, img_qty;
         Button accept;
         CardView cardView;
@@ -235,6 +233,7 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
             txtPrice = itemView.findViewById(R.id.txt_price);
             cardView = itemView.findViewById(R.id.card_leads);
             quantity = itemView.findViewById(R.id.txt_quantity);
+            tvCharges = itemView.findViewById(R.id.txt_charges);
         }
     }
 

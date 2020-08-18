@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.app.oooelePartner.Activity.MainActivity;
 import com.app.oooelePartner.Adapter.AdapterNewLeads;
@@ -30,7 +32,7 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     public static AVLoadingIndicatorView bar;
-    TextView img_nodata, aboutTerms;
+    TextView img_nodata, tvTime, aboutTerms;
     View view;
     AdapterNewLeads adapterNewLeads;
     RecyclerView newRecycle;
@@ -38,6 +40,7 @@ public class HomeFragment extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     MainActivity mainActivity;
     AppPreferences appPreferences;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     public HomeFragment() {
     }
@@ -49,6 +52,14 @@ public class HomeFragment extends Fragment {
         mainActivity = (MainActivity) getActivity();
         findd();
         getNewLead();
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getNewLead();
+                mSwipeRefreshLayout.setRefreshing(false);
+
+            }
+        });
         return view;
     }
 
@@ -56,6 +67,8 @@ public class HomeFragment extends Fragment {
         aboutTerms = view.findViewById(R.id.terms);
         bar = view.findViewById(R.id.bar);
         img_nodata = view.findViewById(R.id.img_nodata);
+        mSwipeRefreshLayout = view.findViewById(R.id.swiperefresh_items);
+        tvTime = view.findViewById(R.id.time);
         appPreferences = new AppPreferences(getContext());
         userId = appPreferences.getUserData(AppPreferences.KEY_ID);
         //   recordenotfound = view.findViewById(R.id.recordenotfound);
@@ -81,6 +94,8 @@ public class HomeFragment extends Fragment {
     private void getNewLead() {
         bar.setVisibility(View.VISIBLE);
         aboutTerms.setVisibility(View.GONE);
+        tvTime.setVisibility(View.GONE);
+
         ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
         FormBody.Builder builder = ApiClient.createBuilder(new String[]{"expert_id"}, new
                 String[]{userId});
@@ -90,15 +105,17 @@ public class HomeFragment extends Fragment {
 
             call.enqueue(new Callback<ResponseGetNewLeads>() {
                 @Override
-                public void onResponse(Call<ResponseGetNewLeads> call, Response<ResponseGetNewLeads> response) {
+                public void onResponse(@NonNull Call<ResponseGetNewLeads> call,
+                                       @NonNull Response<ResponseGetNewLeads> response) {
 
                     try {
 
-                        if (response.body().getStatus().equals("true")) {
+                        if (response.body().getStatus()) {
                             bar.setVisibility(View.GONE);
                             aboutTerms.setVisibility(View.VISIBLE);
-
-
+                            aboutTerms.setText(response.body().getCharge_text());
+                            tvTime.setVisibility(View.VISIBLE);
+                            tvTime.setText(response.body().getTime_text());
                             adapterNewLeads = new AdapterNewLeads(getActivity(), response.body().getData(),
                                     response.body().getTotal_point(), userId);
                             newRecycle.setAdapter(adapterNewLeads);

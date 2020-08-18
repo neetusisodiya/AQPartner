@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import com.app.oooelePartner.Response.ResponseGetOpenLeads;
 import com.app.oooelePartner.Rest.ApiClient;
 import com.app.oooelePartner.Rest.ApiInterface;
 import com.app.oooelePartner.Utill.CommonUtils;
+import com.app.oooelePartner.Utill.OpenLeadsInterface;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PastFragment extends Fragment {
+public class PastFragment extends Fragment implements OpenLeadsInterface {
     GifImageView rec_not_foundd;
     AdapterOpenLead adapterOpenLead;
     View view;
@@ -51,17 +53,7 @@ public class PastFragment extends Fragment {
     }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_past, container, false);
-        User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
-
-        find();
-        getOpenLead();
-        return view;
-    }
+    OpenLeadsInterface openLeadsInterface;
 
     public void find() {
         // rec_not_foundd = view.findViewById(R.id.rec_not_foundd);
@@ -85,6 +77,19 @@ public class PastFragment extends Fragment {
         // getCurrentLead();
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_past, container, false);
+        User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
+        openLeadsInterface = this;
+
+        find();
+        getOpenLead();
+        return view;
+    }
+
     private void getOpenLead() {
 
         bar.setVisibility(View.VISIBLE);
@@ -101,7 +106,7 @@ public class PastFragment extends Fragment {
                             bar.setVisibility(View.GONE);
 
 
-                            adapterOpenLead = new AdapterOpenLead(getActivity(), response.body().getData(), false);
+                            adapterOpenLead = new AdapterOpenLead(getActivity(), openLeadsInterface, response.body().getData(), false);
                             recyclePastleads.setAdapter(adapterOpenLead);
                         } else {
                             text_rel.setVisibility(View.VISIBLE);
@@ -113,18 +118,18 @@ public class PastFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<ResponseGetOpenLeads> call, Throwable t) {
-                    // bar.setVisibility(View.GONE);
-                    // Toast.makeText(getApplicationContext(),"mobile Or Password Wrong..", Toast.LENGTH_SHORT).show();
+                public void onFailure(@NonNull Call<ResponseGetOpenLeads> call, @NonNull Throwable t) {
                 }
             });
         } else {
-            //progressDialog.dismiss();
-            //  scrolls.setVisibility(View.VISIBLE);
-            // reli.setVisibility(View.VISIBLE);
+
             Toast.makeText(getContext(), "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
 
         }
     }
 
+    @Override
+    public void onRowClick() {
+
+    }
 }

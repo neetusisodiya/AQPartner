@@ -21,6 +21,7 @@ import com.app.oooelePartner.Response.ResponseGetOpenLeads;
 import com.app.oooelePartner.Rest.ApiClient;
 import com.app.oooelePartner.Rest.ApiInterface;
 import com.app.oooelePartner.Utill.CommonUtils;
+import com.app.oooelePartner.Utill.OpenLeadsInterface;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -31,7 +32,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class OpenFragment extends Fragment {
+public class OpenFragment extends Fragment implements OpenLeadsInterface {
+    OpenLeadsInterface openLeadsInterface;
     public static AVLoadingIndicatorView bar;
     AdapterOpenLead adapterOpenLead;
     View view;
@@ -44,15 +46,8 @@ public class OpenFragment extends Fragment {
     public OpenFragment() {
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_open, container, false);
-        User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
-        find();
+    public void onRowClick() {
         getOpenLead();
-        //getCurrentLead();
-        return view;
     }
 
     public void find() {
@@ -78,7 +73,19 @@ public class OpenFragment extends Fragment {
         // getCurrentLead();
     }
 
-    private void getOpenLead() {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_open, container, false);
+        User_Id = String.valueOf(AppPreferences.getSavedUser(getActivity()).getId());
+        find();
+        openLeadsInterface = this;
+        getOpenLead();
+        //getCurrentLead();
+        return view;
+    }
+
+    public void getOpenLead() {
 
         bar.setVisibility(View.VISIBLE);
 
@@ -94,12 +101,15 @@ public class OpenFragment extends Fragment {
                         if (response.body().getStatus().equals("true")) {
                             bar.setVisibility(View.GONE);
                             banVisits = new ArrayList<>();
-                            adapterOpenLead = new AdapterOpenLead(getActivity(), response.body().getData(), true);
-                            recycleCurrentleads.setAdapter(adapterOpenLead);
 
+                            adapterOpenLead = new AdapterOpenLead(getActivity()
+                                    , openLeadsInterface, response.body().getData(), true);
+                            recycleCurrentleads.setAdapter(adapterOpenLead);
+                            adapterOpenLead.notifyDataSetChanged();
                         } else {
                             text_rel.setVisibility(View.VISIBLE);
                             bar.setVisibility(View.GONE);
+                            recycleCurrentleads.setVisibility(View.GONE);
                         }
                     } catch (Exception e) {
                     }

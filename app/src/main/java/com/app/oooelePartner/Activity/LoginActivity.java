@@ -219,6 +219,8 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
                         appPreferences.setUserData(AppPreferences.secure_token, loginBean.getSecure_token());
                         appPreferences.setUserData(ADDRESS, loginBean.getAddress());
                         appPreferences.setUserData(PINCODE, loginBean.getPincode());
+                        // TODO: 18-Aug-20 status
+                        //appPreferences.setUserData(_isFirstTime,loginBean.getStatus());
                         if (loginBean.getExp_year() != null)
                             appPreferences.setUserData(EXPERIENCE_YEAR, loginBean.getExp_year());
                         if (loginBean.getExp_month() != null)

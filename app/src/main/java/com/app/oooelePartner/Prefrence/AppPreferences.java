@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 
 
 public class AppPreferences {
+    public static final String _isFirstTime = "_isFirstTime";
 
 
     public static final String SHARED_PREFERENCE_NAME = "FIREBASE_TOKEN";

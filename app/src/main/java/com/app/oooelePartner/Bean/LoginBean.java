@@ -143,6 +143,12 @@ public class LoginBean {
         return pincode;
     }
 
+    String status;
+
+    public String getStatus() {
+        return status;
+    }
+
     public void setPincode(String pincode) {
         this.pincode = pincode;
     }

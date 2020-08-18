@@ -70,6 +70,11 @@ public class BeanNewLeads {
         return visit_time;
     }
 
+    String charges;
+
+    public String getCharges() {
+        return charges;
+    }
 
     public int getPoint() {
         return point;

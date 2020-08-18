@@ -7,20 +7,30 @@ import java.util.List;
 public class ResponseGetNewLeads {
 
 
-    private String status;
+    String time_text;
     private String message;
     private int total_point;
     private List<BeanNewLeads> data;
+    String charge_text;
+    private boolean status;
+
+    public String getTime_text() {
+        return time_text;
+    }
+
+    public String getCharge_text() {
+        return charge_text;
+    }
 
     public int getTotal_point() {
         return total_point;
     }
 
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 

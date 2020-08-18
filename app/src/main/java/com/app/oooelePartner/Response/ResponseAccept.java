@@ -8,6 +8,11 @@ public class ResponseAccept {
      */
 
     private String message;
+    private boolean status;
+
+    public boolean getStatus() {
+        return status;
+    }
 
     public String getMessage() {
         return message;

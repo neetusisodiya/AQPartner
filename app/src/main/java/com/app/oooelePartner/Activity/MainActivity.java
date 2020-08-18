@@ -1,17 +1,21 @@
 package com.app.oooelePartner.Activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.app.oooelePartner.Prefrence.AppPreferences;
 import com.app.oooelePartner.R;
 import com.app.oooelePartner.Utill.CommonUtils;
 import com.app.oooelePartner.fragment.BookFragment;
@@ -27,33 +31,30 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragment;
     RelativeLayout footerHome, footersearch, footerCart, footeraccount;
     MorphBottomNavigationView bottomNavigationView;
+    AppPreferences mAppPreferences;
     private BottomNavigationView.OnNavigationItemSelectedListener
-            mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            Fragment fragment = null;
-            switch (menuItem.getItemId()) {
-                case R.id.newfrag:
-                    //toolbar.setTitle("My Gifts");
-                    fragment = new HomeFragment();
-                    loadFragmentmain(fragment);
-                    return true;
-                case R.id.booking:
-                    fragment = new BookFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.profile:
-                    //toolbar.setTitle("Cart");
-                    fragment = new ProfileFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.menu:
-                    fragment = new CreditHistory();
-                    loadFragment(fragment);
-                    return true;
-            }
-            return false;
+            mOnNavigationItemSelectedListener = menuItem -> {
+        Fragment fragment = null;
+        switch (menuItem.getItemId()) {
+            case R.id.newfrag:
+                //toolbar.setTitle("My Gifts");
+                fragment = new HomeFragment();
+                loadFragmentmain(fragment);
+                return true;
+            case R.id.booking:
+                fragment = new BookFragment();
+                loadFragment(fragment);
+                return true;
+            case R.id.profile:
+                fragment = new ProfileFragment();
+                loadFragment(fragment);
+                return true;
+            case R.id.menu:
+                fragment = new CreditHistory();
+                loadFragment(fragment);
+                return true;
         }
+        return false;
     };
 
     @Override
@@ -61,7 +62,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         find();
+        mAppPreferences = new AppPreferences(this);
+
+       /* if (mAppPreferences.getUserData(AppPreferences._isFirstTime).equals("2")) {
+            showDialogForTermsCondition();
+            mAppPreferences.setUserData(AppPreferences._isFirstTime, "3");
+        }*/
         loadFragmentmain(new HomeFragment());
+    }
+
+    private void showDialogForTermsCondition() {
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        View dialogView = LayoutInflater.from(this).inflate
+                (R.layout.terms_condition_dialog, viewGroup, false);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setView(dialogView);
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.setCancelable(false);
+        alertDialog.findViewById(R.id.buttonOk).setOnClickListener(v -> alertDialog.dismiss());
+        TextView tvAmount = alertDialog.findViewById(R.id.learn_more);
+        tvAmount.setOnClickListener(v -> {
+            String url = "https://oooele.com/term-condition";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
+        });
     }
 
     public void find() {

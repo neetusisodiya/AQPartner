@@ -33,4 +33,6 @@
         *Convenience charges were managed by admin according to the terms and conditions</string>
     <string name="wallet">Wallet</string>
     <string name="route">Route</string>
+    <string name="by_signing_up_you_are_agree_with_our_term_and_condition">By signing up you are agree with our term and condition</string>
+    <string name="learn_more">Learn more</string>
 </resources>

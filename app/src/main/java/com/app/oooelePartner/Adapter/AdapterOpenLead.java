@@ -19,6 +19,7 @@ import com.app.oooelePartner.Response.ResponseAccept;
 import com.app.oooelePartner.Rest.ApiClient;
 import com.app.oooelePartner.Rest.ApiInterface;
 import com.app.oooelePartner.Utill.CommonUtils;
+import com.app.oooelePartner.Utill.OpenLeadsInterface;
 import com.app.oooelePartner.fragment.OpenFragment;
 
 import java.util.List;
@@ -33,12 +34,18 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
     String User_Id;
     List<BeanOpenLeads> banVisits;
     boolean _isLeadOpen;
+    private OpenLeadsInterface callBackListener;
 
-    public AdapterOpenLead(Context context, List<BeanOpenLeads> banVisits, boolean _isLeadOpen) {
+    public AdapterOpenLead(Context context, OpenLeadsInterface callBackListener, List<BeanOpenLeads> banVisits, boolean _isLeadOpen) {
         this.context = context;
         this._isLeadOpen = _isLeadOpen;
         this.banVisits = banVisits;
+        this.callBackListener = callBackListener;
 
+    }
+
+    public void setCallBackListner(OpenLeadsInterface callBackListener) {
+        this.callBackListener = callBackListener;
     }
 
     @NonNull
@@ -80,7 +87,6 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
         }
         if (banVisits.get(position).getStatus().equalsIgnoreCase("3")) {
             holder.btn_complete.setText("Completed");
-
 
         }
         holder.buttonCallUser.setOnClickListener(new View.OnClickListener() {
@@ -189,7 +195,9 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
                         if (response.body().getMessage().equals("Order Successfully Accepted")) {
                             //bar.setVisibility(View.GONE);
                             OpenFragment.bar.setVisibility(View.GONE);
-                            banVisits.remove(position);
+                            /*   banVisits.remove(position);*/
+                            callBackListener.onRowClick();
+
                             notifyDataSetChanged();
                             banVisits.notify();
                             Toast.makeText(context, "Congratulations on completing this lead", Toast.LENGTH_LONG).show();
@@ -244,5 +252,6 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
             tvFault = itemView.findViewById(R.id.txt_fault);
         }
     }
+
 }
 
