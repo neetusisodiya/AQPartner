@@ -55,12 +55,12 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final AdapterNewLeads.ViewHolder holder, final int position) {
         points = banVisits.get(position).getPoint();
-        /*if(banVisits.get(position).getCharges().equals("")){
+        if (banVisits.get(position).getCharges().equals("0")) {
             holder.tvCharges.setVisibility(View.GONE);
-        }else {
-            String charges = banVisits.get(position).getCharges();
+        } else {
+            String charges = "Conveyance charges: " + banVisits.get(position).getCharges();
             holder.tvCharges.setText(charges);
-        }*/
+        }
 
 
         String bookingDate = "Visiting Date:\n " + banVisits.get(position).getVisit_date();

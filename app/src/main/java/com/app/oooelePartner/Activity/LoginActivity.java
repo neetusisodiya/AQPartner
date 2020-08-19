@@ -53,6 +53,7 @@ import static com.app.oooelePartner.Prefrence.AppPreferences.Name_In_Bank;
 import static com.app.oooelePartner.Prefrence.AppPreferences.PAN_CARD;
 import static com.app.oooelePartner.Prefrence.AppPreferences.PINCODE;
 import static com.app.oooelePartner.Prefrence.AppPreferences.Qualifications;
+import static com.app.oooelePartner.Prefrence.AppPreferences._isFirstTime;
 import static com.app.oooelePartner.Prefrence.AppPreferences.bankIfscCode;
 import static maes.tech.intentanim.CustomIntent.customType;
 
@@ -141,7 +142,7 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
                 mobileVerified = true;
                 doLogin();
             } else {
-                Toast.makeText(this, " please fill Valid OTP Number", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, " please fill valid OTP number", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -155,7 +156,7 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
         int io = otp.nextInt(9999);
         formatted = String.format("%06d", io);
         String sOTPMessage = "Your OOOELE Service Provider OTP is " +
-                formatted + " Please Enter To Change your Password.";
+                formatted + " Please enter to login.";
         Log.d("LOG_MESSAGE", "getOTP: " + formatted);
         fromRetrofit(sOTPMessage);
 
@@ -219,8 +220,7 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
                         appPreferences.setUserData(AppPreferences.secure_token, loginBean.getSecure_token());
                         appPreferences.setUserData(ADDRESS, loginBean.getAddress());
                         appPreferences.setUserData(PINCODE, loginBean.getPincode());
-                        // TODO: 18-Aug-20 status
-                        //appPreferences.setUserData(_isFirstTime,loginBean.getStatus());
+                        appPreferences.setUserData(_isFirstTime, loginBean.getStatus());
                         if (loginBean.getExp_year() != null)
                             appPreferences.setUserData(EXPERIENCE_YEAR, loginBean.getExp_year());
                         if (loginBean.getExp_month() != null)
@@ -235,11 +235,13 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
                         finish();
                         customType(mContext, "left-to-right");
                     } else {
+                        btnenter_otp.setClickable(true);
 
                         DynamicToast.makeError(getApplicationContext(),
                                 "The username or password is incorrect").show();
                     }
                 } else {
+                    btnenter_otp.setClickable(true);
 
                     DynamicToast.makeError(getApplicationContext(),
                             "Error! Please try again! ").show();
@@ -247,8 +249,10 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
             }
 
             @Override
-            public void onFailure(Call call, Throwable t) {
+            public void onFailure(@NonNull Call call, Throwable t) {
                 Toast.makeText(mContext, t.getMessage(), Toast.LENGTH_SHORT).show();
+                btnenter_otp.setClickable(true);
+
             }
         });
     }

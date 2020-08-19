@@ -1,6 +1,7 @@
 package com.app.oooelePartner.Bean;
 
 public class LoginBean {
+    String status;
     /**
      * id : 5
      * name : null
@@ -143,14 +144,12 @@ public class LoginBean {
         return pincode;
     }
 
-    String status;
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
+    }
 
     public String getStatus() {
         return status;
-    }
-
-    public void setPincode(String pincode) {
-        this.pincode = pincode;
     }
 
     public String getExp_year() {

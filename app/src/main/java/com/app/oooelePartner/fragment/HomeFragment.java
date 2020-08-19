@@ -112,10 +112,12 @@ public class HomeFragment extends Fragment {
 
                         if (response.body().getStatus()) {
                             bar.setVisibility(View.GONE);
-                            aboutTerms.setVisibility(View.VISIBLE);
-                            aboutTerms.setText(response.body().getCharge_text());
-                            tvTime.setVisibility(View.VISIBLE);
-                            tvTime.setText(response.body().getTime_text());
+                            if (response.body().getData().size() != 0) {
+                                aboutTerms.setVisibility(View.VISIBLE);
+                                aboutTerms.setText(response.body().getCharge_text());
+                                tvTime.setVisibility(View.VISIBLE);
+                                tvTime.setText(response.body().getTime_text());
+                            }
                             adapterNewLeads = new AdapterNewLeads(getActivity(), response.body().getData(),
                                     response.body().getTotal_point(), userId);
                             newRecycle.setAdapter(adapterNewLeads);

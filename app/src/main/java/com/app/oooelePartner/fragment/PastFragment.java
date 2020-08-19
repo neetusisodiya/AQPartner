@@ -47,13 +47,12 @@ public class PastFragment extends Fragment implements OpenLeadsInterface {
     RecyclerView recyclePastleads;
     AVLoadingIndicatorView bar;
     TextView text_rel;
+    OpenLeadsInterface openLeadsInterface;
+
 
     public PastFragment() {
         // Required empty public constructor
     }
-
-
-    OpenLeadsInterface openLeadsInterface;
 
     public void find() {
         // rec_not_foundd = view.findViewById(R.id.rec_not_foundd);

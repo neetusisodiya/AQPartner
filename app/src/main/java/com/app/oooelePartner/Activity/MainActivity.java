@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     AppPreferences mAppPreferences;
     private BottomNavigationView.OnNavigationItemSelectedListener
             mOnNavigationItemSelectedListener = menuItem -> {
-        Fragment fragment = null;
+        Fragment fragment;
         switch (menuItem.getItemId()) {
             case R.id.newfrag:
                 //toolbar.setTitle("My Gifts");
@@ -64,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
         find();
         mAppPreferences = new AppPreferences(this);
 
-       /* if (mAppPreferences.getUserData(AppPreferences._isFirstTime).equals("2")) {
+        if (mAppPreferences.getUserData(AppPreferences._isFirstTime).equals("1")) {
             showDialogForTermsCondition();
             mAppPreferences.setUserData(AppPreferences._isFirstTime, "3");
-        }*/
+        }
         loadFragmentmain(new HomeFragment());
     }
 

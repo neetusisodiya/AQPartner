@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="@string/by_signing_up_you_are_agree_with_our_term_and_condition"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/learn_more"
@@ -26,9 +26,9 @@
     <Button
         android:id="@+id/buttonOk"
         android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/blue_button_background"
         android:text="I accept"
         android:textAllCaps="false"

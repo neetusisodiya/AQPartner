@@ -2,6 +2,7 @@ package com.app.oooelePartner.Bean;
 
 public class BeanNewLeads {
 
+    String charges;
     private String id;
     private String isAccepted;
     private String serv_id;
@@ -34,16 +35,13 @@ public class BeanNewLeads {
         return unitRate;
     }
 
-
     public String isAccepted() {
         return isAccepted;
     }
 
-
     public String getServ() {
         return serv;
     }
-
 
     public String getId() {
         return id;
@@ -57,7 +55,6 @@ public class BeanNewLeads {
         return serv_id;
     }
 
-
     public String getFault() {
         return fault;
     }
@@ -69,8 +66,6 @@ public class BeanNewLeads {
     public String getVisit_time() {
         return visit_time;
     }
-
-    String charges;
 
     public String getCharges() {
         return charges;

@@ -8,10 +8,10 @@ public class ResponseGetNewLeads {
 
 
     String time_text;
+    String charge_text;
     private String message;
     private int total_point;
     private List<BeanNewLeads> data;
-    String charge_text;
     private boolean status;
 
     public String getTime_text() {

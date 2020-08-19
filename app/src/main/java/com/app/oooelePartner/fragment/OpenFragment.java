@@ -33,8 +33,8 @@ import retrofit2.Response;
 
 
 public class OpenFragment extends Fragment implements OpenLeadsInterface {
-    OpenLeadsInterface openLeadsInterface;
     public static AVLoadingIndicatorView bar;
+    OpenLeadsInterface openLeadsInterface;
     AdapterOpenLead adapterOpenLead;
     View view;
     ArrayList<BeanOpenLeads> banVisits;
