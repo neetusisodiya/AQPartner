@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.oooelePartner.Bean.SuperServiceBean;
@@ -16,7 +17,6 @@ import com.app.oooelePartner.Response.ResponSelectService;
 import com.app.oooelePartner.Rest.ApiClient;
 import com.app.oooelePartner.Rest.ApiInterface;
 import com.pranavpandey.android.dynamic.toasts.DynamicToast;
-import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +30,9 @@ public class WorkingServiceAdapterSecond extends RecyclerView.Adapter<WorkingSer
     Boolean checkBoxState;
     String Cat_ID;
     String User_Id;
-    String StrDiscount;
     String StrCheckBox;
-    String StrSID = "";
-    String totalquanti;
+
     ArrayList<SuperServiceBean> restaurantlists;
-    // private ArrayList<Modal_restaurantlist> list;
 
 
     public WorkingServiceAdapterSecond(Context context, List<SuperServiceBean> restaurantlists) {
@@ -49,23 +46,23 @@ public class WorkingServiceAdapterSecond extends RecyclerView.Adapter<WorkingSer
         return restaurantlists.size();
     }
 
-    public Object getItem(int position) {
-        return context;
-    }
+
 
     @Override
     public long getItemId(int position) {
         return 0;
     }
 
+    @NonNull
     @Override
-    public WorkingServiceAdapterSecond.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.adapter_working_service_second, viewGroup, false);
-        return new WorkingServiceAdapterSecond.ViewHolder(view);
+    public WorkingServiceAdapterSecond.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.adapter_working_service_second,
+                viewGroup, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final WorkingServiceAdapterSecond.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         final SuperServiceBean subserviceBean = restaurantlists.get(position);
 
@@ -81,25 +78,22 @@ public class WorkingServiceAdapterSecond extends RecyclerView.Adapter<WorkingSer
         }
 
         holder.checks.setText(subserviceBean.getFault());
-        holder.checks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Cat_ID = String.valueOf(subserviceBean.getId());
-                boolean checked = ((CheckBox) v).isChecked();
-                if (checked) {
-                    holder.checks.setChecked(true);
-                    SaveWorkingService(User_Id, Cat_ID);
+        holder.checks.setOnClickListener(v -> {
+            Cat_ID = String.valueOf(subserviceBean.getId());
+            boolean checked = ((CheckBox) v).isChecked();
+            if (checked) {
+                holder.checks.setChecked(true);
+                SaveWorkingService(User_Id, Cat_ID);
 
 
-                } else {
-                    holder.checks.setChecked(false);
-                    RemoveWorkingService(User_Id, Cat_ID);
-
-
-                }
+            } else {
+                holder.checks.setChecked(false);
+                RemoveWorkingService(User_Id, Cat_ID);
 
 
             }
+
+
         });
 
     }
@@ -196,14 +190,12 @@ public class WorkingServiceAdapterSecond extends RecyclerView.Adapter<WorkingSer
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         CheckBox checks;
-        AVLoadingIndicatorView bar;
 
 
         public ViewHolder(View view) {
             super(view);
 
             this.checks = itemView.findViewById(R.id.checks);
-            this.bar = itemView.findViewById(R.id.bar);
             checkBoxState = checks.isChecked();
             User_Id = String.valueOf(AppPreferences.getSavedUser(context).getId());
 

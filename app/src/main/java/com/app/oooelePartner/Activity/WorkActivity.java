@@ -1,7 +1,6 @@
-package com.app.oooelePartner.DoubleActivity;
+package com.app.oooelePartner.Activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -39,7 +38,6 @@ public class WorkActivity extends AppBaseActivity implements View.OnClickListene
     ArrayList<ResponseSuperService> responseSuperServices;
     RecyclerView.LayoutManager layoutManager;
     ImageView back_item;
-    private int scrollPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,23 +69,18 @@ public class WorkActivity extends AppBaseActivity implements View.OnClickListene
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //    recycleItem.setScrollY(scrollPosition);
-    }
+
 
     public void AllMainData() {
         bar.setVisibility(View.VISIBLE);
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         FormBody.Builder builder = ApiClient.createBuilder(new String[]{"expert_id"}
-                ,  //new String[]{User_ID,"1",selectedDateStr});
+                ,
                 new String[]{User_Id});
         Call<ResponseBody> call = apiInterface.ApiWorkingService(builder.build());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                //Log.d("ddd", response.body().string());
                 bar.setVisibility(View.GONE);
 
                 if (response.isSuccessful()) {
@@ -95,8 +88,7 @@ public class WorkActivity extends AppBaseActivity implements View.OnClickListene
                         String resturentMenu = response.body().string();
                         JSONObject jsonObject = new JSONObject(resturentMenu);
                         String status = jsonObject.optString("status");
-                        //  String catpath = jsonObject.optString("catpath");
-                        //   String SubcatPath = jsonObject.optString("subcatPath");
+
 
                         if (status.equalsIgnoreCase(String.valueOf(true))) {
                             responseSuperServices = new ArrayList<>();
@@ -106,7 +98,6 @@ public class WorkActivity extends AppBaseActivity implements View.OnClickListene
 
                                 ResponseSuperService subserviceBean = new ResponseSuperService();
                                 subserviceBean.setService(jsonObject1.getString("service"));
-                                Log.e("iddddd", jsonObject1.getString("service"));
                                 if (jsonObject1.getString("faults").
                                         equalsIgnoreCase("false")) {
                                 /*  Restaurent_subCatBean mRestaurent_subCatBean=new Restaurent_subCatBean();
@@ -120,7 +111,6 @@ public class WorkActivity extends AppBaseActivity implements View.OnClickListene
                                 } else {
                                     ArrayList<SuperServiceBean> mListSubCat = new ArrayList<>();
                                     JSONArray jsonArray1 = jsonObject1.getJSONArray("faults");
-                                    Log.e("arraysublenth", String.valueOf(jsonArray1.length()));
                                     for (int j = 0; j < jsonArray1.length(); j++) {
                                         JSONObject jsonObject2 = jsonArray1.getJSONObject(j);
                                         SuperServiceBean mRestaurent_subCatBean = new SuperServiceBean();

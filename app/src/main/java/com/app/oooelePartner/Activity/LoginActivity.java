@@ -65,16 +65,14 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
     EditText number, mobile_otp;
     String message;
     Button enter_btn, btnenter_otp;
-    TextView txt;
+    TextView txt, tvResend;
     AVLoadingIndicatorView bar;
     SmsBroadcastReceiver smsBroadcastReceiver;
     String str_Token;
     AppPreferences mAppPreferences;
     TextView tvWait;
     private String formatted = "";
-    private boolean mobileVerified = false;
-    private int revealX;
-    private int revealY;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,10 +96,13 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
         mobile_otp = findViewById(R.id.mobile_otp);
         btnenter_otp = findViewById(R.id.enter_otp);
         tvWait = findViewById(R.id.wait_txt);
+        tvResend = findViewById(R.id.resend_otp);
         tvWait.setVisibility(View.GONE);
         btnenter_otp.setOnClickListener(this);
         enter_btn.setOnClickListener(this);
-
+        tvResend.setOnClickListener(v -> {
+            getOTP();
+        });
         mobile_otp.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
@@ -125,21 +126,17 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
         if (v == enter_btn) {
             mobile = number.getText().toString();
             if (mobile.length() == 10) {
-                getOTP(mobile);
-                //    getOtp.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                //     getOtp.setEnabled(true);
-            } else {
-                DynamicToast.makeError(getApplicationContext(), "Enter 10 Digit Number").show();
+                getOTP();
 
-                //  getOtp.setBackgroundColor(getResources().getColor(R.color.redLight));
-                // getOtp.setEnabled(false);
+            } else {
+                DynamicToast.makeError(getApplicationContext(), "Enter 10 digit number").show();
+
             }
         }
         if (v == btnenter_otp) {
             String otp = ((TextView) findViewById(R.id.mobile_otp)).getText().toString().trim();
             btnenter_otp.setText("Submit");
             if (otp.equals(formatted)) {
-                mobileVerified = true;
                 doLogin();
             } else {
                 Toast.makeText(this, " please fill valid OTP number", Toast.LENGTH_SHORT).show();
@@ -148,7 +145,7 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
     }
 
 
-    public void getOTP(String mobile) {
+    public void getOTP() {
         bar.setVisibility(View.VISIBLE);
         tvWait.setVisibility(View.VISIBLE);
 
@@ -173,13 +170,13 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
             @Override
             public void onResponse(Call call, retrofit2.Response response) {
                 if (response.isSuccessful()) {
-
                     bar.setVisibility(View.GONE);
-                    txt.setText("Please Enter 6 digit Otp Here");
+                    txt.setText("Please Enter 6 digit Otp here");
                     number.setVisibility(View.GONE);
                     enter_btn.setVisibility(View.GONE);
                     mobile_otp.setVisibility(View.VISIBLE);
                     btnenter_otp.setVisibility(View.VISIBLE);
+                    tvResend.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -283,7 +280,6 @@ public class LoginActivity extends AppBaseActivity implements View.OnClickListen
                 //That gives all message to us.
                 // We need to get the code from inside with regex
                 message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
-                Log.e("mesds", "" + message);
                 //    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                 // mobile_otp.setText(String.format("%s - %s",  message));
                 getOtpFromMessage(message);

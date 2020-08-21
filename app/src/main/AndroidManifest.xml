@@ -28,7 +28,7 @@
             android:name="com.app.oooelePartner.Activity.WorkingTimeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.DoubleActivity.WorkActivity"
+            android:name="com.app.oooelePartner.Activity.WorkActivity"
             android:screenOrientation="portrait" />
 
         <meta-data

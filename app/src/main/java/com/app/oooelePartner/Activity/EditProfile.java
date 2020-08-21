@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -37,7 +36,6 @@ import com.wang.avi.AVLoadingIndicatorView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -59,8 +57,8 @@ import static com.app.oooelePartner.Prefrence.AppPreferences.PHONE_NUMBER;
 import static com.app.oooelePartner.Prefrence.AppPreferences.PINCODE;
 import static com.app.oooelePartner.Prefrence.AppPreferences.Qualifications;
 
-public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnItemSelectedListener, View.OnClickListener {
-    final Calendar newCalendar = Calendar.getInstance();
+public class EditProfile extends AppBaseActivity
+        implements MaterialSpinner.OnItemSelectedListener, View.OnClickListener {
     ArrayAdapter Arrayspinner_state, Arrayspinner_qualificatin, Arrayspinner_experttype;
     ArrayList<GetVendorProfileBean> getVendorProfileBeans;
     ArrayList<CityBean> cityBeanArrayList;
@@ -77,7 +75,7 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ArrayList<GetProfileBean> getProfileBeanArrayList;
 
-    String Streditfulllname, Streditmob, Streditemail, Streditpincontact, Streditaddress;
+    String Streditfulllname, Streditemail, Streditpincontact, Streditaddress;
     ArrayAdapter<String> spinnerArrayAdapter;
     ArrayAdapter<String> spinnergenderAdapter;
     AVLoadingIndicatorView bar;
@@ -90,7 +88,6 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
     CityBean cityBean;
     QualificationBean qualificationBean;
     Button btn_submit;
-    DateFormat dateFormat;
     TextView txt_dob;
     ImageView img_back;
     EditText editfulllname, editmob, editemail, editpincontact, editaddress;
@@ -114,7 +111,7 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
 
         getCityApi();
         getQualificationApi();
-        getExpertTypeApi();
+        //getExpertTypeApi();
     }
 
     public void find() {
@@ -140,7 +137,7 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
         spinner_city = findViewById(R.id.spinner_city);
         spinner_year = findViewById(R.id.spinner_year);
         spinner_month = findViewById(R.id.spinner_month);
-        spinner_experttype = findViewById(R.id.spinner_experttype);
+        //  spinner_experttype = findViewById(R.id.spinner_experttype);
         spinner_qualification = findViewById(R.id.spinner_qualification);
         btn_submit.setOnClickListener(this);
         img_edit.setOnClickListener(this);
@@ -149,7 +146,7 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
         spinner_city.setOnItemSelectedListener(this);
         spinner_year.setOnItemSelectedListener(this);
         spinner_month.setOnItemSelectedListener(this);
-        spinner_experttype.setOnItemSelectedListener(this);
+        //  spinner_experttype.setOnItemSelectedListener(this);
         spinner_qualification.setOnItemSelectedListener(this);
         txt_dob.setOnClickListener(this);
         appPreferences = new AppPreferences(this);
@@ -207,13 +204,13 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
             StrSpinQualification_name = "" + qualificationBeanArrayList.get(position).getName();
             qualificationPosition = position;
         }
-        if (view == spinner_experttype) {
+      /*  if (view == spinner_experttype) {
             StrSpinExpert_ID = "" + expertBeanArrayList.get(position).getId();
             StrSpineExpert_Name = "" + expertBeanArrayList.get(position).getValue();
             expertName = expertBeanArrayList.get(position).getValue();
             expertTypePosition = position;
 
-        }
+        }*/
         if (view == spinner_gender) {
             StrGender = "" + Gender[position];
             genderPosition = position;
@@ -238,14 +235,10 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
 
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-                            //  STRtv_service_DAte = dayOfMonth + "-" +(monthOfYear + 1) + "-" + year;
-                            STRtv_service_DAte = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
-                            txt_dob.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
-                        }
+                    (view, year, monthOfYear, dayOfMonth) -> {
+                        //  STRtv_service_DAte = dayOfMonth + "-" +(monthOfYear + 1) + "-" + year;
+                        STRtv_service_DAte = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                        txt_dob.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
                     }, year, month, dayOfMonth);
             datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
             datePickerDialog.show();
@@ -532,13 +525,13 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
                                     expertBeanArrayList.add(expertBean);
                                     Log.e("expertBeanArrayList", String.valueOf(expertBeanArrayList.size()));
                                 }
-                                Arrayspinner_experttype = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, expertNameList);
-                                Arrayspinner_experttype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                                spinner_experttype.setAdapter(Arrayspinner_experttype);
-                                if (appPreferences.checkForValue(EXPERT_IN)) {
+                                /*  Arrayspinner_experttype = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, expertNameList);
+                                 */// Arrayspinner_experttype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                //spinner_experttype.setAdapter(Arrayspinner_experttype);
+                               /* if (appPreferences.checkForValue(EXPERT_IN)) {
                                     spinner_experttype.setSelectedIndex(Integer.parseInt(
                                             appPreferences.getUserData(AppPreferences.EXPERT_IN)));
-                                }
+                                }*/
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -585,7 +578,6 @@ public class EditProfile extends AppBaseActivity implements MaterialSpinner.OnIt
                                     qualificationBean.setId(response.body().getData().get(i).getId());
                                     qualiNameList.add(String.valueOf(response.body().getData().get(i).getName()));
                                     qualificationBeanArrayList.add(qualificationBean);
-                                    Log.e("qualifBeanArrayList", String.valueOf(qualificationBeanArrayList.size()));
                                 }
                                 Arrayspinner_qualificatin = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, qualiNameList);
                                 Arrayspinner_qualificatin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

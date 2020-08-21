@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.oooelePartner.R;
@@ -15,11 +14,11 @@ import com.app.oooelePartner.Response.ResponseSuperService;
 
 import java.util.ArrayList;
 
-public class WorkignServiceAdapter extends RecyclerView.Adapter<WorkignServiceAdapter.ViewHolder> {
+public class ExpertWorkAdapter extends RecyclerView.Adapter<ExpertWorkAdapter.ViewHolder> {
     public Context context;
     ArrayList<ResponseSuperService> responseCartCategoryBeans;
 
-    public WorkignServiceAdapter(Context context, ArrayList<ResponseSuperService> responseCartCategoryBeans) {
+    public ExpertWorkAdapter(Context context, ArrayList<ResponseSuperService> responseCartCategoryBeans) {
         this.context = context;
         this.responseCartCategoryBeans = responseCartCategoryBeans;
     }
@@ -37,28 +36,21 @@ public class WorkignServiceAdapter extends RecyclerView.Adapter<WorkignServiceAd
 
     @NonNull
     @Override
-    public WorkignServiceAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    public ExpertWorkAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_workingservice, viewGroup, false);
-        return new ViewHolder(view);
+        return new ExpertWorkAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(WorkignServiceAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(ExpertWorkAdapter.ViewHolder holder, final int position) {
         ResponseSuperService modal = responseCartCategoryBeans.get(position);
         String str_dishname = modal.getService();
         holder.cateogyname.setText(str_dishname);
-        if (modal.getFaults().size() > 0) {
-            WorkingServiceAdapterSecond adapterSingle =
-                    new WorkingServiceAdapterSecond(context, modal.getFaults());
-            holder.recycleHome.setLayoutManager(new
-                    LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-            holder.recycleHome.setAdapter(adapterSingle);
-        }
-        holder.cateogyname.setOnClickListener(v -> {
-        });
+
+
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         protected TextView cateogyname;
         protected RecyclerView recycleHome;
 

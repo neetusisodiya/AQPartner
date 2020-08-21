@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
 
-    tools:context=".DoubleActivity.WorkActivity">
+    tools:context=".Activity.WorkActivity">
 
     <RelativeLayout
 
@@ -21,7 +21,7 @@
             android:layout_centerVertical="true"
             android:padding="@dimen/margin_10"
             android:src="@drawable/ic_backwhite"
-            android:tint="@color/colorBlack" />
+            app:tint="@color/colorBlack" />
 
         <TextView
             android:id="@+id/WorkSlot"
