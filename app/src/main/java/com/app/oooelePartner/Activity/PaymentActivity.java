@@ -54,19 +54,16 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
         txt_skip.setOnClickListener(this);
         Button button = findViewById(R.id.btn_pay);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        button.setOnClickListener(v -> {
+            startPayment();
+          /*  if (edit_amount.getText().toString().isEmpty()) {
+                Toast.makeText(PaymentActivity.this,
+                        "Enter Purchase Amount", Toast.LENGTH_SHORT).show();
+
+            } else {
                 startPayment();
-              /*  if (edit_amount.getText().toString().isEmpty()) {
-                    Toast.makeText(PaymentActivity.this,
-                            "Enter Purchase Amount", Toast.LENGTH_SHORT).show();
 
-                } else {
-                    startPayment();
-
-                }*/
-            }
+            }*/
         });
 
         TextView privacyPolicy = findViewById(R.id.txt_privacy_policy);
@@ -145,9 +142,9 @@ public class PaymentActivity extends Activity implements PaymentResultListener, 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         FormBody.Builder builder = ApiClient.createBuilder(new String[]
-                        {"transaction_id", "amount", "points", "member_id"}
+                        {"transaction_id", "amount", "member_id"}
                 ,
-                new String[]{razorpayPaymentID, amountForApi, points, str_expert_id});
+                new String[]{razorpayPaymentID, points, str_expert_id});
         Call<ResponsePayment> call = apiInterface.ApiAddWallet(builder.build());
         call.enqueue(new Callback<ResponsePayment>() {
             @Override

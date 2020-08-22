@@ -51,16 +51,14 @@ public class PointsAdapter extends BaseAdapter {
         final String rupee = banVisits.get(position).getRupee();
         text_amount.setText("₹" + rupee);
         textPoints.setText(points);
-        pointsForSend = banVisits.get(position).getPoint();
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, PaymentActivity.class);
-                intent.putExtra("TotalAmount", rupee);
-                intent.putExtra("points", pointsForSend);
-                context.startActivity(intent);
+        itemView.setOnClickListener(v -> {
+            pointsForSend = banVisits.get(position).getPoint();
 
-            }
+            Intent intent = new Intent(context, PaymentActivity.class);
+            intent.putExtra("TotalAmount", rupee);
+            intent.putExtra("points", pointsForSend);
+            context.startActivity(intent);
+
         });
         return itemView;
     }

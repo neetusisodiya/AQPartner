@@ -2,7 +2,6 @@ package com.app.oooelePartner.Activity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,12 +15,9 @@ import com.app.oooelePartner.Bean.CityBean;
 import com.app.oooelePartner.Bean.ExpertBean;
 import com.app.oooelePartner.Bean.GetProfileBean;
 import com.app.oooelePartner.Bean.GetVendorProfileBean;
-import com.app.oooelePartner.Bean.LoginBean;
 import com.app.oooelePartner.Bean.QualificationBean;
 import com.app.oooelePartner.Prefrence.AppPreferences;
 import com.app.oooelePartner.R;
-import com.app.oooelePartner.Response.ResponseExpertType;
-import com.app.oooelePartner.Response.ResponseLogin;
 import com.app.oooelePartner.Response.ResponseProfileUpload;
 import com.app.oooelePartner.Response.ResponseQualification;
 import com.app.oooelePartner.Response.ResponsegetCity;
@@ -32,9 +28,6 @@ import com.app.oooelePartner.Utill.CommonUtils;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 import com.wang.avi.AVLoadingIndicatorView;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -146,7 +139,6 @@ public class EditProfile extends AppBaseActivity
         spinner_city.setOnItemSelectedListener(this);
         spinner_year.setOnItemSelectedListener(this);
         spinner_month.setOnItemSelectedListener(this);
-        //  spinner_experttype.setOnItemSelectedListener(this);
         spinner_qualification.setOnItemSelectedListener(this);
         txt_dob.setOnClickListener(this);
         appPreferences = new AppPreferences(this);
@@ -327,7 +319,6 @@ public class EditProfile extends AppBaseActivity
                                     cityBean.setId(response.body().getData().get(i).getId());
                                     stateNameList.add(String.valueOf(response.body().getData().get(i).getCity()));
                                     cityBeanArrayList.add(cityBean);
-                                    Log.e("statelistsize", String.valueOf(stateNameList.size()));
                                 }
                                 Arrayspinner_state = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, stateNameList);
                                 Arrayspinner_state.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -415,142 +406,7 @@ public class EditProfile extends AppBaseActivity
         });
     }
 
-    private void getNewLead(String str_Owner_Id) {
 
-        ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
-        FormBody.Builder builder = ApiClient.createBuilder(new String[]{"id"}, new
-                String[]{str_Owner_Id});
-        if (CommonUtils.isNetworkAvailable(EditProfile.this)) {
-            Call<ResponseLogin> call = service.ApiProfileGet1(builder.build());
-            call.enqueue(new Callback<ResponseLogin>() {
-                @Override
-                public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-
-                    try {
-
-                        if (response.body() != null) {
-                            ResponseLogin resObj = response.body();
-                            if (resObj.isStatus()) {
-                                getVendorProfileBeans = new ArrayList<>();
-                                LoginBean loginBean = response.body().getData();
-                                AppPreferences.saveInPref(EditProfile.this, loginBean);
-                                AppPreferences appPreferences = new AppPreferences(EditProfile.this);
-
-                                /*for (int i = 0; i < response.body().getData().size(); i++) {
-                                    GetVendorProfileBean getVendorProfileBean = new GetVendorProfileBean();
-                                    if (!response.body().getData().get(0).getName().equalsIgnoreCase("null")) {
-                                        txt_name.setText("Name");
-                                    }
-                                    if (response.body().getData().get(0).getEmail().equalsIgnoreCase("null")) {
-                                        txt_email.setText("Email");
-
-                                    } else {
-                                        txt_name.setText(response.body().getData().get(0).getName());
-                                        txt_email.setText(response.body().getData().get(0).getEmail());
-                                    }
-                                    getVendorProfileBean.setId(response.body().getData().get(0).getId());
-                                    txt_num.setText(response.body().getData().get(0).getMobno());
-
-
-                                }*/
-                                // bar.setVisibility(View.GONE);
-                                //   CommonUtils.hideProgressDoalog();
-
-                                // relihidedata.setVisibility(View.GONE);
-                                //   String Path = response.body().getPath();
-                                //   Path2 = response.body().getPath2();
-
-                            } else {
-                                //       img_nodata.setVisibility(View.VISIBLE);
-                                //    recordenotfound.setVisibility(View.VISIBLE);
-                                //     bar.setVisibility(View.GONE);
-                                //    CommonUtils.hideProgressDoalog();
-                                //
-                                //      bar.setVisibility(View.GONE);
-                                //     relihidedata.setVisibility(View.VISIBLE);
-                                //     btn_placeorder.setVisibility(View.GONE);
-                            }
-                        }
-
-
-                    } catch (Exception e) {
-
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                    // CommonUtils.hideProgressDoalog();
-
-                    //bar.setVisibility(View.GONE);
-                    // Toast.makeText(getApplicationContext(),"mobile Or Password Wrong..", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            //  CommonUtils.hideProgressDoalog();
-
-            //progressDialog.dismiss();
-            //  scrolls.setVisibility(View.VISIBLE);
-            // reli.setVisibility(View.VISIBLE);
-            Toast.makeText(EditProfile.this, "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
-
-        }
-    }
-
-    private void getExpertTypeApi() {
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        FormBody.Builder builder = ApiClient.createBuilder(new String[]
-                        {},
-                new String[]{});
-        if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
-            Call<ResponseExpertType> call = apiInterface.ApiGetExpertType(builder.build());
-            call.enqueue(new Callback<ResponseExpertType>() {
-                @Override
-                public void onResponse(Call<ResponseExpertType> call, Response<ResponseExpertType> response) {
-                    if (response.isSuccessful()) {
-                        expertBeanArrayList.clear();
-                        try {
-                            ArrayList<String> expertNameList = new ArrayList<>();
-
-
-                            if (response.isSuccessful() && response.body() != null) {
-
-
-                                for (int i = 0; i < response.body().getData().size(); i++) {
-                                    expertBean = new ExpertBean();
-                                    expertBean.setValue(response.body().getData().get(i).getValue());
-                                    expertBean.setId(response.body().getData().get(i).getId());
-                                    expertNameList.add(String.valueOf(response.body().getData().get(i).getValue()));
-                                    expertBeanArrayList.add(expertBean);
-                                    Log.e("expertBeanArrayList", String.valueOf(expertBeanArrayList.size()));
-                                }
-                                /*  Arrayspinner_experttype = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, expertNameList);
-                                 */// Arrayspinner_experttype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                                //spinner_experttype.setAdapter(Arrayspinner_experttype);
-                               /* if (appPreferences.checkForValue(EXPERT_IN)) {
-                                    spinner_experttype.setSelectedIndex(Integer.parseInt(
-                                            appPreferences.getUserData(AppPreferences.EXPERT_IN)));
-                                }*/
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<ResponseExpertType> call, Throwable t) {
-                    //onApiFailure(call, t);
-                    //avi.setVisibility(View.GONE);
-                    //Toast.makeText(SignUpActivity.this, "Get states,Please try again.", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            Toast.makeText(getApplicationContext(), "Please check your Internet Connection.", Toast.LENGTH_SHORT).show();
-        }
-
-    }
 
     private void getQualificationApi() {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -605,57 +461,6 @@ public class EditProfile extends AppBaseActivity
         }
     }
 
-    public void singleMain(String str_Owner_Id) {
-        bar.setVisibility(View.VISIBLE);
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        FormBody.Builder builder = ApiClient.createBuilder(new String[]{"id"},
-                new String[]{str_Owner_Id});
-        Call<ResponseBody> call = apiInterface.ApiProfileGet(builder.build());
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                //Log.d("ddd", response.body().string());
-                bar.setVisibility(View.GONE);
-                if (response.isSuccessful()) {
-                    try {
-                        String resturentMenu = response.body().string();
-                        JSONObject jsonObject = new JSONObject(resturentMenu);
-                        String status = jsonObject.optString("status");
-                        if (status.equalsIgnoreCase(String.valueOf(true))) {
-                            getProfileBeanArrayList = new ArrayList<>();
-                            JSONArray jsonArray = jsonObject.getJSONArray("data");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                                GetProfileBean getProfileBean = new GetProfileBean();
-                                getProfileBean.setId(Integer.parseInt(jsonObject1.getString("id")));
-                                editfulllname.setText(jsonObject1.getString("name"));
-                                txt_gender.setText(jsonObject1.getString("gender"));
-                                txt_dob.setText(jsonObject1.getString("dob"));
-                                editmob.setText(jsonObject1.getString("mobno"));
-                                editemail.setText(jsonObject1.getString("email"));
-                                txt_city.setText(jsonObject1.getString("cityid"));
-                                editpincontact.setText(jsonObject1.getString("pincode"));
-                                Text_year.setText(jsonObject1.getString("exp_year"));
-                                text_month.setText(jsonObject1.getString("exp_month"));
-                                editaddress.setText(jsonObject1.getString("address"));
-                                txt_experttype.setText(jsonObject1.getString("expert_type_id"));
-                                txt_qualification.setText(jsonObject1.getString("qualification_id"));
-                            }
-                        } else {
-                        }
-                    } catch (Exception e) {
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                onApiFailure(call, t);
-                bar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
 
     public void onApiFailure(Call<ResponseBody> call, Throwable t) {
         //Log.e("error", t.toString());

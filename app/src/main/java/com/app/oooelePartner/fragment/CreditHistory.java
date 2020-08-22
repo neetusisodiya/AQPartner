@@ -169,8 +169,7 @@ public class CreditHistory extends Fragment {
         TabAdapter tabAdapter = new TabAdapter(getActivity().getSupportFragmentManager());
         tabAdapter.addFragment(new AllCreditFragment(), "All");
         tabAdapter.addFragment(new Recharge(), "Recharge");
-        tabAdapter.addFragment(new Expenses(), "Expenses");
-        tabAdapter.addFragment(new Penalties(), "Penalties");
+        tabAdapter.addFragment(new Expenses(), "Expenses & Penalties");
         viewPager.setAdapter(tabAdapter);
     }
 

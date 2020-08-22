@@ -19,10 +19,19 @@
             android:layout_margin="5dp">
 
             <TextView
+                android:id="@+id/open_order_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="" />
+
+            <TextView
                 android:id="@+id/txt_visit_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_below="@id/open_order_id"
                 android:fontFamily="@font/lato_bold"
                 android:text="@string/booking_date" />
 
@@ -40,7 +49,7 @@
                 android:id="@+id/txt_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_visit_date"
+                android:layout_below="@id/txt_price"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/lato_bold"
                 android:text="Service" />
@@ -88,12 +97,21 @@
                 android:id="@+id/txt_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_visit_date"
+                android:layout_marginStart="@dimen/margin_10"
+                android:fontFamily="@font/lato_bold"
+                android:text="Price" />
+
+            <TextView
+                android:id="@+id/txt_charges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/txt_visit_time"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="@dimen/margin_10"
+                android:layout_marginBottom="@dimen/margin_5"
                 android:fontFamily="@font/lato_bold"
-                android:text="Price" />
+                android:text="Charges" />
 
             <TextView
                 android:id="@+id/txt_points"

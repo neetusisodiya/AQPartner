@@ -1,6 +1,16 @@
 package com.app.oooelePartner.Bean;
 
 public class BeanOpenLeads {
+    String order_id;
+    String charges;
+
+    public String getOrder_id() {
+        return order_id;
+    }
+
+    public String getCharges() {
+        return charges;
+    }
 
     private String g_lat;
     private String g_lng;

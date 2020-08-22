@@ -64,6 +64,14 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
         String services = "Service: " + banVisits.get(position).getServ();
         String quantity = "Quantity: " + banVisits.get(position).getQty();
         String subServices = "Sub service: " + banVisits.get(position).getSubserv();
+        String orderId = "Order id: " + banVisits.get(position).getOrder_id();
+        holder.tvOrderId.setText(orderId);
+        if (banVisits.get(position).getCharges().equals("0")) {
+            holder.tvCharges.setVisibility(View.GONE);
+        } else {
+            String charges = "Conveyance charges: " + banVisits.get(position).getCharges();
+            holder.tvCharges.setText(charges);
+        }
         if (!_isLeadOpen) {
             holder.btn_complete.setVisibility(View.GONE);
             holder.buttonCallUser.setVisibility(View.GONE);
@@ -232,12 +240,15 @@ public class AdapterOpenLead extends RecyclerView.Adapter<AdapterOpenLead.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt_serv, tvSubServices,
                 tvFault,
-                txt_address, txt_qtynum, txtPrice, txtPoints, tvVisitTime, tvVisitDate;
-        TextView btn_complete, buttonCallUser, mapsButton;
+                txt_address, txt_qtynum, txtPrice, txtPoints, tvOrderId, tvVisitTime, tvVisitDate;
+        TextView btn_complete, buttonCallUser, mapsButton, tvCharges;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             txt_serv = itemView.findViewById(R.id.txt_service);
+            tvOrderId = itemView.findViewById(R.id.open_order_id);
+            tvCharges = itemView.findViewById(R.id.txt_charges);
+
             tvVisitDate = itemView.findViewById(R.id.txt_visit_date);
             txt_address = itemView.findViewById(R.id.address);
             txt_qtynum = itemView.findViewById(R.id.quantity);

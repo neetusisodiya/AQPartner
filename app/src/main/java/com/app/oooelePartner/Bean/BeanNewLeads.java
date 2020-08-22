@@ -1,6 +1,11 @@
 package com.app.oooelePartner.Bean;
 
 public class BeanNewLeads {
+    String order_id;
+
+    public String getOrder_id() {
+        return order_id;
+    }
 
     String charges;
     private String id;

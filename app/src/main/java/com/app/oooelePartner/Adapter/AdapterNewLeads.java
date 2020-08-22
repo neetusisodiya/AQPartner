@@ -61,8 +61,8 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
             String charges = "Conveyance charges: " + banVisits.get(position).getCharges();
             holder.tvCharges.setText(charges);
         }
-
-
+        String orderId = "Order id: " + banVisits.get(position).getOrder_id();
+        holder.tvOrderId.setText(orderId);
         String bookingDate = "Visiting Date:\n " + banVisits.get(position).getVisit_date();
         holder.txt_bookingddate.setText(bookingDate);
         String visitTime;
@@ -98,26 +98,23 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
         }
 
 
-        holder.accept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.accept.setOnClickListener(v -> {
 
 
-                if (!pointsValue.equalsIgnoreCase("0")) {
-                    if (totalPoints < points) {
-                        if (totalPoints == 0) {
-                            lowBalance("You don't have credit in your wallet. Please recharge first");
+            if (!pointsValue.equalsIgnoreCase("0")) {
+                if (totalPoints < points) {
+                    if (totalPoints == 0) {
+                        lowBalance("You don't have credit in your wallet. Please recharge first");
 
-                        } else
-                            lowBalance("Your wallet balance is low. Please recharge first");
-                    } else {
-                        open(banVisits.get(position), position, holder);
-
-                    }
+                    } else
+                        lowBalance("Your wallet balance is low. Please recharge first");
                 } else {
-                    acceptLead(banVisits.get(position), position, holder);
+                    open(banVisits.get(position), position, holder);
 
                 }
+            } else {
+                acceptLead(banVisits.get(position), position, holder);
+
             }
         });
     }
@@ -214,7 +211,7 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt_bookingddate,
-                quantity, txt_visittime, tvCharges, txt_service, txt_service2, textSubServices, txtPrice, txtPoints;
+                quantity, txt_visittime, tvCharges, txt_service, tvOrderId, txt_service2, textSubServices, txtPrice, txtPoints;
         ImageView img_location, img_qty;
         Button accept;
         CardView cardView;
@@ -222,6 +219,7 @@ public class AdapterNewLeads extends RecyclerView.Adapter<AdapterNewLeads.ViewHo
         public ViewHolder(final View itemView) {
             super(itemView);
             txtPoints = itemView.findViewById(R.id.txt_points);
+            tvOrderId = itemView.findViewById(R.id.order_id);
             txt_service2 = itemView.findViewById(R.id.txt_fault);
             textSubServices = itemView.findViewById(R.id.txt_sub_service);
             txt_bookingddate = itemView.findViewById(R.id.txt_bookingddate);
