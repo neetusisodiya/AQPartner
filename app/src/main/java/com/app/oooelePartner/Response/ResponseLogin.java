@@ -14,6 +14,11 @@ public class ResponseLogin {
     private boolean status;
     private LoginBean data;
     private String message;
+    String otp;
+
+    public String getOtp() {
+        return otp;
+    }
 
     public boolean isStatus() {
         return status;

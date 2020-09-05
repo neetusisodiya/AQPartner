@@ -122,7 +122,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ImageView back;
     String st_Latitude, st_Longituude;
     LocationManager locationManager;
-    //Our Map
     FragmentManager fragmentManager;
     EditText completaddress;
     Location mlocation;

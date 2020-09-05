@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.app.oooelePartner.Activity.MainActivity;
-import com.app.oooelePartner.Activity.Static_web;
+import com.app.oooelePartner.activity.MainActivity;
+import com.app.oooelePartner.activity.Static_web;
 import com.app.oooelePartner.R;
 import com.app.oooelePartner.Utill.CommonUtils;
 

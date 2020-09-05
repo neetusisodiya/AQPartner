@@ -13,11 +13,11 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.app.oooelePartner.Activity.EditProfile;
-import com.app.oooelePartner.Activity.LoginActivity;
-import com.app.oooelePartner.Activity.MainActivity;
-import com.app.oooelePartner.Activity.WorkActivity;
-import com.app.oooelePartner.Activity.WorkingTimeActivity;
+import com.app.oooelePartner.activity.EditProfile;
+import com.app.oooelePartner.activity.LoginActivity;
+import com.app.oooelePartner.activity.MainActivity;
+import com.app.oooelePartner.activity.WorkActivity;
+import com.app.oooelePartner.activity.WorkingTimeActivity;
 import com.app.oooelePartner.Bean.GetVendorProfileBean;
 import com.app.oooelePartner.Bean.LoginBean;
 import com.app.oooelePartner.Prefrence.AppPreferences;

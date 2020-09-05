@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.app.oooelePartner.Activity.MainActivity;
+import com.app.oooelePartner.activity.MainActivity;
 import com.app.oooelePartner.Adapter.AdapterNewLeads;
 import com.app.oooelePartner.Prefrence.AppPreferences;
 import com.app.oooelePartner.R;

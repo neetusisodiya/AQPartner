@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.app.oooelePartner">
 
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -15,8 +14,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.app.oooelePartner.Application"
-
+        android:name=".Application"
         android:allowBackup="true"
         android:icon="@mipmap/launcher_"
         android:label="@string/app_name"
@@ -25,63 +23,63 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-
+        <activity android:name=".activity.LoginFirebaseActivity"></activity>
         <activity
-            android:name="com.app.oooelePartner.Activity.WorkingTimeActivity"
+            android:name=".activity.WorkingTimeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.Activity.WorkActivity"
+            android:name=".activity.WorkActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name="com.app.oooelePartner.Activity.PaymentActivity" />
+        <activity android:name=".activity.PaymentActivity" />
         <activity
-            android:name="com.app.oooelePartner.WorkingArea.MapsActivity"
+            android:name=".WorkingArea.MapsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.Activity.EditProfile"
+            android:name=".activity.EditProfile"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.Activity.LoginActivity"
+            android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.ProfileActivity.AddBank"
+            android:name=".ProfileActivity.AddBank"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.ProfileActivity.BankDetailsActivity"
+            android:name=".ProfileActivity.BankDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.ProfileActivity.ServiceLocation"
+            android:name=".ProfileActivity.ServiceLocation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.ProfileActivity.Award"
+            android:name=".ProfileActivity.Award"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.ProfileActivity.UploadWork"
+            android:name=".ProfileActivity.UploadWork"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.ProfileActivity.Training"
+            android:name=".ProfileActivity.Training"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.ProfileActivity.IdentityActivity"
+            android:name=".ProfileActivity.IdentityActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.app.oooelePartner.Activity.Static_web"
+            android:name=".activity.Static_web"
             android:screenOrientation="portrait" />
-
         <activity
-            android:name="com.app.oooelePartner.Activity.SplashActivity"
+            android:name=".activity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.app.oooelePartner.Activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
@@ -90,23 +88,34 @@
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_live_kPCY6fWTyiE5tt" />
-        <!--  <meta-data
+        <!--
+  <meta-data
               android:name="com.razorpay.ApiKey"
-              android:value="rzp_test_3ffwj8JQkENuYH" />-->
-
+              android:value="rzp_test_3ffwj8JQkENuYH" />
+        -->
         <service
-            android:name="com.app.oooelePartner.Firebase.MyFirebaseMessagingService"
+            android:name=".Firebase.MyFirebaseMessagingService"
             android:exported="false">
-
-
             <intent-filter>
-
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-
             </intent-filter>
+        </service> <!-- My Service -->
+        <service
+            android:name=".MyService"
+            android:exported="false"
+            android:stopWithTask="false" /> <!-- My Broadcast Receiver -->
+        <receiver
+            android:name=".MyBroadCastReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.app.oooelePartner" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.ACTION_EXTERNAL_APPLICATIONS_AVAILABLE" />
 
-        </service>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
-

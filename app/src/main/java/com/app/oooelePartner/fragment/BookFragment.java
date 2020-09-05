@@ -11,7 +11,7 @@ import android.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.app.oooelePartner.Activity.MainActivity;
+import com.app.oooelePartner.activity.MainActivity;
 import com.app.oooelePartner.Adapter.TabAdapter;
 import com.app.oooelePartner.R;
 import com.app.oooelePartner.Utill.CommonUtils;

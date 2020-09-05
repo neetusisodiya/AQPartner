@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.app.oooelePartner.Activity.PaymentActivity;
+import com.app.oooelePartner.activity.PaymentActivity;
 import com.app.oooelePartner.Bean.PointsData;
 import com.app.oooelePartner.R;
 

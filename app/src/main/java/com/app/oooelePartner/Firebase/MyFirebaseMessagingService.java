@@ -7,9 +7,10 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
-import com.app.oooelePartner.Activity.MainActivity;
+import com.app.oooelePartner.activity.MainActivity;
 import com.app.oooelePartner.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -18,13 +19,12 @@ import static com.app.oooelePartner.Prefrence.AppPreferences.ACCESS_TOKEN;
 import static com.app.oooelePartner.Prefrence.AppPreferences.SHARED_PREFERENCE_NAME;
 
 
-public class MyFirebaseMessagingService extends FirebaseMessagingService {
-    private static final String TAG = "FCM Service";
-    String Tag;
-    String User_ID;
+public class MyFirebaseMessagingService
+        extends FirebaseMessagingService {
+
 
     @Override
-    public void onNewToken(String s) {
+    public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
         getSharedPreferences(SHARED_PREFERENCE_NAME, MODE_PRIVATE).edit().putString(ACCESS_TOKEN, s).apply();
     }
