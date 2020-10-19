@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".Activity.EditProfile">
+    tools:context=".activity.EditProfile">
 
     <RelativeLayout
         android:id="@+id/topheader"
@@ -20,7 +20,7 @@
             android:layout_centerVertical="true"
             android:padding="@dimen/margin_10"
             android:src="@drawable/ic_backwhite"
-            android:tint="@color/colorWhite" />
+            app:tint="@color/colorWhite" />
 
         <TextView
             android:id="@+id/txt_pro"
@@ -39,7 +39,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_back"
-            android:tint="@color/colorWhite"
+            app:tint="@color/colorWhite"
             android:visibility="gone" />
 
     </RelativeLayout>
@@ -51,9 +51,10 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content">
 
-            <RelativeLayout
+            <!--<RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone">
@@ -70,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imgon"
                     android:src="@drawable/ic_wave" />
-            </RelativeLayout>
+            </RelativeLayout>-->
 
             <EditText
                 android:id="@+id/editfulllname"
@@ -81,7 +82,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/edit_bg"
                 android:hint="Full Name"
-                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
                 android:textSize="@dimen/font_16" />
 
             <com.jaredrummler.materialspinner.MaterialSpinner
@@ -186,7 +187,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Experaince"
+                    android:text="Experience"
                     android:textColor="@color/nav_black"
                     android:textSize="@dimen/font_16" />
 
@@ -248,8 +249,20 @@
                 android:paddingLeft="10dp"
                 android:textSize="@dimen/font_16" />
 
+            <!-- <com.jaredrummler.materialspinner.MaterialSpinner
+                 android:id="@+id/spinner_experttype"
+                 android:layout_width="match_parent"
+                 android:layout_height="@dimen/margin_45"
+                 android:visibility="gone"
+                 android:layout_below="@+id/editaddress"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginTop="10dp"
+                 android:layout_marginRight="20dp"
+                 android:textSize="@dimen/font_16"
+                 app:ms_background_color="@color/leku_soft_grey" />-->
+
             <com.jaredrummler.materialspinner.MaterialSpinner
-                android:id="@+id/spinner_experttype"
+                android:id="@+id/spinner_qualification"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_45"
                 android:layout_below="@+id/editaddress"
@@ -257,17 +270,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:textSize="@dimen/font_16"
-                app:ms_background_color="@color/leku_soft_grey" />
 
-            <com.jaredrummler.materialspinner.MaterialSpinner
-                android:id="@+id/spinner_qualification"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_45"
-                android:layout_below="@+id/spinner_experttype"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:textSize="@dimen/font_16"
                 app:ms_background_color="@color/leku_soft_grey" />
 
             <Button
@@ -276,8 +279,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/spinner_qualification"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:background="@color/reddd"
+                android:layout_margin="15dp"
+                android:background="@drawable/red_button_background"
                 android:text="@string/update"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite" />

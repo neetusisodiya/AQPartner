@@ -112,12 +112,12 @@ public class BankDetailsActivity extends AppCompatActivity implements View.OnCli
                 Toast.makeText(this, "Invalid IFSC Code", Toast.LENGTH_SHORT).show();
 
             } else {
-                SaveBankAccont();
+                SaveBankAccount();
             }
         }
     }
 
-    public void SaveBankAccont() {
+    public void SaveBankAccount() {
         bar.setVisibility(View.VISIBLE);
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         FormBody.Builder builder = ApiClient.createBuilder(new String[]{"bank_name",

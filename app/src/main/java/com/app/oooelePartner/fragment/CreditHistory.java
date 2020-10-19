@@ -54,6 +54,7 @@ public class CreditHistory extends Fragment {
         txt_cred = view.findViewById(R.id.txt_cred);
         btncredits = view.findViewById(R.id.btncredits);
         setupViewPager(viewPager);
+
         tabLayout.setupWithViewPager(viewPager);
 
         recyclerView = view.findViewById(R.id.rechargeAmount);
@@ -90,7 +91,6 @@ public class CreditHistory extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        setupViewPager(viewPager);
     }
 
     private void getPointsData() {

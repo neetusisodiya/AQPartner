@@ -23,7 +23,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name=".activity.LoginFirebaseActivity"></activity>
+        <activity android:name=".activity.LoginFirebaseActivity" />
         <activity
             android:name=".activity.WorkingTimeActivity"
             android:screenOrientation="portrait" />
@@ -87,11 +87,11 @@
             tools:node="remove" />
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_live_kPCY6fWTyiE5tt" />
+            android:value="rzp_live_eaEv2ZxWswoDBU" />
         <!--
   <meta-data
               android:name="com.razorpay.ApiKey"
-              android:value="rzp_test_3ffwj8JQkENuYH" />
+              android:value="rzp_test_oxRMhR0P0P25l5" />
         -->
         <service
             android:name=".Firebase.MyFirebaseMessagingService"

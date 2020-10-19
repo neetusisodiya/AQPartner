@@ -1,10 +1,13 @@
 package com.app.oooelePartner.activity;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -26,6 +30,13 @@ import com.app.oooelePartner.fragment.CreditHistory;
 import com.app.oooelePartner.fragment.HomeFragment;
 import com.app.oooelePartner.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.ActivityResult;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 import com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView;
 
 import java.util.Calendar;
@@ -75,9 +86,62 @@ public class MainActivity extends AppCompatActivity {
         }
         loadFragmentmain(new HomeFragment());
         startService();
+        checkForUpdates();
+    }
+    private void checkForUpdates() {
+        AppUpdateManager
+                appUpdateManager = AppUpdateManagerFactory.create(this);
+
+        Task<AppUpdateInfo> appUpdateInfo = appUpdateManager.getAppUpdateInfo();
+        appUpdateInfo.addOnCompleteListener(task -> handleImmediateUpdate(appUpdateManager, appUpdateInfo));
+
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (REQUEST_UPDATE == requestCode) {
+            if (ActivityResult.RESULT_IN_APP_UPDATE_FAILED == resultCode) {
+                finish();
+                Intent i = getBaseContext().getPackageManager()
+                        .getLaunchIntentForPackage(getBaseContext().getPackageName());
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+            }
+            super.onActivityResult(requestCode, resultCode, data);
+        } else if (Activity.RESULT_CANCELED == resultCode) {
+            finish();
+            Intent i = getBaseContext().getPackageManager()
+                    .getLaunchIntentForPackage(getBaseContext().getPackageName());
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+
+    int REQUEST_UPDATE = 100;
+
+    private void handleImmediateUpdate(AppUpdateManager manager, Task<AppUpdateInfo> info) {
+        Log.d("LOG_MESSAGE", "handleImmediateUpdate: " +info.getResult().updateAvailability());
+        if ((info.getResult().updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE ||
+
+                info.getResult().updateAvailability() ==
+                        UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) &&
+
+                info.getResult().isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+
+            try {
+                manager.startUpdateFlowForResult(info.getResult(), AppUpdateType.IMMEDIATE, this, REQUEST_UPDATE);
+            } catch (IntentSender.SendIntentException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
     private void startService() {
 
         Intent myIntent = new Intent(this, MyService.class);
